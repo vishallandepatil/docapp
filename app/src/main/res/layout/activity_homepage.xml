@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.drawerlayout.widget.DrawerLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drl_Opener"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        tools:context=".activities.HomepageActivity">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/rl_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--region Toolbar Region-->
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/appBarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-8dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="top">
+
+                        <RelativeLayout
+                            android:id="@+id/originalToolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_10"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/img_openDrawer"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="8dp"
+                                android:background="@drawable/ic_menu_black_24dp"
+                                android:backgroundTint="@color/colorWhite" />
+
+                            <TextView
+                                android:id="@+id/txtTitleBar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/img_openDrawer"
+                                android:layout_centerVertical="true"
+                                android:text="@string/app_name"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/toolbarText"
+                                android:textStyle="bold"/>
+
+
+                            <ImageView
+                                android:id="@+id/img_whatsapp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="@dimen/padding_20"
+                                android:background="@drawable/ic_add_alert_black_24dp"
+                                android:layout_alignParentRight="true"
+                                android:visibility="visible"/>
+
+                            <ImageView
+                                android:id="@+id/img_call"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/home_phone_call"
+                                android:layout_marginRight="30dp"
+                                android:layout_toLeftOf="@+id/img_whatsapp"
+                                android:visibility="gone"/>
+
+
+
+                        </RelativeLayout>
+
+                    </androidx.appcompat.widget.Toolbar>
+
+                </com.google.android.material.appbar.AppBarLayout>
+                <!--endregion-->
+
+                <ScrollView
+                    android:id="@+id/ScrollView011"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none"
+                    android:layout_below="@+id/appBarLayout">
+
+                    <RelativeLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <!--region Slider Region-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_slider"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"
+                            app:cardCornerRadius="5dp"
+                            android:layout_marginTop="@dimen/padding_10">
+
+                            <LinearLayout
+                                android:id="@+id/sliderlayout"
+                                android:background="@color/colorGrey"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.daimajia.slider.library.SliderLayout
+                                    android:id="@+id/slider"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="200dp" />
+
+                                <com.daimajia.slider.library.Indicators.PagerIndicator
+                                    android:id="@+id/custom_indicator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <!--endregion-->
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/layoutt1"
+                            android:layout_marginBottom="3dp"
+                            android:layout_width="match_parent"
+                            android:layout_below="@+id/cv_slider"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@color/colorShade2">
+
+                                    <GridLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:alignmentMode="alignMargins"
+                                        android:columnOrderPreserved="false"
+                                        android:rowCount="2"
+                                        android:columnCount="2"
+                                        android:id="@+id/grd"
+                                        android:layout_marginTop="@dimen/padding_10"
+                                        >
+
+
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_columnWeight="1"
+                                            android:layout_rowWeight="1"
+                                            app:cardElevation="6dp"
+                                            app:cardCornerRadius="12dp"
+                                            android:layout_margin="12dp"
+                                            android:id="@+id/cv_attendance">
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:padding="16dp"
+                                                android:orientation="vertical"
+                                                android:gravity="center">
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:src="@drawable/ic_home_black_24dp"
+                                                    android:tint="@color/colorPrimary"/>
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="12dp"
+                                                    android:textColor="@color/colorBlack"
+                                                    android:text="@string/about_hospital"
+                                                    android:textSize="18sp"/>
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_columnWeight="1"
+                                            android:layout_rowWeight="1"
+                                            app:cardElevation="6dp"
+                                            app:cardCornerRadius="12dp"
+                                            android:layout_margin="12dp"
+                                            android:id="@+id/cv_ViewLeave">
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:padding="16dp"
+                                                android:orientation="vertical"
+                                                android:gravity="center">
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:src="@drawable/male_avatar"/>
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="12dp"
+                                                    android:textColor="@color/colorBlack"
+                                                    android:text="@string/about_doctor"
+                                                    android:textSize="18sp"/>
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_columnWeight="1"
+                                            android:layout_rowWeight="1"
+                                            app:cardElevation="6dp"
+                                            app:cardCornerRadius="12dp"
+                                            android:layout_margin="12dp"
+                                            android:id="@+id/cv_profile">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:padding="16dp"
+                                                android:orientation="vertical"
+                                                android:gravity="center">
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:src="@drawable/book_home"/>
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="12dp"
+                                                    android:textColor="@color/colorBlack"
+                                                    android:text="@string/book_appointment"
+                                                    android:textSize="18sp"/>
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_columnWeight="1"
+                                            android:layout_rowWeight="1"
+                                            app:cardElevation="6dp"
+                                            app:cardCornerRadius="12dp"
+                                            android:layout_margin="12dp"
+                                            android:id="@+id/cv_contact">
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:padding="16dp"
+                                                android:orientation="vertical"
+                                                android:gravity="center">
+
+                                                <ImageView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="80dp"
+                                                    android:tint="@color/colorPrimary"
+                                                    android:src="@drawable/ic_location_on_black_24dp"/>
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="12dp"
+                                                    android:textColor="@color/colorBlack"
+                                                    android:text="Contact"
+                                                    android:textSize="18sp"/>
+                                            </LinearLayout>
+
+
+                                        </androidx.cardview.widget.CardView>
+
+                                    </GridLayout>
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_socialMedia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:orientation="horizontal"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/padding_10"
+                            android:layout_below="@+id/layoutt1">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ib_twitter"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:layout_margin="8dp"
+                                android:elevation="5dp"
+                                android:src="@drawable/twitterfilled"
+                                android:visibility="visible"/>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+
+                                android:id="@+id/ib_facebook"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:layout_margin="8dp"
+                                android:elevation="5dp"
+                                android:src="@drawable/facebookfilled" />
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ib_instagram"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:layout_margin="8dp"
+                                android:elevation="5dp"
+                                android:visibility="gone"
+                                android:src="@drawable/instagramfilled" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ib_whatsapp"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:layout_margin="8dp"
+                                android:elevation="5dp"
+                                android:src="@drawable/whatsappfilled" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ib_linkedin"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:layout_margin="8dp"
+                                android:elevation="5dp"
+                                android:src="@drawable/linkedinfilled"
+                                android:visibility="visible"/>
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/ib_telegram"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                android:layout_margin="8dp"
+                                android:elevation="5dp"
+                                android:src="@drawable/telegram" />
+
+                        </LinearLayout>
+                        <!--new code-->
+                    </RelativeLayout>
+
+                </ScrollView>
+
+
+
+            </RelativeLayout>
+
+
+            <!--region RecyclerView YoutubeVideos-->
+
+
+        </RelativeLayout>
+
+
+
+        <include layout="@layout/drawer_layout" />
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Doctor App</string>
+    <string name="rate_us_link">https://play.google.com/store/apps/details?id=com.flipkart.android</string>
+    <string name="feedback_email">sample@gmail.com</string>
+
+    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams! </string>
+
+
+    <string name="contact_us_address"> Aurangabad,\n Maharashtra</string>
+    <string name="txt_paid">You have to buy this video</string>
+
+
+    <string name="about_doctor">Doctor</string>
+    <string name="about_hospital">Hospital</string>
+    <string name="book_appointment">Appointment</string>
+    <string name="contact">Contact</string>
+</resources>
