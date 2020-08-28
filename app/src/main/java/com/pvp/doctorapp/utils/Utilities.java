@@ -1,4 +1,4 @@
-package com.teammandroid.dairyapplication.utils;
+package com.pvp.doctorapp.utils;
 
 import android.app.Activity;
 import android.app.Fragment;

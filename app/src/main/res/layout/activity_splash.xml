@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/colorWhite"
     android:layout_height="match_parent"
-    tools:context=".activities.SplashActivity">
+    tools:context=".activities.welcome.SplashActivity">
 
     <!--<TextView
         android:id="@+id/tv_teacherName"
@@ -24,7 +24,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/s1">
+        android:background="@drawable/welcome">
 
        <!-- <ImageView
             android:layout_width="250dp"

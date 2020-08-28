@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/rl_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:paddingTop="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/back_about"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/ic_arrow_back"
+                    android:backgroundTint="@color/colorBlack" />
+
+
+                <TextView
+                    android:layout_toRightOf="@id/back_about"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="120dp"
+                    android:text="About us"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="@dimen/toolbar_text" />
+
+
+            </RelativeLayout>
+
+            <!--region tab-->
+            <!--  <include layout="@layout/custom_tab_layout"/>-->
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aboutdoctor"
+        android:textColor="@color/colorBlack"
+        android:background="@color/white"
+        android:textSize="@dimen/padding_20"
+        android:lineSpacingExtra="1dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/title"
+        android:layout_below="@+id/toolbar"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_below="@+id/title"
+        android:id="@+id/rl1"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        >
+
+
+
+        <ImageView
+            android:layout_height="140dp"
+            android:layout_width="160dp"
+            android:background="@drawable/doc"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/padding_20"
+            android:layout_marginTop="@dimen/padding_10"
+            android:id="@+id/img"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dr. Abhijeet Kulkarni"
+            android:textColor="@color/colorBlack"
+            android:background="@color/colorWhite"
+            android:textSize="@dimen/padding_20"
+            android:lineSpacingExtra="1dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_name"
+            android:layout_below="@+id/img"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_us_details"
+            android:textColor="@color/colorBlack"
+            android:layout_below="@+id/tv_name"
+            android:background="@color/colorWhite"
+            android:textSize="15dp"
+            android:lineSpacingExtra="1dp"
+            android:id="@+id/tv_details"
+            android:layout_marginTop="@dimen/padding_20"
+            />
+
+
+    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Book an Appointment"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="50dp"
+        />
+
+</RelativeLayout>
+

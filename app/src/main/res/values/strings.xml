@@ -3,7 +3,8 @@
     <string name="rate_us_link">https://play.google.com/store/apps/details?id=com.flipkart.android</string>
     <string name="feedback_email">sample@gmail.com</string>
 
-    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams! </string>
+    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams!\nso we welcome you to be a part of our family and fulfill your dreams!
+    so we welcome you to be a part of our family and fulfill your dreams!\n so we welcome you to be a part of our family and fulfill your dreams!\ so we welcome you to be a part of our family and fulfill your dreams!</string>
 
 
     <string name="contact_us_address"> Aurangabad,\n Maharashtra</string>
@@ -14,4 +15,9 @@
     <string name="about_hospital">Hospital</string>
     <string name="book_appointment">Appointment</string>
     <string name="contact">Contact</string>
+    <string name="aboutdoctor">About Doctor</string>
+    <string name="abouthospital">About Hospital</string>
+    <string name="notification">Notifications</string>
+    <string name="congratulations">Congratulations!\n your appointment is confirmed</string>
+    <string name="terms">Terms and conditions!</string>
 </resources>

@@ -93,18 +93,27 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigation"
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_control_point_black_24dp"
+            android:tint="@color/colorWhite"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+
+        <com.pvp.doctorapp.activities.navigation.CustomBottomNavigationView1
+            android:id="@+id/customBottomBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="?android:attr/windowBackground"
-            app:itemBackground="@color/colorWhite"
-            android:foreground="?attr/selectableItemBackground"
-            app:itemIconTint="@color/nav_drawer_item"
-            app:itemTextColor="@color/nav_drawer_item"
-            app:menu="@menu/bottom_navigation"
-            app:labelVisibilityMode="labeled"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            app:labelVisibilityMode="labeled" />
+
     </RelativeLayout>
 </LinearLayout>

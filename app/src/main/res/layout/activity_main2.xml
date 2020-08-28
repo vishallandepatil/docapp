@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+     android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_control_point_black_24dp"
+        android:tint="@color/colorWhite"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+
+    <com.pvp.doctorapp.activities.navigation.CustomBottomNavigationView1
+        android:id="@+id/customBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        app:labelVisibilityMode="labeled" />
+
+</RelativeLayout>
