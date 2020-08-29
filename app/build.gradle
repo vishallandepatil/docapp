@@ -82,6 +82,8 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
 
 
+    implementation 'com.applandeo:material-calendar-view:1.7.0'
+
     //circle image
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 

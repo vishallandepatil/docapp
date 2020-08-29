@@ -20,4 +20,5 @@
     <string name="notification">Notifications</string>
     <string name="congratulations">Congratulations!\n your appointment is confirmed</string>
     <string name="terms">Terms and conditions!</string>
+    <string name="checkappointment">Check Appointment Availabity!</string>
 </resources>

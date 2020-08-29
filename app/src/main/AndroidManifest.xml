@@ -33,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activities.appointment.AppointmentBookingActivity">
+
+        </activity>
         <activity android:name=".activities.AboutUsActivity" />
         <activity android:name=".activities.home.NewHomepageActivity" />
         <activity android:name=".activities.demoActivity" />

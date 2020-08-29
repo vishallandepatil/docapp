@@ -14,8 +14,6 @@ import java.util.ArrayList;
 
 public class NotificationActivity extends AppCompatActivity {
 
-
-    //job alert
     private int[] myImageListForJobAlert = new int[]{R.drawable.ic_pause, R.drawable.ic_pause,
             R.drawable.ic_pause,
             R.drawable.ic_pause,R.drawable.ic_pause,   R.drawable.ic_pause,R.drawable.ic_pause};
