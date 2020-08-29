@@ -68,15 +68,15 @@
         android:paddingLeft="@dimen/padding_20"
         android:paddingRight="@dimen/padding_20"
         >
-        <com.applandeo.materialcalendarview.CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:type="one_day_picker"
-            app:eventsEnabled="true"
-            android:layout_marginTop="@dimen/padding_20">
 
-        </com.applandeo.materialcalendarview.CalendarView>
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_below="@+id/calendarView"
-                    android:visibility="gone">
+                    android:layout_marginTop="1dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
