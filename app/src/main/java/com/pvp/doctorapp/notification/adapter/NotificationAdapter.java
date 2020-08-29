@@ -1,4 +1,4 @@
-package com.pvp.doctorapp.activities.notification;
+package com.pvp.doctorapp.notification.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.pvp.doctorapp.R;
+import com.pvp.doctorapp.notification.model.NotificationModel;
 
 import java.util.ArrayList;
 

@@ -1,19 +1,12 @@
-package com.pvp.doctorapp.doctore.fragments;
+package com.pvp.doctorapp.doctor.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.databinding.FragmentAboutDoctorBinding;
-import com.pvp.doctorapp.databinding.FragmentHomeBinding;
-
-import java.util.HashMap;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;

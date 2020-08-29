@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -16,7 +17,11 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.databinding.FragmentHomeBinding;
+import com.pvp.doctorapp.home.adapter.HomepageAdapter;
+import com.pvp.doctorapp.notification.adapter.NotificationAdapter;
+import com.pvp.doctorapp.notification.model.NotificationModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -24,6 +29,16 @@ import java.util.HashMap;
  */
 public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
+
+    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_pause, R.drawable.ic_pause,
+            R.drawable.ic_pause,
+            R.drawable.ic_pause,R.drawable.ic_pause,   R.drawable.ic_pause,R.drawable.ic_pause};
+    private String[] myImageNameListForJobAlert = new String[]{"title","title","title","title",
+            "title","title","title"};
+
+    ArrayList<NotificationModel> imageModelYouTubeArrayList ;
+
+    HomepageAdapter homepageAdapter;
 
 
     public HomeFragment() {
@@ -36,17 +51,22 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 //
-
-
         slider();
+
+        imageModelYouTubeArrayList = arrayJobAlerts();
+        homepageAdapter = new HomepageAdapter(getActivity(), imageModelYouTubeArrayList);
+        binding.rvJobAlert.setAdapter(homepageAdapter);
+        binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false));
+
         return binding.getRoot();
     }
 
     public void slider() {
         HashMap<String, Integer> url_maps = new HashMap<String, Integer>();
-        url_maps.put("The pick staff is properly trained, well mannered,", R.drawable.sample_logo);
-        url_maps.put("We use advance-accurate digital .",  R.drawable.sample_logo);
-        url_maps.put("We are an ethical company operating ..",  R.drawable.sample_logo);
+        url_maps.put("", R.drawable.sample_logo);
+        url_maps.put("",  R.drawable.sample_logo);
+        url_maps.put("",  R.drawable.sample_logo);
 
 
         for (String name : url_maps.keySet()) {
@@ -69,6 +89,19 @@ public class HomeFragment extends Fragment {
         binding.slider.setCustomAnimation(new DescriptionAnimation());
         binding.slider.setDuration(4000);
 
+    }
+    private ArrayList<NotificationModel> arrayJobAlerts(){
+
+        ArrayList<NotificationModel> list = new ArrayList<>();
+
+        for(int i = 0; i < 7; i++) {
+            NotificationModel notificationModel = new NotificationModel();
+            notificationModel.setName(myImageNameListForJobAlert[i]);
+            notificationModel.setImage_drawable(myImageListForJobAlert[i]);
+            list.add(notificationModel);
+        }
+
+        return list;
     }
 
 

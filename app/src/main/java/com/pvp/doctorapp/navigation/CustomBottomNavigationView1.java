@@ -1,4 +1,4 @@
-package com.pvp.doctorapp.activities.navigation;
+package com.pvp.doctorapp.navigation;
 
 import android.content.Context;
 import android.graphics.Canvas;

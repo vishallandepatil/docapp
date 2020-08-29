@@ -70,24 +70,23 @@
         >
 
 
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
 
-                />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_job_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/calendarView"
+            android:layout_marginTop="1dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_job_alert"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/calendarView"
-                    android:layout_marginTop="1dp">
-
-                </androidx.recyclerview.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
 
 

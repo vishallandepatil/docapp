@@ -11,7 +11,8 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -42,14 +43,7 @@
                     android:layout_marginRight="8dp"
                     android:background="@drawable/ic_menu_black_24dp"
                     android:backgroundTint="@color/colorWhite"
-                    android:visibility="gone"/>
-
-
-
-
-
-
-
+                    android:visibility="visible"/>
 
             </RelativeLayout>
 
@@ -70,14 +64,68 @@
                 android:layout_height="200dp" />
 
             <com.daimajia.slider.library.Indicators.PagerIndicator
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center" />
+                android:gravity="center"
+                android:visibility="gone"/>
 
         </LinearLayout>
     <!--endregion-->
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recent_notification"
+        android:textColor="@color/colorBlack"
+        android:background="@color/white"
+        android:textSize="15dp"
+        android:id="@+id/title"
+        android:layout_below="@+id/toolbar"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_job_alert"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginRight="@dimen/padding_10"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_doctor_home"
+        android:textColor="@color/colorBlack"
+        android:background="@color/white"
+        android:textSize="15dp"
+        android:id="@+id/title2"
+        android:layout_below="@+id/toolbar"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"/>
+ <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_page_details"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/white"
+        android:textSize="12dp"
+        android:id="@+id/title4"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:layout_marginTop="@dimen/padding_10"
+        android:drawableLeft="@drawable/ic_alarm_add_black_24dp"
+        android:drawableTint="@color/colorPrimary"
+        android:drawablePadding="15dp"
+     />
 
 </LinearLayout>
 

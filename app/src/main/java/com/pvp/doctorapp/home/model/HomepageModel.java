@@ -1,6 +1,6 @@
-package com.pvp.doctorapp.activities.appointment;
+package com.pvp.doctorapp.home.model;
 
-public class AppointmentModel {
+public class HomepageModel {
 
     private String name;
     private int image_drawable;

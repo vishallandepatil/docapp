@@ -1,6 +1,6 @@
-package com.pvp.doctorapp.activities.notification;
+package com.pvp.doctorapp.appointment.model;
 
-public class NotificationModel {
+public class AppointmentModel {
 
     private String name;
     private int image_drawable;

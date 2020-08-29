@@ -22,7 +22,6 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.notification.NotificationActivity">
         </activity>
-        <activity android:name=".activities.Main2Activity" />
         <activity android:name=".splash.activities.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"
             >
@@ -37,7 +36,6 @@
         </activity>
         <activity android:name=".activities.AboutUsActivity" />
         <activity android:name=".home.activities.NewHomepageActivity" />
-        <activity android:name=".activities.demoActivity" />
         <activity android:name=".activities.hospital.AboutHospitalActivity">
 
         </activity>

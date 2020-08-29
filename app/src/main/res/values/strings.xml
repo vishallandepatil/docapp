@@ -6,6 +6,10 @@
     <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams!\nso we welcome you to be a part of our family and fulfill your dreams!
     so we welcome you to be a part of our family and fulfill your dreams!\n so we welcome you to be a part of our family and fulfill your dreams!\ so we welcome you to be a part of our family and fulfill your dreams!</string>
 
+   <string name="home_page_details">1.so we welcome you to be a part of our family and fulfill your dreams!
+       \nso we welcome you to be a part of our family and fulfill your dreams!
+    </string>
+
 
     <string name="contact_us_address"> Aurangabad,\n Maharashtra</string>
     <string name="txt_paid">You have to buy this video</string>
@@ -18,7 +22,9 @@
     <string name="aboutdoctor">About Doctor</string>
     <string name="abouthospital">About Hospital</string>
     <string name="notification">Notifications</string>
+    <string name="recent_notification">Recent Notifications</string>
     <string name="congratulations">Congratulations!\n your appointment is confirmed</string>
     <string name="terms">Terms and conditions!</string>
     <string name="checkappointment">Check Appointment Availabity!</string>
+    <string name="about_doctor_home">About Kulkarni Hospital</string>
 </resources>

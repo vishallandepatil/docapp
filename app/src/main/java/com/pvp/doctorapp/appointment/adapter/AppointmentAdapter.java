@@ -1,4 +1,4 @@
-package com.pvp.doctorapp.activities.appointment;
+package com.pvp.doctorapp.appointment.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pvp.doctorapp.R;
+import com.pvp.doctorapp.appointment.model.AppointmentModel;
 
 import java.util.ArrayList;
 

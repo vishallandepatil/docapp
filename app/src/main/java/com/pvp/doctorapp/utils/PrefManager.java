@@ -14,7 +14,7 @@ public class PrefManager {
     // Shared pref mode
     public static int PRIVATE_MODE = 0;
     // Shared preferences file name
-    public static final String PREF_NAME = "successacademy";
+    public static final String PREF_NAME = "docapp";
     // All Shared Preferences Keys
     private static final String USER_ID = "u_id";
     private static final String USER_MOBILE = "mobile";

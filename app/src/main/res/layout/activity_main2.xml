@@ -19,7 +19,7 @@
         android:focusable="true" />
 
 
-    <com.pvp.doctorapp.activities.navigation.CustomBottomNavigationView1
+    <com.pvp.doctorapp.navigation.CustomBottomNavigationView1
         android:id="@+id/customBottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

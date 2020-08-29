@@ -53,18 +53,18 @@
                 android:layout_marginTop="5dp"/>
 
             <TextView
-                android:layout_width="40dp"
-                android:layout_height="@dimen/padding_20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/iv2"
-                android:padding="1dp"
-                android:background="@color/colorGreen"
+                android:background="@drawable/button_background"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:text="read"
                 android:textSize="@dimen/padding_10"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:padding="8dp"/>
 
 
         </RelativeLayout>
