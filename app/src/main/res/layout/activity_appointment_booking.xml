@@ -72,18 +72,22 @@
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_weight="1"
             app:type="one_day_picker"
             app:eventsEnabled="true"
             android:layout_marginTop="@dimen/padding_20">
 
-
-
-
-
-
-
         </com.applandeo.materialcalendarview.CalendarView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_job_alert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/calendarView"
+                    android:visibility="gone">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
 
 
