@@ -7,32 +7,35 @@
     <item
         android:id="@+id/navigation_home"
         android:enabled="true"
-        android:title="Page1"
-        android:icon="@drawable/ic_pause"
-        app:showAsAction="ifRoom"/>
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+      />
 
     <item
-        android:id="@+id/navigation_bl"
+        android:id="@+id/navigation_doctor"
         android:enabled="true"
-        android:title="Page2"
-        android:icon="@drawable/ic_pause"
-        app:showAsAction="ifRoom"/>
+        android:title="Hospital"
+        android:icon="@drawable/ic_baseline_business_24"
+       />
     <item
-        android:enabled="true"
-        android:title=""
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/navigation_add"
-        android:enabled="true"
-        android:icon="@drawable/ic_search"
-        android:title="Page3"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/navigation_list"
-        android:enabled="true"
-        android:title="Page4"
-        android:icon="@drawable/ic_pause"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/navigation_hosspital"
 
+        android:enabled="false"
+        android:title="Hospital"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/navigation_hospital"
+        android:enabled="true"
+        android:title="Doctor"
+        android:icon="@drawable/ic_baseline_person_24"
+        />
+    <item
+        android:id="@+id/navigation_notificatin"
+        android:enabled="true"
+        android:title="Notification"
+        android:icon="@drawable/ic_location_on_black_24dp"
+        />
 
 </menu>

@@ -38,8 +38,6 @@
         <activity android:name=".activities.AboutUsActivity" />
         <activity android:name=".home.activities.NewHomepageActivity" />
         <activity android:name=".activities.demoActivity" />
-        <activity android:name=".activities.doctor.AboutDocorActivity">
-        </activity>
         <activity android:name=".activities.hospital.AboutHospitalActivity">
 
         </activity>
