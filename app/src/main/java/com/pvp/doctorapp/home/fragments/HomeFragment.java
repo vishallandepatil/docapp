@@ -1,5 +1,4 @@
-package com.pvp.doctorapp.fragments;
-
+package com.pvp.doctorapp.home.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;

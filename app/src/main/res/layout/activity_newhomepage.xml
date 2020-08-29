@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -39,39 +45,10 @@
                     android:backgroundTint="@color/colorWhite"
                     android:visibility="gone"/>
 
-                <TextView
-                    android:id="@+id/txtTitleBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/img_openDrawer"
-                    android:layout_centerVertical="true"
-                    android:text="@string/app_name"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/toolbarText"
-                    android:textStyle="bold"/>
 
 
-                <ImageView
-                    android:id="@+id/img_whatsapp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="@dimen/padding_20"
-                    android:background="@drawable/ic_add_alert_black_24dp"
-                    android:layout_alignParentRight="true"
-                    android:visibility="visible"/>
 
-                <ImageView
-                    android:id="@+id/img_call"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/home_phone_call"
-                    android:layout_marginRight="30dp"
-                    android:layout_toLeftOf="@+id/img_whatsapp"
-                    android:visibility="gone"/>
+
 
 
 
@@ -117,3 +94,5 @@
 
     </RelativeLayout>
 </LinearLayout>
+
+</layout>

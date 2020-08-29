@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pvp.doctorapp.R;
-import com.pvp.doctorapp.activities.notification.NotificationActivity;
-import com.pvp.doctorapp.activities.notification.NotificationAdapter;
-import com.pvp.doctorapp.activities.notification.NotificationModel;
 
 import java.util.ArrayList;
 
