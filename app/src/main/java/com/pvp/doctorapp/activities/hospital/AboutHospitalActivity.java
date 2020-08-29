@@ -19,7 +19,7 @@ public class AboutHospitalActivity extends AppCompatActivity implements View.OnC
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_about_hospital);
+        setContentView(R.layout.fragments_about_hospital);
 
 
     }

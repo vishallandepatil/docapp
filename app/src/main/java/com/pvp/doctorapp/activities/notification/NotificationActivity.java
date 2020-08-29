@@ -49,7 +49,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         ArrayList<NotificationModel> list = new ArrayList<>();
 
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 7; i++) {
             NotificationModel notificationModel = new NotificationModel();
             notificationModel.setName(myImageNameListForJobAlert[i]);
             notificationModel.setImage_drawable(myImageListForJobAlert[i]);

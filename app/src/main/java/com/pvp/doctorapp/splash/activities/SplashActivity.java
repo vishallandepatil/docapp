@@ -1,14 +1,13 @@
-package com.pvp.doctorapp.activities.welcome;
+package com.pvp.doctorapp.splash.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.pvp.doctorapp.R;
-import com.pvp.doctorapp.activities.home.NewHomepageActivity;
+import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.utils.Utilities;
 
 public class SplashActivity extends AppCompatActivity {
@@ -21,7 +20,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash);

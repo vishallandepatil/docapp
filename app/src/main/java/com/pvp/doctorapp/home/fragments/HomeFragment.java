@@ -1,5 +1,4 @@
-package com.pvp.doctorapp.fragments;
-
+package com.pvp.doctorapp.home.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -15,18 +15,17 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.pvp.doctorapp.R;
+import com.pvp.doctorapp.databinding.FragmentHomeBinding;
 
 import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener ,
-        BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class HomeFragment extends Fragment {
+    FragmentHomeBinding binding;
 
 
-    Activity context;
-    private SliderLayout slider;
     public HomeFragment() {
     }
 
@@ -35,12 +34,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        context = getActivity();
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        slider=view.findViewById(R.id.slider);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+//
+
 
         slider();
-        return view;
+        return binding.getRoot();
     }
 
     public void slider() {
@@ -56,46 +55,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,
             textSliderView
                     .description(name)
                     .image(url_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this);
+                    .setScaleType(BaseSliderView.ScaleType.Fit);
 
             //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
                     .putString("extra", name);
 
-            slider.addSlider(textSliderView);
+            binding.slider.addSlider(textSliderView);
         }
-        slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        slider.setCustomAnimation(new DescriptionAnimation());
-        slider.setDuration(4000);
-        slider.addOnPageChangeListener(this);
+        binding.slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        binding.slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        binding.slider.setCustomAnimation(new DescriptionAnimation());
+        binding.slider.setDuration(4000);
 
     }
 
 
-    @Override
-    public void onClick(View v) {
-    }
-
-    @Override
-    public void onSliderClick(BaseSliderView slider) {
-
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
 }
