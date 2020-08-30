@@ -49,14 +49,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_title, tv_quiz, tv_exam;
+        TextView tv_title;
         ImageView iv;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
-            tv_exam = (TextView) itemView.findViewById(R.id.tv_exam);
             iv = (ImageView) itemView.findViewById(R.id.iv);
         }
 

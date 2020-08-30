@@ -18,6 +18,7 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.databinding.FragmentHomeBinding;
 import com.pvp.doctorapp.home.adapter.HomepageAdapter;
+import com.pvp.doctorapp.home.model.HomepageModel;
 import com.pvp.doctorapp.notification.adapter.NotificationAdapter;
 import com.pvp.doctorapp.notification.model.NotificationModel;
 
@@ -30,13 +31,13 @@ import java.util.HashMap;
 public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
 
-    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_pause, R.drawable.ic_pause,
-            R.drawable.ic_pause,
-            R.drawable.ic_pause,R.drawable.ic_pause,   R.drawable.ic_pause,R.drawable.ic_pause};
+    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp,
+            R.drawable.ic_alarm_add_black_24dp,
+            R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp,   R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp};
     private String[] myImageNameListForJobAlert = new String[]{"title","title","title","title",
             "title","title","title"};
 
-    ArrayList<NotificationModel> imageModelYouTubeArrayList ;
+    ArrayList<HomepageModel> imageModelYouTubeArrayList ;
 
     HomepageAdapter homepageAdapter;
 
@@ -90,15 +91,15 @@ public class HomeFragment extends Fragment {
         binding.slider.setDuration(4000);
 
     }
-    private ArrayList<NotificationModel> arrayJobAlerts(){
+    private ArrayList<HomepageModel> arrayJobAlerts(){
 
-        ArrayList<NotificationModel> list = new ArrayList<>();
+        ArrayList<HomepageModel> list = new ArrayList<>();
 
         for(int i = 0; i < 7; i++) {
-            NotificationModel notificationModel = new NotificationModel();
-            notificationModel.setName(myImageNameListForJobAlert[i]);
-            notificationModel.setImage_drawable(myImageListForJobAlert[i]);
-            list.add(notificationModel);
+            HomepageModel homepageModel = new HomepageModel();
+            homepageModel.setName(myImageNameListForJobAlert[i]);
+            homepageModel.setImage_drawable(myImageListForJobAlert[i]);
+            list.add(homepageModel);
         }
 
         return list;

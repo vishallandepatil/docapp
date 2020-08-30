@@ -25,9 +25,9 @@ import java.util.ArrayList;
 public class NotificationFragment extends Fragment {
     FragmentsNotificationBinding binding;
 
-    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_pause, R.drawable.ic_pause,
-            R.drawable.ic_pause,
-            R.drawable.ic_pause,R.drawable.ic_pause,   R.drawable.ic_pause,R.drawable.ic_pause};
+    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp,
+            R.drawable.ic_alarm_add_black_24dp,
+            R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp,   R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp};
     private String[] myImageNameListForJobAlert = new String[]{"title","title","title","title",
             "title","title","title"};
 

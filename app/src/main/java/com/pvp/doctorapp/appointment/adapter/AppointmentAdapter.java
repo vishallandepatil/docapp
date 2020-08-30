@@ -55,7 +55,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             super(itemView);
 
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
-            tv_exam = (TextView) itemView.findViewById(R.id.tv_exam);
             iv = (ImageView) itemView.findViewById(R.id.iv);
         }
 

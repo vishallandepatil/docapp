@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pvp.doctorapp.R;
+import com.pvp.doctorapp.home.model.HomepageModel;
 import com.pvp.doctorapp.notification.model.NotificationModel;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
-    private ArrayList<NotificationModel> imageModelArrayList;
+    private ArrayList<HomepageModel> imageModelArrayList;
 
-    public HomepageAdapter(Context ctx, ArrayList<NotificationModel> imageModelArrayList){
+    public HomepageAdapter(Context ctx, ArrayList<HomepageModel> imageModelArrayList){
 
         inflater = LayoutInflater.from(ctx);
         this.imageModelArrayList = imageModelArrayList;
@@ -28,7 +29,7 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.MyView
     @Override
     public HomepageAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = inflater.inflate(R.layout.item, parent, false);
+        View view = inflater.inflate(R.layout.home_item, parent, false);
         HomepageAdapter.MyViewHolder holder = new HomepageAdapter.MyViewHolder(view);
 
         return holder;
@@ -48,14 +49,13 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_title, tv_quiz, tv_exam;
+        TextView tv_title;
         ImageView iv;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
-            tv_exam = (TextView) itemView.findViewById(R.id.tv_exam);
             iv = (ImageView) itemView.findViewById(R.id.iv);
         }
 
