@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="DoctorDetails"
+            type="com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel" />
 
     </data>
 
@@ -21,49 +24,11 @@
         android:layout_height="56dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        app:navigationIcon="@drawable/ic_arrow_back"
+
         android:background="@color/white">
 
-        <LinearLayout
-            android:id="@+id/rl_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            android:paddingTop="5dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/back_about"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:background="@drawable/ic_arrow_back"
-                    android:backgroundTint="@color/colorBlack" />
-
-
-                <TextView
-                    android:layout_toRightOf="@id/back_about"
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="120dp"
-                    android:text="About us"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/toolbar_text" />
-
-
-            </RelativeLayout>
-
-            <!--region tab-->
-            <!--  <include layout="@layout/custom_tab_layout"/>-->
-
-        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
@@ -97,6 +62,7 @@
             app:civ_border_color="#ffffff"
             android:layout_centerHorizontal="true"
             android:padding="@dimen/padding_20"
+            app:imageUrl="@{DoctorDetails.doctorsResponceMutableLiveData.doctosImgPath+DoctorDetails.doctorinfo.img}"
             android:layout_marginTop="@dimen/padding_10"
             android:id="@+id/img"
             />
@@ -106,7 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dr. Abhijeet Kulkarni"
+            android:text="@{DoctorDetails.doctorinfo.title}"
             android:textColor="@color/hometext"
             android:background="@color/colorWhite"
             android:textSize="16dp"
@@ -119,7 +85,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/contact_us_details"
+            android:text="@{DoctorDetails.doctorinfo.description}"
             android:textColor="@color/about_text_color"
             android:layout_below="@+id/tv_name"
             android:background="@color/colorWhite"

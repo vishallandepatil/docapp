@@ -9,9 +9,12 @@ import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.databinding.FragmentAboutDoctorBinding;
 import com.pvp.doctorapp.databinding.FragmentHomeBinding;
 import com.pvp.doctorapp.databinding.FragmentsAboutHospitalBinding;
+import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
+import com.pvp.doctorapp.hospital.viewmodel.HospitalViewModel;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +32,12 @@ public class HospitalFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragments_about_hospital, container, false);
+
+        HospitalViewModel hospitalViewModel = ViewModelProviders.of(this).get(HospitalViewModel.class);
+        binding.setLifecycleOwner(this);
+        binding.setHospitalViewModel(hospitalViewModel);
+
+        hospitalViewModel.loadData(getContext());
         return binding.getRoot();
     }
 
