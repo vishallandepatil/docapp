@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:id="@+id/layout1"
-        android:visibility="gone"
+        android:visibility="visible"
         >
 
         <androidx.appcompat.widget.Toolbar
@@ -188,7 +188,7 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             android:id="@+id/layout2"
-            android:visibility="visible">
+            android:visibility="gone">
 
 
             <androidx.appcompat.widget.Toolbar
