@@ -192,7 +192,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/cv_background"
                 android:id="@+id/rl1"
                 >
@@ -252,7 +252,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
                     android:layout_gravity="center"
                     android:layout_marginLeft="40dp"
@@ -345,13 +345,15 @@
                             android:background="@drawable/button_appointment"
                             android:text="Home"
                             android:textColor="@color/white"
-                            android:textSize="10dp"
+                            android:textSize="7sp"
                             android:layout_centerHorizontal="true"
                             android:layout_below="@+id/view1"
-                            android:padding="0dp"
-                            android:layout_marginBottom="20dp"
-                            />
-                    </RelativeLayout>
+                            android:layout_marginBottom="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:paddingTop="1dp"
+                            android:paddingBottom="1dp"
+                            /></RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
 
