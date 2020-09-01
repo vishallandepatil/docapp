@@ -46,6 +46,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_booking_appointment);
 
+
         changeLocale("hi");
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_booking_appointment);
@@ -62,6 +63,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
 
     public void changeLocale(String lang) {
+
         Locale locale = new Locale(lang);
         Configuration config = getBaseContext().getResources().getConfiguration();
         config.locale = locale;
