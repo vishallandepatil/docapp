@@ -4,7 +4,10 @@
     <color name="colorPrimaryDark">#69d296</color>
     <color name="colorAccent">#E37810</color>
     <color name="colorwhite">#ffffff</color>
+    <color name="appgrey">#c2c3c3</color>
+<!--
     <color name="appgrey">#dbe3e8</color>
+-->
     <color name="hometext">#3d6782</color>
     <color name="notification_skyblue">#47cacc</color>
     <color name="notification_orange">#f75010</color>
@@ -17,7 +20,7 @@
 
 
     <color name="colorShade1">#ffffff</color>
-    <color name="colorBackgroundHomePage">#c2c3c3</color>
+    <color name="darkergrey">#c2c3c3</color>
     <color name="colorShade2">#ffffff</color>
     <color name="colorShade3">#ffffff</color>
     <color name="coloricon">#000000</color>

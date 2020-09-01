@@ -1,0 +1,38 @@
+<resources>
+
+
+    <string name="app_name">Doctor App</string>
+    <string name="rate_us_link">https://play.google.com/store/apps/details?id=com.flipkart.android</string>
+    <string name="feedback_email">sample@gmail.com</string>
+
+    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams!\nso we welcome you to be a part of our family and fulfill your dreams!
+    so we welcome you to be a part of our family and fulfill your dreams!\n so we welcome you to be a part of our family and fulfill your dreams!\</string>
+
+    <string name="home_page_details">1.so we welcome you to be a part of our family and fulfill your dreams!
+       \nso we welcome you to be a part of our family and fulfill your dreams!
+    </string>
+
+
+    <string name="contact_us_address"> Aurangabad,\n Maharashtra</string>
+    <string name="txt_paid">You have to buy this video</string>
+
+
+    <string name="about_doctor">डॉक्टर बद्दल</string>
+    <string name="about_hospital">हॉस्पिटल बद्दल</string>
+    <string name="book_appointment">नियुक्ती</string>
+    <string name="contact">संपर्क</string>
+    <string name="aboutdoctor">डॉक्टर बद्दल</string>
+    <string name="abouthospital">ॉस्पिटल बद्दल</string>
+    <string name="notification">अधिसूचना</string>
+
+    <string name="recent_notification">अलीकडील अधिसूचना</string>
+    <string name="congratulations">अभिनंदन! आपली भेट निश्चित केली आहे</string>
+    <string name="terms">Terms and conditions!</string>
+    <string name="checkappointment">नियुक्तीची उपलब्धता तपासा!</string>
+    <string name="appointmentbooking">नियुक्ती बुकिंग!</string>
+    <string name="about_doctor_home">कुलकर्णी रुग्णालयाबद्दल</string>
+    <string name="appointment_date">नियुक्तीची तारीख: dd-mm-yyyy</string>
+    <string name="appointment_slot">नियुक्ती स्लॉट: 01:00AM to 02.00PM </string>
+    <string name="available_appointment">उपलब्ध नेमणुका</string>
+    <string name="view">पहा</string>
+</resources>

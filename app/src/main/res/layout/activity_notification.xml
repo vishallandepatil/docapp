@@ -64,7 +64,7 @@
         android:text="@string/notification"
         android:textColor="@color/hometext"
         android:background="@color/white"
-        android:textSize="@dimen/padding_20"
+        android:textSize="16dp"
         android:id="@+id/title"
         android:layout_below="@+id/toolbar"
         android:textStyle="bold"

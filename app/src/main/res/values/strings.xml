@@ -3,9 +3,7 @@
     <string name="rate_us_link">https://play.google.com/store/apps/details?id=com.flipkart.android</string>
     <string name="feedback_email">sample@gmail.com</string>
 
-    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams!\nso we welcome you to be a part of our family and fulfill your dreams!
-    so we welcome you to be a part of our family and fulfill your dreams!\n so we welcome you to be a part of our family and fulfill your dreams!\</string>
-
+    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams!\nso we welcome you to be a part of our family and fulfill your dreams! so we welcome you to be a part of our family and fulfill your dreams!\n so we welcome you to be a part of our family and fulfill your dreams!\</string>
     <string name="home_page_details">1.so we welcome you to be a part of our family and fulfill your dreams!
        \nso we welcome you to be a part of our family and fulfill your dreams!
     </string>
@@ -31,4 +29,5 @@
     <string name="appointment_date">Appointment Date: dd-mm-yyyy</string>
     <string name="appointment_slot">Appointment Slot: 01:00AM to 02.00PM </string>
     <string name="available_appointment">Available Appointments</string>
+    <string name="view">view</string>
 </resources>

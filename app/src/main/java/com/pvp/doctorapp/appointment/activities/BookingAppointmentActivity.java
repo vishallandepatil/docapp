@@ -4,16 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.appointment.adapter.AppointmentAdapter;
 import com.pvp.doctorapp.appointment.model.AppointmentModel;
 import com.pvp.doctorapp.databinding.ActivityBookingAppointmentBinding;
+import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.home.adapter.HomepageAdapter;
 import com.pvp.doctorapp.home.model.HomepageModel;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BookingAppointmentActivity extends AppCompatActivity {
 
@@ -28,11 +36,17 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
     ArrayList<AppointmentModel> imageModelYouTubeArrayList ;
     AppointmentAdapter appointmentAdapter;
+    Locale myLocale;
+    String currentLanguage = "en", currentLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_booking_appointment);
+
+        changeLocale("hi");
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_booking_appointment);
 
@@ -44,6 +58,17 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
 
     }
+
+
+
+    public void changeLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+    }
+
 
     private ArrayList<AppointmentModel> arrayJobAlerts(){
 

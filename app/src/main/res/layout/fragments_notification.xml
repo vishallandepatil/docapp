@@ -44,16 +44,29 @@
                     android:backgroundTint="@color/colorBlack" />
 
 
+
                 <TextView
-                    android:layout_toRightOf="@id/back_about"
-                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="120dp"
-                    android:text="About us"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/toolbar_text" />
+                    android:text="@string/notification"
+                    android:textColor="@color/hometext"
+                    android:background="@color/white"
+                    android:textSize="16dp"
+                    android:id="@+id/title"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/padding_20"
+                    android:layout_toRightOf="@+id/back_about"
+                    android:layout_centerVertical="true"/>
+
+                <ToggleButton
+                    android:id="@+id/toggle"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    />
+
 
 
             </RelativeLayout>
@@ -64,23 +77,10 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/notification"
-        android:textColor="@color/hometext"
-        android:background="@color/white"
-        android:textSize="@dimen/padding_20"
-        android:id="@+id/title"
-        android:layout_below="@+id/toolbar"
-        android:textStyle="bold"
-        android:layout_marginLeft="@dimen/padding_20"
-        android:layout_marginBottom="5dp"/>
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title"
+        android:layout_below="@id/toolbar"
         android:layout_gravity="center">
 
 

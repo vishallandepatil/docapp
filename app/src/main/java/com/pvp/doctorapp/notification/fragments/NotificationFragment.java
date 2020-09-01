@@ -1,10 +1,13 @@
 package com.pvp.doctorapp.notification.fragments;
 
 import android.app.Notification;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -14,10 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.databinding.FragmentAboutDoctorBinding;
 import com.pvp.doctorapp.databinding.FragmentsNotificationBinding;
+import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.notification.adapter.NotificationAdapter;
 import com.pvp.doctorapp.notification.model.NotificationModel;
+import com.pvp.doctorapp.utils.PrefManager;
+import com.pvp.doctorapp.utils.Utilities;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +45,7 @@ public class NotificationFragment extends Fragment {
 
     public NotificationFragment() {
     }
+    PrefManager prefManager;
 
 
     @Override
@@ -46,11 +54,35 @@ public class NotificationFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragments_notification, container, false);
 
+        prefManager=new PrefManager(getActivity());
+
+
         imageModelYouTubeArrayList = arrayJobAlerts();
         notificationAdapter = new NotificationAdapter(getActivity(), imageModelYouTubeArrayList);
         binding.rvJobAlert.setAdapter(notificationAdapter);
         binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false));
+
+
+        binding.toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+
+                    Toast.makeText(getActivity(), "isChecked", Toast.LENGTH_SHORT).show();
+                    prefManager.setSELECTLANG("mr");
+                    Utilities.launchActivity(getActivity(), NewHomepageActivity.class,true);
+                }
+                else{
+                    Toast.makeText(getActivity(), "not", Toast.LENGTH_SHORT).show();
+                    prefManager.setSELECTLANG("en");
+                    Utilities.launchActivity(getActivity(), NewHomepageActivity.class,true);
+                }
+            }
+        });
+
+
 
 
         return binding.getRoot();
