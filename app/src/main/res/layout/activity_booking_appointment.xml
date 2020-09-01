@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -40,14 +47,13 @@
 
                 <TextView
                     android:layout_toRightOf="@id/back_about"
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="120dp"
-                    android:text="About us"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="@dimen/toolbar_text" />
+                    android:text="@string/checkappointment"
+                    android:textColor="@color/hometext"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
 
 
             </RelativeLayout>
@@ -58,39 +64,58 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/notification"
-        android:textColor="@color/hometext"
-        android:background="@color/white"
-        android:textSize="@dimen/padding_20"
-        android:id="@+id/title"
-        android:layout_below="@+id/toolbar"
-        android:textStyle="bold"
-        android:layout_marginLeft="@dimen/padding_20"
-        android:layout_marginBottom="5dp"/>
 
-    <androidx.cardview.widget.CardView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title"
-        android:layout_gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:background="@color/white"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/rl1"
+        android:paddingLeft="@dimen/padding_20"
+        android:paddingRight="@dimen/padding_20"
+        >
+
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/CustomDatePickerStyle"
+            android:selectedDateVerticalBar="@color/colorPrimaryDark"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/available_appointment"
+            android:textColor="@color/hometext"
+            android:textSize="16dp"
+            android:layout_below="@+id/calendarView"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:id="@+id/title2"
+            android:layout_marginTop="5dp"
+            />
+
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_job_alert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_below="@+id/title2"
+            android:layout_marginTop="1dp">
 
         </androidx.recyclerview.widget.RecyclerView>
 
 
-    </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
 
+</layout>

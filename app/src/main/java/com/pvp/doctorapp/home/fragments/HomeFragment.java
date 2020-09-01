@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
     private int[] myImageListForJobAlert = new int[]{R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp,
             R.drawable.ic_alarm_add_black_24dp,
             R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp,   R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp};
-    private String[] myImageNameListForJobAlert = new String[]{"title","title","title","title",
+    private String[] myImageNameListForJobAlert = new String[]{"Brain checkout","Purchase Prescription","Brain checkout","Purchase Prescription",
             "title","title","title"};
 
     ArrayList<HomepageModel> imageModelYouTubeArrayList ;
@@ -59,6 +59,9 @@ public class HomeFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 //
         slider();
+
+       // binding.cvSlider.setCardBackgroundColor(getResources().getColor(R.color.home_page_slider));
+        binding.cvSlider.setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_background));
 
         imageModelYouTubeArrayList = arrayJobAlerts();
         homepageAdapter = new HomepageAdapter(getActivity(), imageModelYouTubeArrayList);

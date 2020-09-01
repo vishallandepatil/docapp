@@ -31,8 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_baseline_add_24"
-            android:tint="@color/colorWhite"
+            android:src="@drawable/gradient2"
             android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
             android:clickable="true"
@@ -46,8 +45,7 @@
             android:layout_height="wrap_content"
             app:labelVisibilityMode="labeled"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
-             />
+            />
 
     </RelativeLayout>
 </LinearLayout>

@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#69d296</color>
     <color name="colorAccent">#E37810</color>
     <color name="colorwhite">#ffffff</color>
+    <color name="appgrey">#dbe3e8</color>
+    <color name="hometext">#3d6782</color>
+    <color name="notification_skyblue">#47cacc</color>
+    <color name="notification_orange">#f75010</color>
+    <color name="home_page_slider">#e0ecde</color>
+    <color name="about_text_color">#6db4a3</color>
 
     <!-- <color name="colorPrimary">#c64036</color>
     <color name="colorPrimaryDark">#9b2b29</color>
@@ -19,13 +25,14 @@
     <color name="colorlivenow">#c64036</color>
     <color name="colorlivetext">#ffffff</color>
     <color name="white">#ffffff</color>
+    <color name="whiteshade">#f7fcfe</color>
 
 
     <color name="colorGreen">#5ab256</color>
     <color name="colorYellow">#c64036</color>
 
     <color name="colorGrey">#696969</color>
-    <color name="colorTextYellow">#c64036</color>
+    <color name="colorTextYellow">#fcfcfc</color>
 
     <!--
         <color name="colorYellow">#AB47BC</color>

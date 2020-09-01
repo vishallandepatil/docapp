@@ -29,4 +29,21 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="CustomDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:datePickerStyle">@style/CustomDatePickerStyle</item>
+        <item name="android:colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="CustomDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/colorBlack</item>
+        <item name="android:calendarTextColor">@color/hometext</item>
+        <item name="android:dayOfWeekBackground">@color/white</item>
+        <item name="android:yearListSelectorColor">@color/white</item>
+        <item name="android:datePickerMode">calendar</item>
+    </style>
+
+
+
 </resources>

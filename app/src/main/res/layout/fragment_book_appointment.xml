@@ -45,7 +45,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="120dp"
                     android:text="@string/checkappointment"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/hometext"
                     android:textSize="12dp" />
 
 

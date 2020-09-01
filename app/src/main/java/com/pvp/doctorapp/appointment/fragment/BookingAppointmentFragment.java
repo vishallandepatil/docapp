@@ -26,7 +26,7 @@ public class BookingAppointmentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_booking_appointment, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_book_appointment, container, false);
         return binding.getRoot();
     }
 

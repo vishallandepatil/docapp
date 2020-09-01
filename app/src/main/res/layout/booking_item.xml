@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/iv"
             android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_alarm_add_black_24dp"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/iv"
-            android:text="Date and time"
+            android:text="22-05-2020"
             android:textColor="@color/appgrey"
             android:textSize="10dp" />
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/iv"
             android:gravity="center"
-            android:text="Live Now"
+            android:text="Available"
             android:textColor="@color/appgrey"
             android:textSize="10dp" />
 
@@ -72,7 +72,7 @@
             android:layout_centerVertical="true"
             android:background="@drawable/button_background"
             android:padding="8dp"
-            android:text="VIEW"
+            android:text="BOOK"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/padding_10"

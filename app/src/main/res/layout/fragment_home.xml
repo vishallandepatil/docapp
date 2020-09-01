@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-8dp"
-            android:background="@drawable/gradient"
+            android:background="@color/home_page_slider"
             android:gravity="top">
 
             <RelativeLayout
@@ -40,8 +40,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/ic_menu_black_24dp"
-                    android:backgroundTint="@color/colorWhite"
+                    android:background="@drawable/nav"
                     android:visibility="visible"/>
 
             </RelativeLayout>
@@ -50,13 +49,23 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_slider"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="5dp"
+        android:background="@drawable/slider_background"
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_below="@+id/appBarLayout">
+
+       <LinearLayout
             android:id="@+id/sliderlayout"
             android:background="@color/colorGrey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/appBarLayout">
+            >
 
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
@@ -70,45 +79,46 @@
                 android:visibility="gone"/>
 
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_below="@+id/cv_slider"
+        android:padding="20dp">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/recent_notification"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/hometext"
         android:background="@color/white"
         android:textSize="15dp"
         android:id="@+id/title1"
-        android:layout_below="@+id/sliderlayout"
         android:textStyle="bold"
-        android:layout_marginLeft="@dimen/padding_10"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"/>
-
-
-        <androidx.recyclerview.widget.RecyclerView
+        />
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_job_alert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title1">
+            android:layout_below="@+id/title1"
+            android:layout_above="@+id/title2">
 
         </androidx.recyclerview.widget.RecyclerView>
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about_doctor_home"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/hometext"
         android:background="@color/white"
         android:textSize="15dp"
         android:id="@+id/title2"
-        android:layout_below="@+id/rv_job_alert"
         android:textStyle="bold"
-        android:layout_marginLeft="@dimen/padding_10"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_above="@+id/title3"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -116,17 +126,17 @@
         android:text="@string/home_page_details"
         android:textColor="@color/colorPrimary"
         android:background="@color/white"
-        android:textSize="12dp"
-        android:id="@+id/title4"
-        android:layout_below="@+id/title2"
-        android:layout_marginLeft="@dimen/padding_10"
+        android:textSize="13dp"
+        android:id="@+id/title3"
         android:layout_marginTop="@dimen/padding_10"
         android:drawableLeft="@drawable/ic_alarm_add_black_24dp"
         android:drawableTint="@color/colorPrimary"
         android:drawablePadding="15dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
      />
 
+    </RelativeLayout>
 </RelativeLayout>
 
 </layout>

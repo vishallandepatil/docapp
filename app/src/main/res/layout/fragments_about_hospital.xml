@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -68,9 +68,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/abouthospital"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/hometext"
         android:background="@color/white"
-        android:textSize="@dimen/padding_20"
+        android:textSize="16dp"
         android:lineSpacingExtra="1dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/title"
@@ -89,23 +89,27 @@
 
 
 
-            <ImageView
-                android:layout_height="140dp"
-                android:layout_width="160dp"
-                android:background="@drawable/doc"
-                android:layout_centerHorizontal="true"
-                android:padding="@dimen/padding_20"
-                android:layout_marginTop="@dimen/padding_10"
-                android:id="@+id/img"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_height="170dp"
+            android:layout_width="190dp"
+            android:src="@drawable/doc"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#ffffff"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/padding_20"
+            android:layout_marginTop="@dimen/padding_10"
+            android:id="@+id/img"
+            />
 
 
-            <TextView
+
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hospital Name"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/hometext"
                 android:background="@color/colorWhite"
-                android:textSize="@dimen/padding_20"
+                android:textSize="16dp"
                 android:lineSpacingExtra="1dp"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/tv_name"
@@ -116,7 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/contact_us_details"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/about_text_color"
                     android:layout_below="@+id/tv_name"
                     android:background="@color/colorWhite"
                     android:textSize="15dp"

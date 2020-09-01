@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/rl_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:id="@+id/back_about"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/ic_arrow_back"
+                        android:backgroundTint="@color/colorBlack" />
+
+                     <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/booking"
+                        android:layout_centerHorizontal="true"/>
+
+
+                    <TextView
+                        android:layout_toRightOf="@id/back_about"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="120dp"
+                        android:text="About us"
+                        android:textColor="@color/colorTextWhite"
+                        android:textSize="@dimen/toolbar_text" />
+
+
+                </RelativeLayout>
+
+                <!--region tab-->
+                <!--  <include layout="@layout/custom_tab_layout"/>-->
+
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointmentbooking"
+            android:textColor="@color/hometext"
+            android:background="@color/white"
+            android:textSize="@dimen/padding_20"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/title1"
+            android:layout_below="@+id/toolbar"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_date"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/white"
+            android:textSize="15dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/title2"
+            android:layout_below="@+id/title1"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/padding_20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_slot"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/white"
+            android:textSize="15dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/title3"
+            android:layout_below="@+id/title2"
+            android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_centerVertical="true"
+       >
+       <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shape"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="15dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+           android:layout_marginLeft="40dp"
+           android:layout_marginRight="40dp"
+           android:paddingStart="25dp"
+           />
+
+        <EditText
+            android:id="@+id/et_mobileno"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape"
+            android:drawableLeft="@drawable/ic_phone_black_24dp"
+            android:drawablePadding="15dp"
+            android:textSize="16sp"
+            android:hint="Contact Number"
+            android:layout_below="@+id/et_email"
+            android:inputType="number"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:paddingStart="25dp"
+
+            />
+
+
+</RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:text="Reserve Appointment"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="50dp"
+            android:padding="15dp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+</layout>
+

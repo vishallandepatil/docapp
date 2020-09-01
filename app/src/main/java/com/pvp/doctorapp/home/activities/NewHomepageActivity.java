@@ -15,12 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.pvp.doctorapp.appointment.activities.BookingAppointmentActivity;
+import com.pvp.doctorapp.appointment.activities.FillAppointmentDetailsActivity;
 import com.pvp.doctorapp.databinding.ActivityNewhomepageBinding;
 import com.pvp.doctorapp.doctor.fragments.DoctoreFragment;
 import com.pvp.doctorapp.home.fragments.HomeFragment;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.hospital.fragments.HospitalFragment;
 import com.pvp.doctorapp.notification.fragments.NotificationFragment;
+import com.pvp.doctorapp.utils.Utilities;
 
 import java.util.List;
 
@@ -40,6 +43,15 @@ public class NewHomepageActivity extends AppCompatActivity
              binding.customBottomBar.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_container, new HomeFragment()).commit();;
+
+               binding.fab.setOnClickListener(new View.OnClickListener() {
+                    @SuppressLint("RestrictedApi")
+                    @Override
+                    public void onClick(View view) {
+
+                        Utilities.launchActivity(NewHomepageActivity.this, BookingAppointmentActivity.class,false);
+                    }
+                });
 
                 binding.customBottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @SuppressLint("RestrictedApi")
