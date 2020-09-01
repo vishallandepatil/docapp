@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="HospitalViewModel"
+            type="com.pvp.doctorapp.hospital.viewmodel.HospitalViewModel" />
 
 
     </data>
@@ -97,6 +100,7 @@
             app:civ_border_color="#ffffff"
             android:layout_centerHorizontal="true"
             android:padding="@dimen/padding_20"
+            app:imageUrl="@{HospitalViewModel.hospitalResponceMutableLiveData.hospitalImgPath+HospitalViewModel.hospitalInfoMutableLiveData.img}"
             android:layout_marginTop="@dimen/padding_10"
             android:id="@+id/img"
             />
@@ -106,8 +110,8 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hospital Name"
-                android:textColor="@color/hometext"
+            android:text="@{HospitalViewModel.hospitalInfoMutableLiveData.title}"
+            android:textColor="@color/hometext"
                 android:background="@color/colorWhite"
                 android:textSize="16dp"
                 android:lineSpacingExtra="1dp"
@@ -119,7 +123,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/contact_us_details"
+                android:text="@{HospitalViewModel.hospitalInfoMutableLiveData.description}"
                     android:textColor="@color/about_text_color"
                     android:layout_below="@+id/tv_name"
                     android:background="@color/colorWhite"

@@ -131,23 +131,7 @@ public class HomeFragment extends Fragment {
 
 
         ;
-        NotificationApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(NotificationApi.class);
-        apiInterface.getNotifications(RetrofitClientInstance.API_KEY,"3").enqueue(new Callback<NotificationResult>() {
-            @Override
-            public void onResponse(Call<NotificationResult> call, Response<NotificationResult> response) {
 
-                NotificationResult notificationResult=  response.body();
-
-
-            }
-
-            @Override
-            public void onFailure(Call<NotificationResult> call, Throwable t) {
-
-
-
-            }
-        });
 
 
     }

@@ -45,7 +45,7 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.MyView
         holder.tv_title.setText(imageModelArrayList.get(position).getName());
 
         if (position % 2 == 0) {  //  is even
-            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_skyblue));
+            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
 
         } else {    //  is odd
             holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
