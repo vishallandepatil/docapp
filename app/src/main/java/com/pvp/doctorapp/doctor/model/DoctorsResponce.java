@@ -16,4 +16,6 @@ public class DoctorsResponce{
     public String doctosImgPath;
 
 
+
+
 }

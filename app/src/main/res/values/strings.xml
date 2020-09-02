@@ -30,4 +30,5 @@
     <string name="appointment_slot">Appointment Slot: 01:00AM to 02.00PM </string>
     <string name="available_appointment">Available Appointments</string>
     <string name="view">view</string>
+    <string name="hometext">Your target for today is to keep positive\n mindset and smile to everyone you meet"</string>
 </resources>

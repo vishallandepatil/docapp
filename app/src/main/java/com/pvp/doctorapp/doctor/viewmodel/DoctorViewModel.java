@@ -26,7 +26,8 @@ public class DoctorViewModel extends ViewModel {
 
 
         DoctorApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(DoctorApi.class);
-        apiInterface.getDoctors(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID).enqueue(new Callback<DoctorsResponce>() {
+        apiInterface.getDoctors(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID).
+                enqueue(new Callback<DoctorsResponce>() {
             @Override
             public void onResponse(Call<DoctorsResponce> call, Response<DoctorsResponce> response) {
 

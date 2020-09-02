@@ -94,11 +94,23 @@ public class HomeFragment extends Fragment {
         binding.title1.setText(getResources().getString(R.string.recent_notification));
         binding.title2.setText(getResources().getString(R.string.recent_notification));
 
-       /* Locale locale = new Locale("mr");
-        Configuration config = getActivity().getBaseContext().getResources().getConfiguration();
-        config.locale = locale;
-        getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
-*/
+
+       binding.tvAboutDr.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+
+
+           }
+       });
+
+       binding.tvBookAppointment.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+
+           }
+       });
         return binding.getRoot();
     }
 

@@ -57,6 +57,10 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(BookingAppointmentActivity.this,
                 LinearLayoutManager.VERTICAL, false));
 
+        long currentTime = System.currentTimeMillis();
+        long maxTime = currentTime + 1000 * 60 * 60 * 24 * 7;
+        binding.calendarView.setMinDate(currentTime);
+        binding.calendarView.setMaxDate(maxTime);
 
     }
 
