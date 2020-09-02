@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="SliderDetails"
-            type="com.pvp.doctorapp.home.viewmodel.SliderViewModel" />
+            name="DoctorDetails"
+            type="com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel" />
 
     </data>
 
@@ -44,6 +44,8 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/img_openDrawer"
             android:layout_marginRight="@dimen/padding_20"
+            app:imageUrl="@{DoctorDetails.doctorsResponceMutableLiveData.doctosImgPath+DoctorDetails.doctorinfo.img}"
+
             />
 
         <RelativeLayout
@@ -53,20 +55,20 @@
             android:layout_below="@+id/img_profile"
             android:layout_centerHorizontal="true"
             >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dr. Abhijeet Kulkarni"
-            android:textColor="@color/hometext"
-            android:textSize="20dp"
-            android:id="@+id/title4"
-            android:textStyle="bold"
-            />
+
+            <TextView
+                android:id="@+id/title4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{DoctorDetails.doctorinfo.title}"
+                android:textColor="@color/hometext"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hometext"
+            android:text="@{DoctorDetails.doctorinfo.description}"
             android:textColor="@color/colorPrimary"
             android:textSize="10dp"
             android:id="@+id/title5"

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +25,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.databinding.FragmentHomeBinding;
+import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.home.adapter.HomepageAdapter;
 import com.pvp.doctorapp.home.api.NotificationApi;
@@ -90,10 +92,13 @@ public class HomeFragment extends Fragment {
 
 */
 
+        DoctorViewModel doctorViewModel = ViewModelProviders.of(this).get(DoctorViewModel.class);
+        binding.setLifecycleOwner(this);
+        binding.setDoctorDetails(doctorViewModel);
+        doctorViewModel.loadData(getContext());
 
         binding.title1.setText(getResources().getString(R.string.recent_notification));
         binding.title2.setText(getResources().getString(R.string.recent_notification));
-
 
        binding.tvAboutDr.setOnClickListener(new View.OnClickListener() {
            @Override

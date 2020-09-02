@@ -4,6 +4,7 @@
 
     <data>
 
+        <import type="android.view.View"/>
         <variable
             name="DoctorDetails"
             type="com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel" />
@@ -31,6 +32,16 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
+    <ProgressBar
+        android:id="@+id/ProgressBar"
+        style="?android:attr/spinnerMode"
+        android:layout_width="34dp"
+        android:layout_height="29dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/toolbar"
+        android:visibility="@{DoctorDetails.isloading?View.VISIBLE : View.GONE}" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +53,8 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/title"
         android:layout_below="@+id/toolbar"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:visibility="@{DoctorDetails.isloading?View.GONE: View.VISIBLE }"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -52,6 +64,7 @@
         android:id="@+id/rl1"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
+        android:visibility="@{DoctorDetails.isloading?View.GONE: View.VISIBLE }"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -107,6 +120,7 @@
         android:textSize="15dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="50dp"
+        android:visibility="@{DoctorDetails.isloading?View.GONE: View.VISIBLE }"
         />
 
 </RelativeLayout>

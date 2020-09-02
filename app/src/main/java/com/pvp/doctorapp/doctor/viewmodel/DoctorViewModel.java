@@ -21,10 +21,12 @@ public class DoctorViewModel extends ViewModel {
     public MutableLiveData<DoctorsResponce> doctorsResponceMutableLiveData=new MutableLiveData<>();
     public MutableLiveData<DoctorsInfo> doctorinfo=new MutableLiveData<>();
 
+    public MutableLiveData<Boolean> isloading =new MutableLiveData<>();
 
     public void loadData(Context context){
 
 
+        isloading.setValue(true);
         DoctorApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(DoctorApi.class);
         apiInterface.getDoctors(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID).
                 enqueue(new Callback<DoctorsResponce>() {
@@ -35,13 +37,15 @@ public class DoctorViewModel extends ViewModel {
                 doctorsResponceMutableLiveData.setValue(notificationResult);
                 if(notificationResult.status){
                     doctorinfo.setValue(notificationResult.doctorsInfo.get(0));
-                }
 
+                }
+                isloading.setValue(false);
             }
 
             @Override
             public void onFailure(Call<DoctorsResponce> call, Throwable t) {
 
+                isloading.setValue(false);
 Log.d("","");
 
             }
