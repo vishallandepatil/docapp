@@ -73,7 +73,7 @@
             android:textSize="10dp"
             android:id="@+id/title5"
             android:layout_below="@+id/title4"
-            android:layout_marginTop="@dimen/padding_20"
+            android:layout_marginTop="90dp"
             />
 
         <RelativeLayout

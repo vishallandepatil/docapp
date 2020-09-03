@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.appointment.activities.FillAppointmentDetailsActivity;
 import com.pvp.doctorapp.appointment.model.AppointmentModel;
+import com.pvp.doctorapp.appointment.model.AvailableTimes;
 import com.pvp.doctorapp.utils.Utilities;
 
 import java.util.ArrayList;
@@ -20,14 +21,16 @@ import java.util.ArrayList;
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
-    private ArrayList<AppointmentModel> imageModelArrayList;
+    private ArrayList<AvailableTimes> imageModelArrayList;
     Activity mContext;
+    String date;
 
-    public AppointmentAdapter(Activity ctx, ArrayList<AppointmentModel> imageModelArrayList){
+    public AppointmentAdapter(Activity ctx, ArrayList<AvailableTimes> imageModelArrayList,String date){
         mContext=ctx;
 
         inflater = LayoutInflater.from(ctx);
         this.imageModelArrayList = imageModelArrayList;
+        this.date = date;
     }
 
     @Override
@@ -50,14 +53,18 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                 Utilities.launchActivity(mContext, FillAppointmentDetailsActivity.class,false);
             }
         });
+
+
+
+
         return holder;
     }
 
     @Override
     public void onBindViewHolder(AppointmentAdapter.MyViewHolder holder, int position) {
-
-        holder.iv.setImageResource(imageModelArrayList.get(position).getImage_drawable());
-        holder.tv_title.setText(imageModelArrayList.get(position).getName());
+        holder.iv.setImageResource(R.drawable.ic_today_black_24dp);
+        holder.tv_title.setText(imageModelArrayList.get(position).start_time+" to "+imageModelArrayList.get(position).end_time);
+        holder.tv_date.setText(date);
     }
 
     @Override
@@ -67,7 +74,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_title, tv_status;
+        TextView tv_title, tv_status,tv_date;
         ImageView iv;
 
         public MyViewHolder(View itemView) {
@@ -75,6 +82,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             tv_status = (TextView) itemView.findViewById(R.id.tv_status);
+            tv_date = (TextView) itemView.findViewById(R.id.tv_date);
             iv = (ImageView) itemView.findViewById(R.id.iv);
         }
 
