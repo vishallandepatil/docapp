@@ -2,6 +2,7 @@ package com.pvp.doctorapp.appointment.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,12 +51,12 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         holder.tv_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(mContext, FillAppointmentDetailsActivity.class,false);
+                Bundle bundle=new Bundle();
+                bundle.putString("selectedtime",imageModelArrayList.get(position).start_time+" to "+ imageModelArrayList.get(position).end_time);
+                bundle.putString("selecteddate", date);
+                Utilities.launchActivity(mContext, FillAppointmentDetailsActivity.class,false, bundle);
             }
         });
-
-
-
 
         return holder;
     }

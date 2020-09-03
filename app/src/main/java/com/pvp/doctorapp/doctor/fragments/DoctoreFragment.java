@@ -46,6 +46,8 @@ public class DoctoreFragment extends Fragment {
 
         doctorViewModel.loadData(getContext());
 
+
+
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

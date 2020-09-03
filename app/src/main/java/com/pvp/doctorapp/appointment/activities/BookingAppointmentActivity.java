@@ -98,11 +98,6 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
                 for(AvailableDates availableDates:appointmentViewModel.doctorsResponceMutableLiveData.getValue().availableDates)
                 {
-
-
-
-
-
                     try {
 
                         ispresent = setDate(ispresent, calendar, availableDates, appointmentViewModel);
@@ -131,7 +126,8 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     String dates = simpleDateFormat.format(lastSelectedDate);
-                    appointmentAdapter = new AppointmentAdapter(BookingAppointmentActivity.this, timeResponce.availableTimes, dates);
+                    appointmentAdapter = new AppointmentAdapter(BookingAppointmentActivity.this,
+                            timeResponce.availableTimes, dates);
                     binding.rvJobAlert.setAdapter(appointmentAdapter);
                     binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(BookingAppointmentActivity.this,
                             LinearLayoutManager.VERTICAL, false));

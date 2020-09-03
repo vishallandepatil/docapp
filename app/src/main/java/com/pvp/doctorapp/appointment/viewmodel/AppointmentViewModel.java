@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.pvp.doctorapp.appointment.api.ApointmentsApi;
+import com.pvp.doctorapp.appointment.model.AppointmentBookingResponce;
 import com.pvp.doctorapp.appointment.model.AvailableDates;
 import com.pvp.doctorapp.appointment.model.DateResponce;
 import com.pvp.doctorapp.appointment.model.TimeResponce;
@@ -25,6 +26,10 @@ public class AppointmentViewModel extends ViewModel {
 
     public MutableLiveData<Boolean> isloading =new MutableLiveData<>();
     public MutableLiveData<String> errorMessage =new MutableLiveData<>();
+
+
+    //   for AppointmentBooking
+    public MutableLiveData<AppointmentBookingResponce> appointmentBookingResponceMutableLiveData=new MutableLiveData<>();
 
     public void loadData(Context context){
 
@@ -81,6 +86,38 @@ Log.d("","");
 
                     @Override
                     public void onFailure(Call<TimeResponce> call, Throwable t) {
+
+                        isloading.setValue(false);
+
+                        Log.d("","");
+
+                    }
+                });
+    }
+
+
+
+    public void bookAppointment(Context context, int doctor_id, String date,String time_slot,
+                               String email_id, String phone_number ){
+
+        isloading.setValue(true);
+
+        ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
+        apiInterface.setBooking(RetrofitClientInstance.API_KEY,doctor_id, date,time_slot,email_id,phone_number).
+                enqueue(new Callback<AppointmentBookingResponce>() {
+                    @Override
+                    public void onResponse(Call<AppointmentBookingResponce> call, Response<AppointmentBookingResponce> response) {
+
+                        AppointmentBookingResponce appointmentBookingResponce=  response.body();
+                        appointmentBookingResponceMutableLiveData.setValue(appointmentBookingResponce);
+                        Log.e( "chk: ", appointmentBookingResponce.message);
+                        isloading.setValue(false);
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<AppointmentBookingResponce> call, Throwable t) {
 
                         isloading.setValue(false);
 
