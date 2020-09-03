@@ -24,6 +24,7 @@ public class AppointmentViewModel extends ViewModel {
     public MutableLiveData<TimeResponce> timeResponceMutableLiveData=new MutableLiveData<>();
 
     public MutableLiveData<Boolean> isloading =new MutableLiveData<>();
+    public MutableLiveData<String> errorMessage =new MutableLiveData<>();
 
     public void loadData(Context context){
 
@@ -34,8 +35,18 @@ public class AppointmentViewModel extends ViewModel {
             @Override
             public void onResponse(Call<DateResponce> call, Response<DateResponce> response) {
 
+
                 DateResponce notificationResult=  response.body();
                 doctorsResponceMutableLiveData.setValue(notificationResult);
+                if(notificationResult.status) {
+                    if(notificationResult.availableDates.size()==0) {
+                        errorMessage.setValue(null);
+                    }
+                } else {
+
+                    errorMessage.setValue(notificationResult.message);
+
+                }
 
 
             }
@@ -43,7 +54,7 @@ public class AppointmentViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<DateResponce> call, Throwable t) {
-
+                errorMessage.setValue(t.getMessage());
 Log.d("","");
 
             }

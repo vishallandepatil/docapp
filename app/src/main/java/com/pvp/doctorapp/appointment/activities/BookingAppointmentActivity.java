@@ -41,7 +41,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class BookingAppointmentActivity extends AppCompatActivity {
-
+    SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
     ActivityBookingAppointmentBinding binding;
     Date lastSelectedDate;
 
@@ -70,7 +70,18 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
                 if(dateResponce.status){
                     binding.calendarView.setClickable(true);
+                    if(dateResponce.availableDates.size()>0){
 
+                        try {
+                            lastSelectedDate=  simpleDateFormat.parse(dateResponce.availableDates.get(0).available_dates);
+                            binding.calendarView.setDate(lastSelectedDate.getTime());
+                            appointmentViewModel.loadDTimes(BookingAppointmentActivity.this,dateResponce.availableDates.get(0).row_id);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
                 }
 
             }
@@ -88,21 +99,13 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                 for(AvailableDates availableDates:appointmentViewModel.doctorsResponceMutableLiveData.getValue().availableDates)
                 {
 
-                    SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
+
 
 
 
                     try {
 
-                        Date date=  calendar.getTime();
-                        String dates = simpleDateFormat.format(date);
-                        if(availableDates.available_dates.equalsIgnoreCase(dates)){
-                            ispresent=true;
-                            lastSelectedDate = calendar.getTime();
-                            appointmentViewModel.loadDTimes(BookingAppointmentActivity.this,availableDates.row_id);
-
-
-                        }
+                        ispresent = setDate(ispresent, calendar, availableDates, appointmentViewModel);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -124,12 +127,17 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         appointmentViewModel.timeResponceMutableLiveData.observeForever(new Observer<TimeResponce>() {
             @Override
             public void onChanged(TimeResponce timeResponce) {
-                SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
-                String dates = simpleDateFormat.format(lastSelectedDate);
-                appointmentAdapter = new AppointmentAdapter(BookingAppointmentActivity.this, timeResponce.availableTimes,dates);
-                binding.rvJobAlert.setAdapter(appointmentAdapter);
-                binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(BookingAppointmentActivity.this,
-                        LinearLayoutManager.VERTICAL, false));
+                if(timeResponce.status) {
+
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String dates = simpleDateFormat.format(lastSelectedDate);
+                    appointmentAdapter = new AppointmentAdapter(BookingAppointmentActivity.this, timeResponce.availableTimes, dates);
+                    binding.rvJobAlert.setAdapter(appointmentAdapter);
+                    binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(BookingAppointmentActivity.this,
+                            LinearLayoutManager.VERTICAL, false));
+                } else {
+
+                }
             }
         });
 
@@ -148,6 +156,19 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private boolean setDate(boolean ispresent, Calendar calendar, AvailableDates availableDates, AppointmentViewModel appointmentViewModel) {
+        Date date=  calendar.getTime();
+        String dates = simpleDateFormat.format(date);
+        if(availableDates.available_dates.equalsIgnoreCase(dates)){
+            ispresent=true;
+            lastSelectedDate = calendar.getTime();
+            appointmentViewModel.loadDTimes(BookingAppointmentActivity.this,availableDates.row_id);
+
+
+        }
+        return ispresent;
     }
 
 
