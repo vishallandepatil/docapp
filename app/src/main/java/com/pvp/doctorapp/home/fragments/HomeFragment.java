@@ -24,6 +24,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.pvp.doctorapp.R;
+import com.pvp.doctorapp.appointment.activities.BookingAppointmentActivity;
 import com.pvp.doctorapp.databinding.FragmentHomeBinding;
 import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
@@ -72,7 +73,6 @@ public class HomeFragment extends Fragment {
 
         slider();
 
-       // binding.cvSlider.setCardBackgroundColor(getResources().getColor(R.color.home_page_slider));
         binding.cvSlider.setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_background));
 
         imageModelYouTubeArrayList = arrayJobAlerts();
@@ -81,24 +81,11 @@ public class HomeFragment extends Fragment {
         binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false));
 
-/*
-
-        Locale locale = new Locale("mr");
-        Locale.setDefault(locale);
-        Configuration config = getActivity().getBaseContext().getResources().getConfiguration();
-        config.locale = locale;
-        getActivity().getBaseContext().getResources().updateConfiguration(config,
-               getActivity().getBaseContext().getResources().getDisplayMetrics());
-
-*/
-
         DoctorViewModel doctorViewModel = ViewModelProviders.of(this).get(DoctorViewModel.class);
         binding.setLifecycleOwner(this);
         binding.setDoctorDetails(doctorViewModel);
         doctorViewModel.loadData(getContext());
 
-        binding.title1.setText(getResources().getString(R.string.recent_notification));
-        binding.title2.setText(getResources().getString(R.string.recent_notification));
 
        binding.tvAboutDr.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -113,7 +100,7 @@ public class HomeFragment extends Fragment {
            @Override
            public void onClick(View view) {
 
-
+        Utilities.launchActivity(getActivity(), BookingAppointmentActivity.class,false);
            }
        });
         return binding.getRoot();

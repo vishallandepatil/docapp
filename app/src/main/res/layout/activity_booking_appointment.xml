@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
+
         <variable
             name="AppointmentViewModel"
             type="com.pvp.doctorapp.appointment.viewmodel.AppointmentViewModel" />
@@ -102,7 +104,14 @@
             android:layout_marginTop="5dp"
             />
 
-
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            style="?android:attr/spinnerMode"
+            android:layout_width="34dp"
+            android:layout_height="29dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/title2"
+            android:visibility="@{AppointmentViewModel.isloading?View.VISIBLE : View.GONE}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_job_alert"
@@ -110,9 +119,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/title2"
-            android:layout_marginTop="1dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_marginTop="1dp"
+        android:visibility="@{AppointmentViewModel.isloading?View.GONE: View.VISIBLE }"/>
 
 
 

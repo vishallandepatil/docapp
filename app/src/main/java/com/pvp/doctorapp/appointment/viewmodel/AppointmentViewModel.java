@@ -23,6 +23,7 @@ public class AppointmentViewModel extends ViewModel {
     public MutableLiveData<DateResponce> doctorsResponceMutableLiveData=new MutableLiveData<>();
     public MutableLiveData<TimeResponce> timeResponceMutableLiveData=new MutableLiveData<>();
 
+    public MutableLiveData<Boolean> isloading =new MutableLiveData<>();
 
     public void loadData(Context context){
 
@@ -39,6 +40,7 @@ public class AppointmentViewModel extends ViewModel {
 
             }
 
+
             @Override
             public void onFailure(Call<DateResponce> call, Throwable t) {
 
@@ -47,8 +49,11 @@ Log.d("","");
             }
         });
     }
+
+
     public void loadDTimes(Context context,String row_id){
 
+        isloading.setValue(true);
 
         ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
         apiInterface.getTiming(RetrofitClientInstance.API_KEY,row_id).
@@ -58,12 +63,15 @@ Log.d("","");
 
                         TimeResponce notificationResult=  response.body();
                         timeResponceMutableLiveData.setValue(notificationResult);
+                        isloading.setValue(false);
 
 
                     }
 
                     @Override
                     public void onFailure(Call<TimeResponce> call, Throwable t) {
+
+                        isloading.setValue(false);
 
                         Log.d("","");
 

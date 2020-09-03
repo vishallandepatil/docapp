@@ -10,8 +10,11 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.pvp.doctorapp.R;
+import com.pvp.doctorapp.appointment.activities.BookingAppointmentActivity;
 import com.pvp.doctorapp.databinding.FragmentAboutDoctorBinding;
 import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
+import com.pvp.doctorapp.home.activities.NewHomepageActivity;
+import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
@@ -37,20 +40,28 @@ public class DoctoreFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_about_doctor, container, false);
 
-//        Locale locale = new Locale("mr");
-//        Locale.setDefault(locale);
-//        Configuration config = getActivity().getBaseContext().getResources().getConfiguration();
-//        config.locale = locale;
-//        getActivity().getBaseContext().getResources().updateConfiguration(config,
-//                getActivity().getBaseContext().getResources().getDisplayMetrics());
-
-
         DoctorViewModel doctorViewModel = ViewModelProviders.of(this).get(DoctorViewModel.class);
         binding.setLifecycleOwner(this);
         binding.setDoctorDetails(doctorViewModel);
 
         doctorViewModel.loadData(getContext());
+
+        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utilities.launchActivity(getActivity(), BookingAppointmentActivity.class,true);
+            }
+        });
+
+        binding.toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utilities.launchActivity(getActivity(), NewHomepageActivity.class,true);
+            }
+        });
         return binding.getRoot();
+
+
     }
 
 

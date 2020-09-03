@@ -13,6 +13,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.CalendarView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.home.adapter.HomepageAdapter;
 import com.pvp.doctorapp.home.model.HomepageModel;
+import com.pvp.doctorapp.utils.Utilities;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,9 +53,6 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_booking_appointment);
-
-
-
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_booking_appointment);
 
@@ -141,20 +140,15 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         binding.calendarView.setMaxDate(maxTime);
 
 
+        binding.backAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utilities.launchActivity(BookingAppointmentActivity.this, NewHomepageActivity.class,true);
+            }
+        });
+
 
     }
-
-
-
-    public void changeLocale(String lang) {
-
-        Locale locale = new Locale(lang);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-
-    }
-
 
 
 }

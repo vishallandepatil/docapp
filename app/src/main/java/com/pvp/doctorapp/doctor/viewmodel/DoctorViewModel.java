@@ -22,22 +22,28 @@ public class DoctorViewModel extends ViewModel {
     public MutableLiveData<DoctorsInfo> doctorinfo=new MutableLiveData<>();
 
     public MutableLiveData<Boolean> isloading =new MutableLiveData<>();
+    public MutableLiveData<Boolean> iserror =new MutableLiveData<>();
+    public MutableLiveData<String> errorMessage =new MutableLiveData<>();
 
     public void loadData(Context context){
 
 
         isloading.setValue(true);
+        iserror.setValue(false);
         DoctorApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(DoctorApi.class);
         apiInterface.getDoctors(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID).
                 enqueue(new Callback<DoctorsResponce>() {
             @Override
             public void onResponse(Call<DoctorsResponce> call, Response<DoctorsResponce> response) {
 
-                DoctorsResponce notificationResult=  response.body();
-                doctorsResponceMutableLiveData.setValue(notificationResult);
-                if(notificationResult.status){
-                    doctorinfo.setValue(notificationResult.doctorsInfo.get(0));
+                DoctorsResponce doctorsResponce=  response.body();
+                doctorsResponceMutableLiveData.setValue(doctorsResponce);
+                if(doctorsResponce.status){
+                    doctorinfo.setValue(doctorsResponce.doctorsInfo.get(0));
 
+                } else{
+                    iserror.setValue(true);
+                    errorMessage.setValue(doctorsResponce.message);
                 }
                 isloading.setValue(false);
             }
@@ -46,6 +52,8 @@ public class DoctorViewModel extends ViewModel {
             public void onFailure(Call<DoctorsResponce> call, Throwable t) {
 
                 isloading.setValue(false);
+                iserror.setValue(true);
+                errorMessage.setValue(t.getMessage());
 Log.d("","");
 
             }

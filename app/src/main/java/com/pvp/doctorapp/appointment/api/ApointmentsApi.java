@@ -27,5 +27,12 @@ public interface ApointmentsApi {
             @Field("skey") String api_key,
             @Field("row_id") String row_id
     );
+
+    @FormUrlEncoded
+    @POST("/newpro/setBooking")
+    Call<TimeResponce> setBooking(
+            @Field("skey") String api_key,
+            @Field("row_id") String row_id
+    );
 }
 

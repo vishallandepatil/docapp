@@ -24,23 +24,34 @@ public class HospitalViewModel extends ViewModel {
     public MutableLiveData<HospitalResponce> hospitalResponceMutableLiveData=new MutableLiveData<>();
     public MutableLiveData<HospitalInfo> hospitalInfoMutableLiveData=new MutableLiveData<>();
 
+    public MutableLiveData<Boolean> isloading =new MutableLiveData<>();
+    public MutableLiveData<Boolean> iserror =new MutableLiveData<>();
+    public MutableLiveData<String> errorMessage =new MutableLiveData<>();
+
     @BindingAdapter("imageUrl")
     public static void loadImage(ImageView view, String url) {
         Glide.with(view.getContext()).load(url).placeholder(R.drawable.doc).into(view);
     }
     public void loadData(Context context){
 
+        isloading.setValue(true);
+        iserror.setValue(false);
 
         HospitalApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(HospitalApi.class);
         apiInterface.getHospitals(RetrofitClientInstance.API_KEY).enqueue(new Callback<HospitalResponce>() {
             @Override
             public void onResponse(Call<HospitalResponce> call, Response<HospitalResponce> response) {
 
-                HospitalResponce notificationResult=  response.body();
-                hospitalResponceMutableLiveData.setValue(notificationResult);
-                if(notificationResult.status){
-                    hospitalInfoMutableLiveData.setValue(notificationResult.hospitalsInfo.get(0));
+                HospitalResponce hospitalResponce=  response.body();
+                hospitalResponceMutableLiveData.setValue(hospitalResponce);
+                if(hospitalResponce.status){
+                    hospitalInfoMutableLiveData.setValue(hospitalResponce.hospitalsInfo.get(0));
                 }
+                else {
+                    iserror.setValue(true);
+                    errorMessage.setValue(hospitalResponce.message);
+                }
+                isloading.setValue(false);
 
 
             }
@@ -48,7 +59,11 @@ public class HospitalViewModel extends ViewModel {
             @Override
             public void onFailure(Call<HospitalResponce> call, Throwable t) {
 
-Log.d("","");
+                isloading.setValue(false);
+                iserror.setValue(true);
+                errorMessage.setValue(t.getMessage());
+
+                Log.d("","");
 
             }
         });
