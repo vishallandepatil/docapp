@@ -120,8 +120,21 @@
             android:orientation="horizontal"
             android:layout_below="@+id/title2"
             android:layout_marginTop="1dp"
-        android:visibility="@{AppointmentViewModel.isloading?View.GONE: View.VISIBLE }"/>
+            android:visibility="@{AppointmentViewModel.isloading?View.GONE: View.VISIBLE }"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{AppointmentViewModel.errorMessage}"
+            android:textColor="@color/hometext"
+            android:textSize="12dp"
+            android:layout_below="@+id/title2"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:id="@+id/error"
+            android:visibility="@{AppointmentViewModel.errorMessage==null?View.GONE: View.VISIBLE }"/>
 
+        android:layout_marginTop="5dp"
+            />
 
 
     </RelativeLayout>
