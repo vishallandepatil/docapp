@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import retrofit2.Call;
@@ -26,6 +28,7 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.appointment.activities.BookingAppointmentActivity;
 import com.pvp.doctorapp.databinding.FragmentHomeBinding;
+import com.pvp.doctorapp.doctor.fragments.DoctoreFragment;
 import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.home.adapter.HomepageAdapter;
@@ -72,7 +75,6 @@ public class HomeFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         prefManager=new PrefManager(getActivity());
 
-        slider();
 
         binding.cvSlider.setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_background));
 
@@ -97,7 +99,10 @@ public class HomeFragment extends Fragment {
            @Override
            public void onClick(View view) {
 
-
+               FragmentTransaction transaction =((AppCompatActivity) getActivity()).getSupportFragmentManager().beginTransaction();
+               transaction.replace(R.id.frame_container, new DoctoreFragment()).addToBackStack(null).commit();;
+              ((NewHomepageActivity) getActivity()). binding.customBottomBar.setVisibility(View.GONE);
+             ((NewHomepageActivity) getActivity()). binding.fab.setVisibility(View.GONE);
 
            }
        });
@@ -112,39 +117,7 @@ public class HomeFragment extends Fragment {
         return binding.getRoot();
     }
 
-    public void slider() {
-        HashMap<String, Integer> url_maps = new HashMap<String, Integer>();
-        url_maps.put("", R.drawable.sample_logo);
-        url_maps.put("",  R.drawable.sample_logo);
-        url_maps.put("",  R.drawable.sample_logo);
 
-
-        for (String name : url_maps.keySet()) {
-            TextSliderView textSliderView = new TextSliderView(getActivity());
-            // initialize a SliderLayout
-            textSliderView
-                    .description(name)
-                    .image(url_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit);
-
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
-
-            binding.slider.addSlider(textSliderView);
-        }
-        binding.slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        binding.slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        binding.slider.setCustomAnimation(new DescriptionAnimation());
-        binding.slider.setDuration(4000);
-
-
-        ;
-
-
-
-    }
     private ArrayList<HomepageModel> arrayJobAlerts(){
 
         ArrayList<HomepageModel> list = new ArrayList<>();
@@ -161,3 +134,4 @@ public class HomeFragment extends Fragment {
 
 
 }
+
