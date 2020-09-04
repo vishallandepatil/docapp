@@ -4,6 +4,11 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
+        <variable
+            name="AppointmentViewModel"
+            type="com.pvp.doctorapp.appointment.viewmodel.AppointmentViewModel" />
 
     </data>
 
@@ -19,7 +24,8 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:id="@+id/layout1"
-        android:visibility="visible"
+        android:visibility="@{AppointmentViewModel.bookingUIVisible==false?View.VISIBLE:View.GONE}"
+
         >
 
         <androidx.appcompat.widget.Toolbar
@@ -99,7 +105,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/appointment_date"
+
+            android:text= '@{"Appointment Date: "+AppointmentViewModel.date}'
             android:textColor="@color/colorPrimary"
             android:background="@color/white"
             android:textSize="15dp"
@@ -112,7 +119,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/appointment_slot"
+
+            android:text= '@{"Appointment Slot: "+AppointmentViewModel.timeSlot}'
             android:textColor="@color/colorPrimary"
             android:background="@color/white"
             android:textSize="15dp"
@@ -126,6 +134,8 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_centerVertical="true"
+        android:visibility="@{AppointmentViewModel.isloading?View.GONE : View.VISIBLE}"
+
        >
        <EditText
             android:id="@+id/et_email"
@@ -136,7 +146,8 @@
             android:drawableLeft="@drawable/ic_email_black_24dp"
             android:drawablePadding="15dp"
             android:hint="Email"
-            android:inputType="textEmailAddress"
+           android:text= "@={AppointmentViewModel.email}"
+           android:inputType="textEmailAddress"
             android:textSize="16sp"
            android:layout_marginLeft="40dp"
            android:layout_marginRight="40dp"
@@ -156,6 +167,7 @@
             android:drawablePadding="15dp"
             android:textSize="16sp"
             android:hint="Contact Number"
+            android:text= "@={AppointmentViewModel.mobile}"
             android:layout_below="@+id/et_email"
             android:inputType="number"
             android:layout_marginLeft="40dp"
@@ -168,6 +180,15 @@
 
 
 </RelativeLayout>
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            style="?android:attr/spinnerMode"
+            android:layout_width="34dp"
+            android:layout_height="29dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            android:visibility="@{AppointmentViewModel.isloading?View.VISIBLE : View.GONE}" />
 
         <Button
             android:id="@+id/btn_submit"
@@ -189,7 +210,8 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             android:id="@+id/layout2"
-            android:visibility="gone">
+            android:visibility="@{AppointmentViewModel.bookingUIVisible==true?View.VISIBLE:View.GONE}"
+        >
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -242,7 +264,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/congratulations"
+                    android:text="@{AppointmentViewModel.errorMessage}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/padding_20"
                     android:id="@+id/tv_name"
@@ -256,8 +278,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     app:cardCornerRadius="@dimen/padding_20"
                     android:layout_marginBottom="50dp"
                     android:layout_marginTop="@dimen/padding_10"
@@ -280,55 +302,58 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Name: Abhijeet "
+
+                            android:text= '@{"Name: "+AppointmentViewModel.email}'
                             android:textColor="@color/colorPrimary"
                             android:textSize="15dp"
                             android:id="@+id/tv_patient_name"
                             android:layout_marginTop="10dp"
                             android:layout_below="@+id/tv_booking"
-                            android:layout_marginRight="50dp"
-                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginLeft="30dp"
                                     />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Contact: +1111111111 "
+                            android:text= '@{"Contact: "+AppointmentViewModel.mobile}'
                             android:textColor="@color/colorPrimary"
                             android:textSize="15dp"
                             android:id="@+id/tv_patient_contact"
                             android:layout_marginTop="1dp"
                             android:layout_below="@+id/tv_patient_name"
-                            android:layout_marginRight="50dp"
-                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginLeft="30dp"
                             />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Date: 20-03-2020"
+                            android:text= '@{"Date: "+AppointmentViewModel.date}'
+
                             android:textColor="@color/colorPrimary"
                             android:background="@color/colorWhite"
                             android:textSize="15dp"
                             android:id="@+id/tv_date"
                             android:layout_marginTop="1dp"
                             android:layout_below="@+id/tv_patient_contact"
-                            android:layout_marginRight="50dp"
-                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginLeft="30dp"
                             />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Slot: 9.00 A.M. to 12.00 P.M."
+
+                            android:text= '@{"Slot: "+AppointmentViewModel.timeSlot}'
                             android:textColor="@color/colorPrimary"
                             android:background="@color/colorWhite"
                             android:textSize="15dp"
                             android:id="@+id/tv_slot"
                             android:layout_marginTop="1dp"
                             android:layout_below="@+id/tv_date"
-                            android:layout_marginRight="50dp"
-                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginLeft="30dp"
                             />
 
                         <View
