@@ -11,8 +11,9 @@
         android:id="@+id/rl1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_20"
-        android:layout_marginTop="@dimen/padding_20"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+
         >
 
         <ImageView

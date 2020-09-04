@@ -72,14 +72,15 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
         binding.backAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(FillAppointmentDetailsActivity.this, BookingAppointmentActivity.class,true);
+                onBackPressed();
             }
         });
 
         binding.backAbout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(FillAppointmentDetailsActivity.this, BookingAppointmentActivity.class,true);
+
+                onBackPressed();
             }
         });
 

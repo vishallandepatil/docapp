@@ -364,21 +364,21 @@
                             android:id="@+id/view1"
                             android:layout_marginTop="20dp"
                             android:layout_margin="@dimen/padding_20"/>
-                        <Button
+                        <TextView
                             android:id="@+id/btn_submit2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/button_appointment"
                             android:text="Home"
                             android:textColor="@color/white"
-                            android:textSize="7sp"
+                            android:textSize="10dp"
                             android:layout_centerHorizontal="true"
                             android:layout_below="@+id/view1"
-                            android:layout_marginBottom="2dp"
-                            android:paddingLeft="2dp"
-                            android:paddingRight="2dp"
-                            android:paddingTop="1dp"
-                            android:paddingBottom="1dp"
+                            android:layout_marginBottom="5dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
                             /></RelativeLayout>
                 </androidx.cardview.widget.CardView>
 

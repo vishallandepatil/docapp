@@ -10,6 +10,10 @@
             name="DoctorDetails"
             type="com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel" />
 
+        <variable
+            name="HospitalViewModel"
+            type="com.pvp.doctorapp.hospital.viewmodel.HospitalViewModel" />
+
     </data>
 
     <RelativeLayout
@@ -37,7 +41,7 @@
                     android:layout_width="34dp"
                     android:layout_height="29dp"
                     android:layout_centerHorizontal="true"
-                    android:visibility="@{DoctorDetails.isloading?View.VISIBLE : View.GONE}" />
+                    android:visibility="@{DoctorDetails.isloading?View.GONE : View.GONE}" />
 
                 <ImageView
                     android:id="@+id/img_openDrawer"
@@ -61,8 +65,7 @@
                     android:layout_below="@+id/img_openDrawer"
                     android:layout_marginRight="@dimen/padding_20"
                     app:imageUrl="@{DoctorDetails.doctorsResponceMutableLiveData.doctosImgPath+DoctorDetails.doctorinfo.img}"
-                    android:visibility="@{DoctorDetails.isloading?View.GONE: View.VISIBLE }"/>
-
+/>
 
                 <RelativeLayout
                     android:id="@+id/rl_layout"
@@ -92,8 +95,7 @@
                         android:id="@+id/title5"
                         android:layout_below="@+id/title4"
                         android:layout_marginTop="30dp"
-                        android:visibility="@{DoctorDetails.isloading?View.GONE: View.VISIBLE }"/>
-
+/>
 
                     <RelativeLayout
                         android:id="@+id/home_buttton"
@@ -195,7 +197,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/about_doctor_home"
+                    android:text="@{HospitalViewModel.hospitalInfoMutableLiveData.title}"
                     android:textColor="@color/hometext"
                     android:background="@color/white"
                     android:textSize="15dp"
@@ -205,22 +207,55 @@
                     android:layout_marginTop="5dp"
                     android:layout_above="@+id/title3"/>
 
-                <TextView
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:id="@+id/title3"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="70dp"
+                    android:layout_marginTop="@dimen/padding_10"
+                    >
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/doc"
+                        app:civ_border_width="1dp"
+                        app:civ_border_color="#ffffff"
+                        android:id="@+id/img_hospital"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="@dimen/padding_20"
+                        android:layout_centerVertical="true"
+                        app:imageUrl="@{HospitalViewModel.hospitalResponceMutableLiveData.hospitalImgPath+HospitalViewModel.hospitalInfoMutableLiveData.img}"
+                        />
+
+
+                    <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:layout_toRightOf="@+id/img_hospital"
+                        >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                        <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/home_page_details"
+                    android:text="@{HospitalViewModel.hospitalInfoMutableLiveData.description}"
                     android:textColor="@color/colorPrimary"
                     android:background="@color/white"
                     android:textSize="13dp"
-                    android:id="@+id/title3"
-                    android:layout_marginTop="@dimen/padding_10"
-                    android:drawableLeft="@drawable/ic_alarm_add_black_24dp"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="15dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="70dp"
                     />
 
+
+                </LinearLayout>
+                </ScrollView>
+                </RelativeLayout>
             </RelativeLayout>
 
 
@@ -262,6 +297,8 @@
                 />
 
         </RelativeLayout>
+
+
     </RelativeLayout>
 
 </layout>

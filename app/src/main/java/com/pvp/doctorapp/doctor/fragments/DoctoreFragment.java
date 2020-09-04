@@ -58,7 +58,7 @@ public class DoctoreFragment extends Fragment {
         binding.toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(getActivity(), NewHomepageActivity.class,true);
+                    getActivity().onBackPressed();
             }
         });
         return binding.getRoot();

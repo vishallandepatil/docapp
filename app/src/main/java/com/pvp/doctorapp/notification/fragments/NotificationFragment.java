@@ -85,7 +85,7 @@ public class NotificationFragment extends Fragment {
         binding.backAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(getActivity(), NewHomepageActivity.class,true);
+                getActivity().onBackPressed();
             }
         });
 

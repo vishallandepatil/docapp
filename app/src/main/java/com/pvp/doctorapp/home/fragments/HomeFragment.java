@@ -32,6 +32,7 @@ import com.pvp.doctorapp.home.adapter.HomepageAdapter;
 import com.pvp.doctorapp.home.api.NotificationApi;
 import com.pvp.doctorapp.home.model.HomepageModel;
 import com.pvp.doctorapp.home.model.NotificationResult;
+import com.pvp.doctorapp.hospital.viewmodel.HospitalViewModel;
 import com.pvp.doctorapp.notification.adapter.NotificationAdapter;
 import com.pvp.doctorapp.notification.model.NotificationModel;
 import com.pvp.doctorapp.retrofit.RetrofitClientInstance;
@@ -87,7 +88,12 @@ public class HomeFragment extends Fragment {
         doctorViewModel.loadData(getContext());
 
 
-       binding.tvAboutDr.setOnClickListener(new View.OnClickListener() {
+        HospitalViewModel hospitalViewModel = ViewModelProviders.of(this).get(HospitalViewModel.class);
+        binding.setLifecycleOwner(this);
+        binding.setHospitalViewModel(hospitalViewModel);
+        hospitalViewModel.loadData(getContext());
+
+        binding.tvAboutDr.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
 
