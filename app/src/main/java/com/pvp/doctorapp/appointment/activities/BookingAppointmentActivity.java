@@ -44,7 +44,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
     SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
     ActivityBookingAppointmentBinding binding;
     Date lastSelectedDate;
-
+    AvailableDates availableDates;
     AppointmentAdapter appointmentAdapter;
 
     @Override
@@ -75,6 +75,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                         try {
                             lastSelectedDate=  simpleDateFormat.parse(dateResponce.availableDates.get(0).available_dates);
                             binding.calendarView.setDate(lastSelectedDate.getTime());
+                            availableDates=dateResponce.availableDates.get(0);
                             appointmentViewModel.loadDTimes(BookingAppointmentActivity.this,dateResponce.availableDates.get(0).row_id);
                         } catch (ParseException e) {
                             e.printStackTrace();
@@ -127,7 +128,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     String dates = simpleDateFormat.format(lastSelectedDate);
                     appointmentAdapter = new AppointmentAdapter(BookingAppointmentActivity.this,
-                            timeResponce.availableTimes, dates);
+                            timeResponce.availableTimes, dates, availableDates);
                     binding.rvJobAlert.setAdapter(appointmentAdapter);
                     binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(BookingAppointmentActivity.this,
                             LinearLayoutManager.VERTICAL, false));
@@ -147,7 +148,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         binding.backAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(BookingAppointmentActivity.this, NewHomepageActivity.class,true);
+               onBackPressed();
             }
         });
 
@@ -158,6 +159,8 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         Date date=  calendar.getTime();
         String dates = simpleDateFormat.format(date);
         if(availableDates.available_dates.equalsIgnoreCase(dates)){
+           this.availableDates=availableDates;
+
             ispresent=true;
             lastSelectedDate = calendar.getTime();
             appointmentViewModel.loadDTimes(BookingAppointmentActivity.this,availableDates.row_id);

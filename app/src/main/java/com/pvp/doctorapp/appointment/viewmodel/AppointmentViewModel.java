@@ -3,6 +3,7 @@ package com.pvp.doctorapp.appointment.viewmodel;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.pvp.doctorapp.appointment.api.ApointmentsApi;
 import com.pvp.doctorapp.appointment.model.AppointmentBookingResponce;
@@ -25,7 +26,12 @@ public class AppointmentViewModel extends ViewModel {
     public MutableLiveData<TimeResponce> timeResponceMutableLiveData=new MutableLiveData<>();
 
     public MutableLiveData<Boolean> isloading =new MutableLiveData<>();
+    public MutableLiveData<Boolean> bookingUIVisible =new MutableLiveData<>();
     public MutableLiveData<String> errorMessage =new MutableLiveData<>();
+    public MutableLiveData<String> email =new MutableLiveData<>();
+    public MutableLiveData<String> mobile =new MutableLiveData<>();
+    public MutableLiveData<String> date =new MutableLiveData<>();
+    public MutableLiveData<String> timeSlot =new MutableLiveData<>();
 
 
     //   for AppointmentBooking
@@ -97,31 +103,40 @@ Log.d("","");
 
 
 
-    public void bookAppointment(Context context, int doctor_id, String date,String time_slot,
-                               String email_id, String phone_number ){
+    public void bookAppointment(Context context, String date,String time_slot){
+
+
 
         isloading.setValue(true);
 
         ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-        apiInterface.setBooking(RetrofitClientInstance.API_KEY,doctor_id, date,time_slot,email_id,phone_number).
+        apiInterface.setBooking(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID, date,time_slot,email.getValue(),mobile.getValue()).
                 enqueue(new Callback<AppointmentBookingResponce>() {
                     @Override
                     public void onResponse(Call<AppointmentBookingResponce> call, Response<AppointmentBookingResponce> response) {
 
                         AppointmentBookingResponce appointmentBookingResponce=  response.body();
-                        appointmentBookingResponceMutableLiveData.setValue(appointmentBookingResponce);
-                        Log.e( "chk: ", appointmentBookingResponce.message);
-                        isloading.setValue(false);
+                        if(appointmentBookingResponce.status) {
+                            appointmentBookingResponceMutableLiveData.postValue(appointmentBookingResponce);
+                            Log.e("chk: ", appointmentBookingResponce.message);
+
+                        } else {
+
+
+                        }
+                        bookingUIVisible.postValue(true);
+                        errorMessage.postValue(appointmentBookingResponce.message);
+                        isloading.postValue(false);
 
 
                     }
 
                     @Override
                     public void onFailure(Call<AppointmentBookingResponce> call, Throwable t) {
-
-                        isloading.setValue(false);
-
-                        Log.d("","");
+                        bookingUIVisible.postValue(true);
+                        isloading.postValue(false);
+                        errorMessage.postValue(t.getMessage());
+                        Toast.makeText(context,t.getMessage(),Toast.LENGTH_LONG).show();
 
                     }
                 });

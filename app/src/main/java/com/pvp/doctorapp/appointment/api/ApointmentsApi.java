@@ -33,7 +33,7 @@ public interface ApointmentsApi {
     @POST("/newpro/setBooking")
     Call<AppointmentBookingResponce> setBooking(
             @Field("skey") String api_key,
-            @Field("doctor_id") int doctor_id,
+            @Field("doctor_id") String doctor_id,
             @Field("date") String date,
             @Field("time_slot") String time_slot,
             @Field("email_id") String email_id,

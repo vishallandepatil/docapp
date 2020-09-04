@@ -19,7 +19,7 @@ import com.pvp.doctorapp.utils.Utilities;
 public class FillAppointmentDetailsActivity extends AppCompatActivity {
 
     ActivityFillAppointmentDetailsBinding binding;
-    String selecteddate, selectedtime;
+    String row_id, time_row_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +27,17 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_fill_appointment_details);
 
         AppointmentViewModel appointmentViewModel = ViewModelProviders.of(this).get(AppointmentViewModel.class);
+        binding.setAppointmentViewModel(appointmentViewModel);
+        appointmentViewModel.bookingUIVisible.setValue(false);
+        binding.setLifecycleOwner(this);
 
-        selecteddate=getIntent().getStringExtra("selecteddate");
-        selectedtime=getIntent().getStringExtra("selectedtime");
 
-        Log.e( "onCreate: ", selecteddate+selectedtime);
+        row_id=getIntent().getStringExtra("row_id");
+        time_row_id=getIntent().getStringExtra("time_row_id");
+
+        appointmentViewModel.date.setValue(getIntent().getStringExtra("date"));
+        appointmentViewModel.timeSlot.setValue(getIntent().getStringExtra("timeslot"));
+
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,16 +51,13 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
                         if(Utilities.emailValidate(binding.etEmail.getText().toString()))
                         {
 
-                            appointmentViewModel.bookAppointment(FillAppointmentDetailsActivity.this,
-                                    1,selecteddate,selectedtime,binding.etEmail.getText().toString(),
-                                    binding.etMobileno.getText().toString());
+                            appointmentViewModel.bookAppointment(FillAppointmentDetailsActivity.this,row_id,time_row_id);
 
-                            binding.layout1.setVisibility(View.GONE);
-                            binding.layout2.setVisibility(View.VISIBLE);
-                            binding.tvPatientName.setText("Name: "+binding.etEmail.getText().toString());
-                            binding.tvPatientContact.setText("Contact: "+binding.etMobileno.getText().toString());
-                            binding.tvDate.setText("Date: "+selecteddate);
-                            binding.tvSlot.setText("Slot :"+selectedtime);
+
+                           // binding.tvPatientName.setText("Name: "+binding.etEmail.getText().toString());
+                           // binding.tvPatientContact.setText("Contact: "+binding.etMobileno.getText().toString());
+                           // binding.tvDate.setText("Date: "+selecteddate);
+                          //  binding.tvSlot.setText("Slot :"+selectedtime);
                         }
 
                         else {

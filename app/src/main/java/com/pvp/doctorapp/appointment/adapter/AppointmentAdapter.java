@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.appointment.activities.FillAppointmentDetailsActivity;
 import com.pvp.doctorapp.appointment.model.AppointmentModel;
+import com.pvp.doctorapp.appointment.model.AvailableDates;
 import com.pvp.doctorapp.appointment.model.AvailableTimes;
 import com.pvp.doctorapp.utils.Utilities;
 
@@ -24,14 +25,16 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     private LayoutInflater inflater;
     private ArrayList<AvailableTimes> imageModelArrayList;
     Activity mContext;
+    AvailableDates availableDates;
     String date;
 
-    public AppointmentAdapter(Activity ctx, ArrayList<AvailableTimes> imageModelArrayList,String date){
+    public AppointmentAdapter(Activity ctx, ArrayList<AvailableTimes> imageModelArrayList, String date, AvailableDates availableDates){
         mContext=ctx;
 
         inflater = LayoutInflater.from(ctx);
         this.imageModelArrayList = imageModelArrayList;
         this.date = date;
+        this.availableDates = availableDates;
     }
 
     @Override
@@ -52,8 +55,10 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             @Override
             public void onClick(View view) {
                 Bundle bundle=new Bundle();
-                bundle.putString("selectedtime",imageModelArrayList.get(position).start_time+" to "+ imageModelArrayList.get(position).end_time);
-                bundle.putString("selecteddate", date);
+                bundle.putString("time_row_id",imageModelArrayList.get(position).time_row_id);
+                bundle.putString("row_id", availableDates.row_id);
+                bundle.putString("date", date);
+                bundle.putString("timeslot", imageModelArrayList.get(position).start_time+" to "+imageModelArrayList.get(position).end_time);
                 Utilities.launchActivity(mContext, FillAppointmentDetailsActivity.class,false, bundle);
             }
         });
