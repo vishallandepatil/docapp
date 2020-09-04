@@ -52,7 +52,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_booking_appointment);
+
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_booking_appointment);
 
@@ -92,29 +92,32 @@ public class BookingAppointmentActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
+                try {
+                    boolean ispresent = false;
+                    Calendar calendar = new GregorianCalendar(year, month, dayOfMonth);
 
-                boolean ispresent =false;
-                Calendar calendar = new GregorianCalendar( year, month, dayOfMonth );
 
+                    for (AvailableDates availableDates : appointmentViewModel.doctorsResponceMutableLiveData.getValue().availableDates) {
+                        try {
 
-                for(AvailableDates availableDates:appointmentViewModel.doctorsResponceMutableLiveData.getValue().availableDates)
-                {
-                    try {
+                            ispresent = setDate(ispresent, calendar, availableDates, appointmentViewModel);
 
-                        ispresent = setDate(ispresent, calendar, availableDates, appointmentViewModel);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                if(!ispresent){
-                    if(lastSelectedDate!=null) {
-                        binding.calendarView.setDate(lastSelectedDate.getTime());
+                    if (!ispresent) {
+                        if (lastSelectedDate != null) {
+                            binding.rvJobAlert.setVisibility(View.GONE);
+                            appointmentViewModel.errorMessage.setValue("No Apointments Available");
+                            //binding.calendarView.setDate(lastSelectedDate.getTime());
+                        } else {
+                            long currentTime = System.currentTimeMillis();
+                            binding.calendarView.setDate(currentTime);
+                        }
                     }
-                    else {
-                        long currentTime = System.currentTimeMillis();
-                        binding.calendarView.setDate(currentTime);
-                    }
+                } catch (Exception e){
+                    appointmentViewModel.errorMessage.setValue("Please Check Internet Connection");
                 }
             }
         });

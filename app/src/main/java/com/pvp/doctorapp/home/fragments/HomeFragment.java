@@ -35,6 +35,7 @@ import com.pvp.doctorapp.home.adapter.HomepageAdapter;
 import com.pvp.doctorapp.home.api.NotificationApi;
 import com.pvp.doctorapp.home.model.HomepageModel;
 import com.pvp.doctorapp.home.model.NotificationResult;
+import com.pvp.doctorapp.hospital.fragments.HospitalFragment;
 import com.pvp.doctorapp.hospital.viewmodel.HospitalViewModel;
 import com.pvp.doctorapp.notification.adapter.NotificationAdapter;
 import com.pvp.doctorapp.notification.model.NotificationModel;
@@ -51,20 +52,18 @@ import java.util.Locale;
  */
 public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
-
-    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp,
-            R.drawable.ic_alarm_add_black_24dp,
-            R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp,   R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp};
-    private String[] myImageNameListForJobAlert = new String[]{"Brain checkout","Purchase Prescription","Brain checkout","Purchase Prescription",
-            "title","title","title"};
-
-    ArrayList<HomepageModel> imageModelYouTubeArrayList ;
-
+    ArrayList<HomepageModel> imageModelYouTubeArrayList;
     HomepageAdapter homepageAdapter;
     PrefManager prefManager;
+    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp,
+            R.drawable.ic_alarm_add_black_24dp,
+            R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp};
+    private String[] myImageNameListForJobAlert = new String[]{"Brain checkout", "Purchase Prescription", "Brain checkout", "Purchase Prescription",
+            "title", "title", "title"};
 
 
     public HomeFragment() {
+
     }
 
 
@@ -73,7 +72,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-        prefManager=new PrefManager(getActivity());
+        prefManager = new PrefManager(getActivity());
 
 
         binding.cvSlider.setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_background));
@@ -96,33 +95,60 @@ public class HomeFragment extends Fragment {
         hospitalViewModel.loadData(getContext());
 
         binding.tvAboutDr.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
-               FragmentTransaction transaction =((AppCompatActivity) getActivity()).getSupportFragmentManager().beginTransaction();
-               transaction.replace(R.id.frame_container, new DoctoreFragment()).addToBackStack(null).commit();;
-              ((NewHomepageActivity) getActivity()). binding.customBottomBar.setVisibility(View.GONE);
-             ((NewHomepageActivity) getActivity()). binding.fab.setVisibility(View.GONE);
+                FragmentTransaction transaction = ((AppCompatActivity) getActivity()).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_container, new DoctoreFragment()).addToBackStack(null).commit();
+                ;
+                ((NewHomepageActivity) getActivity()).binding.customBottomBar.setVisibility(View.GONE);
+                ((NewHomepageActivity) getActivity()).binding.fab.setVisibility(View.GONE);
 
-           }
-       });
+            }
+        });
 
-       binding.tvBookAppointment.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
+        binding.tvBookAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        Utilities.launchActivity(getActivity(), BookingAppointmentActivity.class,false);
-           }
-       });
+                Utilities.launchActivity(getActivity(), BookingAppointmentActivity.class, false);
+            }
+        });
+        binding.title3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction transaction = ((AppCompatActivity) getActivity()).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_container, new HospitalFragment()).addToBackStack(null).commit();
+                ;
+                ((NewHomepageActivity) getActivity()).binding.customBottomBar.setVisibility(View.GONE);
+                ((NewHomepageActivity) getActivity()).binding.fab.setVisibility(View.GONE);
+
+            }
+        });
+        binding.title2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction transaction = ((AppCompatActivity) getActivity()).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_container, new HospitalFragment()).addToBackStack(null).commit();
+                ;
+                ((NewHomepageActivity) getActivity()).binding.customBottomBar.setVisibility(View.GONE);
+                ((NewHomepageActivity) getActivity()).binding.fab.setVisibility(View.GONE);
+
+            }
+        });
+
+
         return binding.getRoot();
     }
 
 
-    private ArrayList<HomepageModel> arrayJobAlerts(){
+    private ArrayList<HomepageModel> arrayJobAlerts() {
 
         ArrayList<HomepageModel> list = new ArrayList<>();
 
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             HomepageModel homepageModel = new HomepageModel();
             homepageModel.setName(myImageNameListForJobAlert[i]);
             homepageModel.setImage_drawable(myImageListForJobAlert[i]);
