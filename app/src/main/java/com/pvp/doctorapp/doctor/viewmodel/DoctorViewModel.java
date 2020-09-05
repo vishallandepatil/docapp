@@ -10,6 +10,7 @@ import com.pvp.doctorapp.doctor.model.DoctorsResponce;
 import com.pvp.doctorapp.home.api.NotificationApi;
 import com.pvp.doctorapp.home.model.NotificationResult;
 import com.pvp.doctorapp.retrofit.RetrofitClientInstance;
+import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -25,38 +26,46 @@ public class DoctorViewModel extends ViewModel {
     public MutableLiveData<Boolean> iserror =new MutableLiveData<>();
     public MutableLiveData<String> errorMessage =new MutableLiveData<>();
 
-    public void loadData(Context context){
+    public void loadData(Context context) {
+
+        if (Utilities.isNetworkAvailable(context)) {
 
 
-        isloading.setValue(true);
-        iserror.setValue(false);
-        DoctorApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(DoctorApi.class);
-        apiInterface.getDoctors(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID).
-                enqueue(new Callback<DoctorsResponce>() {
-            @Override
-            public void onResponse(Call<DoctorsResponce> call, Response<DoctorsResponce> response) {
+            isloading.setValue(true);
+            iserror.setValue(false);
+            DoctorApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(DoctorApi.class);
+            apiInterface.getDoctors(RetrofitClientInstance.API_KEY, RetrofitClientInstance.USERID).
+                    enqueue(new Callback<DoctorsResponce>() {
+                        @Override
+                        public void onResponse(Call<DoctorsResponce> call, Response<DoctorsResponce> response) {
 
-                DoctorsResponce doctorsResponce=  response.body();
-                doctorsResponceMutableLiveData.setValue(doctorsResponce);
-                if(doctorsResponce.status){
-                    doctorinfo.setValue(doctorsResponce.doctorsInfo.get(0));
+                            DoctorsResponce doctorsResponce = response.body();
+                            doctorsResponceMutableLiveData.setValue(doctorsResponce);
+                            if (doctorsResponce.status) {
+                                doctorinfo.setValue(doctorsResponce.doctorsInfo.get(0));
 
-                } else{
-                    iserror.setValue(true);
-                    errorMessage.setValue(doctorsResponce.message);
-                }
-                isloading.setValue(false);
-            }
+                            } else {
+                                iserror.setValue(true);
+                                errorMessage.setValue(doctorsResponce.message);
+                            }
+                            isloading.setValue(false);
+                        }
 
-            @Override
-            public void onFailure(Call<DoctorsResponce> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<DoctorsResponce> call, Throwable t) {
 
-                isloading.setValue(false);
-                iserror.setValue(true);
-                errorMessage.setValue(t.getMessage());
-Log.d("","");
+                            isloading.setValue(false);
+                            iserror.setValue(true);
+                            errorMessage.setValue("Please Check Internet Connection");
+                            Log.d("", "");
 
-            }
-        });
+                        }
+                    });
+
+
+        } else {
+            iserror.setValue(true);
+            errorMessage.setValue("Please Check Internet Connection");
+        }
     }
 }

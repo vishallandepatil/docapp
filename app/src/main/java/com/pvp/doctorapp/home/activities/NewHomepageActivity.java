@@ -32,7 +32,7 @@ public class NewHomepageActivity extends AppCompatActivity
         {
             Fragment fragment;
 
-            ActivityNewhomepageBinding binding;
+           public ActivityNewhomepageBinding binding;
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);

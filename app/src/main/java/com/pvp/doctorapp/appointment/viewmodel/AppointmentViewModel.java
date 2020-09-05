@@ -14,6 +14,7 @@ import com.pvp.doctorapp.doctor.api.DoctorApi;
 import com.pvp.doctorapp.doctor.model.DoctorsInfo;
 import com.pvp.doctorapp.doctor.model.DoctorsResponce;
 import com.pvp.doctorapp.retrofit.RetrofitClientInstance;
+import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -39,66 +40,73 @@ public class AppointmentViewModel extends ViewModel {
 
     public void loadData(Context context){
 
+if(Utilities.isNetworkAvailable(context)) {
+    ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
+    apiInterface.getDates(RetrofitClientInstance.API_KEY, RetrofitClientInstance.USERID).
+            enqueue(new Callback<DateResponce>() {
+                @Override
+                public void onResponse(Call<DateResponce> call, Response<DateResponce> response) {
 
-        ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-        apiInterface.getDates(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID).
-                enqueue(new Callback<DateResponce>() {
-            @Override
-            public void onResponse(Call<DateResponce> call, Response<DateResponce> response) {
 
+                    DateResponce notificationResult = response.body();
+                    doctorsResponceMutableLiveData.setValue(notificationResult);
+                    if (notificationResult.status) {
+                        if (notificationResult.availableDates.size() == 0) {
+                            errorMessage.setValue(null);
+                        }
+                    } else {
 
-                DateResponce notificationResult=  response.body();
-                doctorsResponceMutableLiveData.setValue(notificationResult);
-                if(notificationResult.status) {
-                    if(notificationResult.availableDates.size()==0) {
-                        errorMessage.setValue(null);
+                        errorMessage.setValue(notificationResult.message);
+
                     }
-                } else {
 
-                    errorMessage.setValue(notificationResult.message);
 
                 }
 
 
-            }
+                @Override
+                public void onFailure(Call<DateResponce> call, Throwable t) {
+                    errorMessage.setValue("Please Check Internet Connection");
+                    Log.d("", "");
 
-
-            @Override
-            public void onFailure(Call<DateResponce> call, Throwable t) {
-                errorMessage.setValue(t.getMessage());
-Log.d("","");
-
-            }
-        });
+                }
+            });
+}else {
+    errorMessage.setValue("Please Check Internet Connection");
+}
     }
 
 
-    public void loadDTimes(Context context,String row_id){
+    public void loadDTimes(Context context,String row_id) {
+        if (Utilities.isNetworkAvailable(context)) {
+            isloading.setValue(true);
 
-        isloading.setValue(true);
+            ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
+            apiInterface.getTiming(RetrofitClientInstance.API_KEY, row_id).
+                    enqueue(new Callback<TimeResponce>() {
+                        @Override
+                        public void onResponse(Call<TimeResponce> call, Response<TimeResponce> response) {
 
-        ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-        apiInterface.getTiming(RetrofitClientInstance.API_KEY,row_id).
-                enqueue(new Callback<TimeResponce>() {
-                    @Override
-                    public void onResponse(Call<TimeResponce> call, Response<TimeResponce> response) {
+                            TimeResponce notificationResult = response.body();
+                            timeResponceMutableLiveData.setValue(notificationResult);
+                            isloading.setValue(false);
+                            errorMessage.setValue(null);
 
-                        TimeResponce notificationResult=  response.body();
-                        timeResponceMutableLiveData.setValue(notificationResult);
-                        isloading.setValue(false);
+                        }
 
+                        @Override
+                        public void onFailure(Call<TimeResponce> call, Throwable t) {
 
-                    }
+                            isloading.setValue(false);
+                            errorMessage.setValue(null);
 
-                    @Override
-                    public void onFailure(Call<TimeResponce> call, Throwable t) {
+                            Log.d("", "");
 
-                        isloading.setValue(false);
-
-                        Log.d("","");
-
-                    }
-                });
+                        }
+                    });
+        } else {
+            errorMessage.setValue("Please Check Internet Connection");
+        }
     }
 
 
@@ -119,13 +127,13 @@ Log.d("","");
                         if(appointmentBookingResponce.status) {
                             appointmentBookingResponceMutableLiveData.postValue(appointmentBookingResponce);
                             Log.e("chk: ", appointmentBookingResponce.message);
-
+                            errorMessage.postValue(null);
                         } else {
 
-
+                            errorMessage.postValue(appointmentBookingResponce.message);
                         }
                         bookingUIVisible.postValue(true);
-                        errorMessage.postValue(appointmentBookingResponce.message);
+
                         isloading.postValue(false);
 
 
@@ -135,7 +143,7 @@ Log.d("","");
                     public void onFailure(Call<AppointmentBookingResponce> call, Throwable t) {
                         bookingUIVisible.postValue(true);
                         isloading.postValue(false);
-                        errorMessage.postValue(t.getMessage());
+                        errorMessage.setValue("Please Check Internet Connection");
                         Toast.makeText(context,t.getMessage(),Toast.LENGTH_LONG).show();
 
                     }
