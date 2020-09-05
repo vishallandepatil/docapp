@@ -17,6 +17,11 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -141,6 +146,44 @@
     </RelativeLayout>
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:visibility="@{AppointmentViewModel.iserror?View.VISIBLE : View.GONE}" >
+
+
+
+            <ImageView
+                android:layout_height="170dp"
+                android:layout_width="190dp"
+                android:src="@drawable/doc"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#ffffff"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/padding_20"
+                android:layout_marginTop="@dimen/padding_10"
+                android:id="@+id/img2"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{AppointmentViewModel.errorMessage}"
+                android:textColor="@color/hometext"
+                android:background="@color/white"
+                android:textSize="16dp"
+                android:lineSpacingExtra="1dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_below="@+id/img2"
+                android:layout_centerVertical="true"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 </RelativeLayout>
 
 </layout>

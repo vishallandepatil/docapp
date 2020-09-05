@@ -302,8 +302,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
-                            android:text= '@{"Name: "+AppointmentViewModel.email}'
+                            android:text= '@{"Patient Name: "+AppointmentViewModel.email}'
                             android:textColor="@color/colorPrimary"
                             android:textSize="15dp"
                             android:id="@+id/tv_patient_name"
@@ -316,7 +315,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text= '@{"Contact: "+AppointmentViewModel.mobile}'
+                            android:text= '@{"Patient Contact: "+AppointmentViewModel.mobile}'
                             android:textColor="@color/colorPrimary"
                             android:textSize="15dp"
                             android:id="@+id/tv_patient_contact"
@@ -329,7 +328,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text= '@{"Date: "+AppointmentViewModel.date}'
+                            android:text= '@{"Appointment Date: "+AppointmentViewModel.date}'
 
                             android:textColor="@color/colorPrimary"
                             android:background="@color/colorWhite"
@@ -342,19 +341,18 @@
                             />
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:text= '@{"Slot: "+AppointmentViewModel.timeSlot}'
-                            android:textColor="@color/colorPrimary"
-                            android:background="@color/colorWhite"
-                            android:textSize="15dp"
                             android:id="@+id/tv_slot"
-                            android:layout_marginTop="1dp"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_date"
-                            android:layout_marginRight="30dp"
                             android:layout_marginLeft="30dp"
-                            />
+                            android:layout_marginTop="1dp"
+                            android:layout_marginRight="30dp"
+                            android:background="@color/colorWhite"
+                            android:text='@{"Appointment Slot: "+AppointmentViewModel.timeSlot}'
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp" />
 
                         <View
                             android:layout_height="1dp"
@@ -374,11 +372,11 @@
                             android:textSize="10dp"
                             android:layout_centerHorizontal="true"
                             android:layout_below="@+id/view1"
-                            android:layout_marginBottom="5dp"
-                            android:paddingTop="6dp"
-                            android:paddingBottom="6dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="30dp"
+                            android:paddingRight="30dp"
                             /></RelativeLayout>
                 </androidx.cardview.widget.CardView>
 

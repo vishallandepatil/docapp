@@ -33,6 +33,7 @@ public class AppointmentViewModel extends ViewModel {
     public MutableLiveData<String> mobile =new MutableLiveData<>();
     public MutableLiveData<String> date =new MutableLiveData<>();
     public MutableLiveData<String> timeSlot =new MutableLiveData<>();
+    public MutableLiveData<Boolean> iserror =new MutableLiveData<>();
 
 
     //   for AppointmentBooking
@@ -41,6 +42,8 @@ public class AppointmentViewModel extends ViewModel {
     public void loadData(Context context){
 
 if(Utilities.isNetworkAvailable(context)) {
+
+    iserror.setValue(false);
     ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
     apiInterface.getDates(RetrofitClientInstance.API_KEY, RetrofitClientInstance.USERID).
             enqueue(new Callback<DateResponce>() {
@@ -56,6 +59,7 @@ if(Utilities.isNetworkAvailable(context)) {
                         }
                     } else {
 
+                        iserror.setValue(true);
                         errorMessage.setValue(notificationResult.message);
 
                     }
@@ -66,14 +70,16 @@ if(Utilities.isNetworkAvailable(context)) {
 
                 @Override
                 public void onFailure(Call<DateResponce> call, Throwable t) {
+                    iserror.setValue(true);
                     errorMessage.setValue("Please Check Internet Connection");
                     Log.d("", "");
 
                 }
             });
-}else {
+        }else {
+    iserror.setValue(true);
     errorMessage.setValue("Please Check Internet Connection");
-}
+        }
     }
 
 
@@ -113,7 +119,7 @@ if(Utilities.isNetworkAvailable(context)) {
 
     public void bookAppointment(Context context, String date,String time_slot){
 
-
+        if(Utilities.isNetworkAvailable(context)) {
 
         isloading.setValue(true);
 
@@ -148,5 +154,9 @@ if(Utilities.isNetworkAvailable(context)) {
 
                     }
                 });
+
+        } else {
+            errorMessage.setValue("Please Check Internet Connection");
+        }
     }
 }

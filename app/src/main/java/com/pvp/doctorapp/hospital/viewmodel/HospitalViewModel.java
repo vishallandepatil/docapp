@@ -12,6 +12,7 @@ import com.pvp.doctorapp.hospital.api.HospitalApi;
 import com.pvp.doctorapp.hospital.model.HospitalInfo;
 import com.pvp.doctorapp.hospital.model.HospitalResponce;
 import com.pvp.doctorapp.retrofit.RetrofitClientInstance;
+import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.MutableLiveData;
@@ -34,8 +35,11 @@ public class HospitalViewModel extends ViewModel {
     }
     public void loadData(Context context){
 
-        isloading.setValue(true);
-        iserror.setValue(false);
+
+        if (Utilities.isNetworkAvailable(context))
+        {
+            isloading.setValue(true);
+           iserror.setValue(false);
 
         HospitalApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(HospitalApi.class);
         apiInterface.getHospitals(RetrofitClientInstance.API_KEY).enqueue(new Callback<HospitalResponce>() {
@@ -67,5 +71,10 @@ public class HospitalViewModel extends ViewModel {
 
             }
         });
+
+        } else {
+            iserror.setValue(true);
+            errorMessage.setValue("Please Check Internet Connection");
+        }
     }
 }
