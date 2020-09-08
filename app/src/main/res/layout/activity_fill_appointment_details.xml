@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text= '@{"Appointment Slot: "+AppointmentViewModel.timeSlot}'
+            android:text= '@{"Appointment Slots: "+AppointmentViewModel.timeSlot}'
             android:textColor="@color/colorPrimary"
             android:background="@color/white"
             android:textSize="15dp"

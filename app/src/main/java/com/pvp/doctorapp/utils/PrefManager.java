@@ -17,6 +17,7 @@ public class PrefManager {
     public static final String PREF_NAME = "docapp";
     // All Shared Preferences Keys
     private static final String SELECTLANG = "SELECTLANG";
+    private static final String USERID = "userid";
 
 
     public PrefManager(Context context) {
@@ -30,9 +31,16 @@ public class PrefManager {
         editor.putString(SELECTLANG, S);
         editor.commit();
     }
+    public void setDoctore(String S) {
+        editor.putString(USERID, S);
+        editor.commit();
+    }
 
     public String getSELECTLANG() {
         return pref.getString(SELECTLANG, null);
+    }
+    public String getDoctore() {
+        return pref.getString(USERID, null);
     }
 
 

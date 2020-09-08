@@ -35,34 +35,28 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
         row_id=getIntent().getStringExtra("row_id");
         time_row_id=getIntent().getStringExtra("time_row_id");
 
-        appointmentViewModel.date.setValue(getIntent().getStringExtra("date"));
-        appointmentViewModel.timeSlot.setValue(getIntent().getStringExtra("timeslot"));
+        appointmentViewModel.date.postValue(getIntent().getStringExtra("date"));
+        appointmentViewModel.timeSlot.postValue(getIntent().getStringExtra("timeslot"));
 
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if( binding.etMobileno.getText().toString().length()<10 ) {
-                    Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper mobile number", Toast.LENGTH_SHORT).show();
+                boolean status =true;
+                if(!Utilities.emailValidate(binding.etEmail.getText().toString()) ) {
+                    status=false;
+                    Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper email id", Toast.LENGTH_SHORT).show();
                 }
-
                 else {
+                    if( binding.etMobileno.getText().toString().length()>=10) {
+                        appointmentViewModel.bookAppointment(FillAppointmentDetailsActivity.this, row_id, time_row_id);
+                    }
+                    else {
+                        Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper mobile number", Toast.LENGTH_SHORT).show();
+                        status=false;
 
-                        if(Utilities.emailValidate(binding.etEmail.getText().toString()))
-                        {
-
-                            appointmentViewModel.bookAppointment(FillAppointmentDetailsActivity.this,row_id,time_row_id);
+                    }
 
 
-                           // binding.tvPatientName.setText("Name: "+binding.etEmail.getText().toString());
-                           // binding.tvPatientContact.setText("Contact: "+binding.etMobileno.getText().toString());
-                           // binding.tvDate.setText("Date: "+selecteddate);
-                          //  binding.tvSlot.setText("Slot :"+selectedtime);
-                        }
-
-                        else {
-                            Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper email id", Toast.LENGTH_SHORT).show();
-                        }
 
                 }
             }

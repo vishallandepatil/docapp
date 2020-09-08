@@ -9,7 +9,7 @@ public class RetrofitClientInstance {
 
     private static Retrofit retrofit2;
     public static String API_KEY = "gen";
-    public static String USERID = "3";
+
     private static final String BASE_URL = "http://www.genekatechnologies.in";
 
 

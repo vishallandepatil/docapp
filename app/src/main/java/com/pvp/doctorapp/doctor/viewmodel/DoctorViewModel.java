@@ -10,6 +10,7 @@ import com.pvp.doctorapp.doctor.model.DoctorsResponce;
 import com.pvp.doctorapp.home.api.NotificationApi;
 import com.pvp.doctorapp.home.model.NotificationResult;
 import com.pvp.doctorapp.retrofit.RetrofitClientInstance;
+import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.lifecycle.MutableLiveData;
@@ -34,7 +35,7 @@ public class DoctorViewModel extends ViewModel {
             isloading.setValue(true);
             iserror.setValue(false);
             DoctorApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(DoctorApi.class);
-            apiInterface.getDoctors(RetrofitClientInstance.API_KEY, RetrofitClientInstance.USERID).
+            apiInterface.getDoctors(RetrofitClientInstance.API_KEY).
                     enqueue(new Callback<DoctorsResponce>() {
                         @Override
                         public void onResponse(Call<DoctorsResponce> call, Response<DoctorsResponce> response) {
@@ -43,6 +44,8 @@ public class DoctorViewModel extends ViewModel {
                             doctorsResponceMutableLiveData.setValue(doctorsResponce);
                             if (doctorsResponce.status) {
                                 doctorinfo.setValue(doctorsResponce.doctorsInfo.get(0));
+
+                                        new PrefManager(context).setDoctore(doctorsResponce.doctorsInfo.get(0).id+"");
 
                             } else {
                                 iserror.setValue(true);
