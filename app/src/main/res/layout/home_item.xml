@@ -65,7 +65,7 @@
             android:textColor="@color/appgrey"
             android:textSize="10dp" />
 
-        <TextView
+      <!--  <TextView
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,6 +80,24 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="6sp"
+            android:textStyle="bold" />
+-->
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_background"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="VIEW"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="10sp"
             android:textStyle="bold" />
 
 

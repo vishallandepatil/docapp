@@ -48,9 +48,10 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/nav"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_marginTop="35dp"
                     android:layout_marginLeft="25dp"
+
                     />
 
 
@@ -64,8 +65,9 @@
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/img_openDrawer"
                     android:layout_marginRight="@dimen/padding_20"
+                    android:layout_marginTop="5dp"
                     app:imageUrl="@{DoctorDetails.doctorsResponceMutableLiveData.doctosImgPath+DoctorDetails.doctorinfo.img}"
-/>
+            />
 
                 <RelativeLayout
                     android:id="@+id/rl_layout"
@@ -86,15 +88,14 @@
                         android:layout_centerHorizontal="true"
                         android:visibility="@{DoctorDetails.isloading?View.GONE: View.VISIBLE }"/>
 
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="10dp"
+                        android:textSize="13dp"
                         android:id="@+id/title5"
                         android:layout_below="@+id/title4"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="20dp"
                         android:text="@{DoctorDetails.doctorinfo.description}"
                         android:ellipsize="end"
                         android:maxLines="2"
@@ -118,14 +119,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/button_appointment"
-                            android:paddingTop="6dp"
-                            android:paddingBottom="6dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
                             android:text="ABOUT DR"
                             android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="8dp"
+                            android:textSize="12dp"
                             android:textStyle="bold"
 
                             />
@@ -145,7 +146,8 @@
                             android:textSize="8dp"
                             android:textStyle="bold"
                             android:layout_toRightOf="@+id/tv_about_dr"
-                            android:layout_marginLeft="40dp"/>
+                            android:layout_marginLeft="40dp"
+                            android:visibility="gone"/>
 
                     </RelativeLayout>
                 </RelativeLayout>

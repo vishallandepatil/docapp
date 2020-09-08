@@ -45,7 +45,7 @@ public class HospitalFragment extends Fragment {
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(getActivity(), BookingAppointmentActivity.class,true);
+                Utilities.launchActivity(getActivity(), BookingAppointmentActivity.class,false);
             }
         });
 

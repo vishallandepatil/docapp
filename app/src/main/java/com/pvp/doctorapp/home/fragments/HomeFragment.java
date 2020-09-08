@@ -61,11 +61,9 @@ public class HomeFragment extends Fragment {
     private String[] myImageNameListForJobAlert = new String[]{"Brain checkout", "Purchase Prescription", "Brain checkout", "Purchase Prescription",
             "title", "title", "title"};
 
-
     public HomeFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
