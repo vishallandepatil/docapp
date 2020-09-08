@@ -43,13 +43,24 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         View view = inflater.inflate(R.layout.booking_item, parent, false);
         AppointmentAdapter.MyViewHolder holder = new AppointmentAdapter.MyViewHolder(view);
 
+
+
+
+
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(AppointmentAdapter.MyViewHolder holder, int position) {
+        holder.iv.setImageResource(R.drawable.ic_today_black_24dp);
+        holder.tv_title.setText(imageModelArrayList.get(position).start_time+" to "+imageModelArrayList.get(position).end_time);
+        holder.tv_date.setText(date);
         if (position % 2 == 0) {  //  is even
             holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
 
         } else {    //  is odd
             holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
         }
-
 
         holder.tv_status.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,15 +73,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                 Utilities.launchActivity(mContext, FillAppointmentDetailsActivity.class,false, bundle);
             }
         });
-
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(AppointmentAdapter.MyViewHolder holder, int position) {
-        holder.iv.setImageResource(R.drawable.ic_today_black_24dp);
-        holder.tv_title.setText(imageModelArrayList.get(position).start_time+" to "+imageModelArrayList.get(position).end_time);
-        holder.tv_date.setText(date);
     }
 
     @Override

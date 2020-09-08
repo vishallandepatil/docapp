@@ -17,7 +17,6 @@ public interface DoctorApi {
     @FormUrlEncoded
     @POST("/newpro/getDoctors")
     Call<DoctorsResponce> getDoctors(
-            @Field("skey") String api_key,
-            @Field("doctor_id") String doctor_id
+            @Field("skey") String api_key
           );
 }

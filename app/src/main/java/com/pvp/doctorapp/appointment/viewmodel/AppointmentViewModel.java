@@ -14,6 +14,7 @@ import com.pvp.doctorapp.doctor.api.DoctorApi;
 import com.pvp.doctorapp.doctor.model.DoctorsInfo;
 import com.pvp.doctorapp.doctor.model.DoctorsResponce;
 import com.pvp.doctorapp.retrofit.RetrofitClientInstance;
+import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.lifecycle.MutableLiveData;
@@ -45,7 +46,7 @@ if(Utilities.isNetworkAvailable(context)) {
 
     iserror.setValue(false);
     ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-    apiInterface.getDates(RetrofitClientInstance.API_KEY, RetrofitClientInstance.USERID).
+    apiInterface.getDates(RetrofitClientInstance.API_KEY, new PrefManager(context).getDoctore()).
             enqueue(new Callback<DateResponce>() {
                 @Override
                 public void onResponse(Call<DateResponce> call, Response<DateResponce> response) {
@@ -124,7 +125,7 @@ if(Utilities.isNetworkAvailable(context)) {
         isloading.setValue(true);
 
         ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-        apiInterface.setBooking(RetrofitClientInstance.API_KEY,RetrofitClientInstance.USERID, date,time_slot,email.getValue(),mobile.getValue()).
+        apiInterface.setBooking(RetrofitClientInstance.API_KEY,new PrefManager(context).getDoctore(), date,time_slot,email.getValue(),mobile.getValue()).
                 enqueue(new Callback<AppointmentBookingResponce>() {
                     @Override
                     public void onResponse(Call<AppointmentBookingResponce> call, Response<AppointmentBookingResponce> response) {
@@ -133,7 +134,7 @@ if(Utilities.isNetworkAvailable(context)) {
                         if(appointmentBookingResponce.status) {
                             appointmentBookingResponceMutableLiveData.postValue(appointmentBookingResponce);
                             Log.e("chk: ", appointmentBookingResponce.message);
-                            errorMessage.postValue(null);
+                            errorMessage.postValue(appointmentBookingResponce.message);
                         } else {
 
                             errorMessage.postValue(appointmentBookingResponce.message);
