@@ -139,20 +139,22 @@
        >
        <EditText
             android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/shape"
-            android:drawableLeft="@drawable/ic_email_black_24dp"
-            android:drawablePadding="15dp"
-            android:hint="Email"
-           android:text= "@={AppointmentViewModel.email}"
-           android:inputType="textEmailAddress"
-            android:textSize="16sp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+           android:layout_marginTop="15dp"
+           android:background="@drawable/shape"
+           android:drawableLeft="@drawable/ic_person_black_24dp"
+           android:drawablePadding="15dp"
+           android:textSize="16sp"
+           android:hint="Name"
+           android:text= "@={AppointmentViewModel.mobile}"
+           android:inputType="textPersonName"
            android:layout_marginLeft="40dp"
            android:layout_marginRight="40dp"
            android:paddingStart="25dp"
            android:padding="15dp"
+           android:maxLength="10"
 
            />
 
@@ -205,13 +207,15 @@
             />
     </RelativeLayout>
 
-    <RelativeLayout
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
             android:id="@+id/layout2"
             android:visibility="@{AppointmentViewModel.bookingUIVisible==true?View.VISIBLE:View.GONE}"
-        >
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -310,7 +314,7 @@
                             android:layout_below="@+id/tv_booking"
                             android:layout_marginRight="30dp"
                             android:layout_marginLeft="30dp"
-                                    />
+                            />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -414,7 +418,6 @@
 
 
         </RelativeLayout>
-
 
     </RelativeLayout>
 

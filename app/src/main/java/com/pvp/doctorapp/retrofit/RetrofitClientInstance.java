@@ -13,7 +13,6 @@ public class RetrofitClientInstance {
     private static final String BASE_URL = "http://www.genekatechnologies.in";
 
 
-
     public static Retrofit getRetrofitInstanceServer() {
         if (retrofit2 == null) {
             retrofit2 = new Retrofit.Builder()

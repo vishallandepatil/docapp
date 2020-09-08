@@ -42,9 +42,10 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean status =true;
-                if(!Utilities.emailValidate(binding.etEmail.getText().toString()) ) {
+                //if(!Utilities.emailValidate(binding.etEmail.getText().toString()) ) {
+                if(binding.etEmail.getText().toString().length()<4 ) {
                     status=false;
-                    Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper email id", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper name", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     if( binding.etMobileno.getText().toString().length()>=10) {
