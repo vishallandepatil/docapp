@@ -53,8 +53,16 @@ public class NotificationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragments_notification, container, false);
-
         prefManager=new PrefManager(getActivity());
+
+        // language
+        Locale locale = new Locale(prefManager.getSELECTLANG());
+        Configuration config = getActivity().getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+        getActivity().getBaseContext().getResources().updateConfiguration(config,
+                getActivity().getBaseContext().getResources().getDisplayMetrics());
+
+
 
 
         imageModelYouTubeArrayList = arrayJobAlerts();

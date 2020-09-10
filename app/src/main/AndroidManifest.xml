@@ -41,6 +41,9 @@
         <activity android:name=".home.activities.NewHomepageActivity">
 
         </activity>
+       <activity android:name=".SelectLangActivity"/>
+
+
 
         <service
             android:name="com.pvp.doctorapp.firebase.MyFirebaseMessagingService"

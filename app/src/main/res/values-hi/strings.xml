@@ -19,6 +19,8 @@
 
 
     <string name="about_doctor">डॉक्टर बद्दल</string>
+    <string name="about_doctor_homepage">डॉक्टर बद्दल</string>
+
     <string name="about_hospital">हॉस्पिटल बद्दल</string>
     <string name="book_appointment">नियुक्ती</string>
     <string name="contact">संपर्क</string>
@@ -37,5 +39,11 @@
     <string name="available_appointment">उपलब्ध नेमणुका</string>
     <string name="view">पहा</string>
     <string name="hometext">Your target for today is to keep positive\n mindset and smile to everyone you meet"</string>
+    <string name="name">नाव</string>
+    <string name="Contact_Number">संपर्क क्रमांक</string>
+    <string name="Reserve_Appointment">राखीव नियुक्ती</string>
+    <string name="Home">मुख्यपृष्ठ</string>
+
+
 
 </resources>

@@ -27,7 +27,15 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         prefManager=new PrefManager(SplashActivity.this);
-        prefManager.setSELECTLANG("mr");
+        if(prefManager.getSELECTLANG()==null)
+        {
+            prefManager.setSELECTLANG("en");
+
+        }
+        else
+        {
+
+        }
 
         animation();
     }

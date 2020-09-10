@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,17 +15,28 @@ import com.pvp.doctorapp.appointment.viewmodel.AppointmentViewModel;
 import com.pvp.doctorapp.databinding.ActivityBookingAppointmentBinding;
 import com.pvp.doctorapp.databinding.ActivityFillAppointmentDetailsBinding;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
+import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
+
+import java.util.Locale;
 
 public class FillAppointmentDetailsActivity extends AppCompatActivity {
 
     ActivityFillAppointmentDetailsBinding binding;
     String row_id, time_row_id;
+    PrefManager prefManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_appointment_details);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_fill_appointment_details);
+
+        prefManager=new PrefManager(FillAppointmentDetailsActivity.this);
+        Locale locale = new Locale(prefManager.getSELECTLANG());
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
 
         AppointmentViewModel appointmentViewModel = ViewModelProviders.of(this).get(AppointmentViewModel.class);
         binding.setAppointmentViewModel(appointmentViewModel);
@@ -37,6 +49,7 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
 
         appointmentViewModel.date.postValue(getIntent().getStringExtra("date"));
         appointmentViewModel.timeSlot.postValue(getIntent().getStringExtra("timeslot"));
+
 
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

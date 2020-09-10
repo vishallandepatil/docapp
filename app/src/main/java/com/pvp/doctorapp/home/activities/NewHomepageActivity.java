@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.pvp.doctorapp.SelectLangActivity;
 import com.pvp.doctorapp.appointment.activities.BookingAppointmentActivity;
 import com.pvp.doctorapp.appointment.activities.FillAppointmentDetailsActivity;
 import com.pvp.doctorapp.databinding.ActivityNewhomepageBinding;
@@ -37,6 +38,7 @@ public class NewHomepageActivity extends AppCompatActivity
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
               binding = DataBindingUtil.setContentView(this, R.layout.activity_newhomepage);
              binding.customBottomBar.inflateMenu(R.menu.bottom_menu);
@@ -81,6 +83,7 @@ public class NewHomepageActivity extends AppCompatActivity
                                 transaction.replace(R.id.frame_container, new NotificationFragment()).addToBackStack(null).commit();;
                                 binding.customBottomBar.setVisibility(View.GONE);
                                 binding.fab.setVisibility(View.GONE);
+                            //   Utilities.launchActivity(NewHomepageActivity.this, SelectLangActivity.class,false);
                             break;
 
 

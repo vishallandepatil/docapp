@@ -30,6 +30,7 @@ import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.home.adapter.HomepageAdapter;
 import com.pvp.doctorapp.home.model.HomepageModel;
+import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
 import java.text.ParseException;
@@ -47,6 +48,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
     AvailableDates availableDates;
     AppointmentAdapter appointmentAdapter;
 
+    PrefManager prefManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,14 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_booking_appointment);
+            prefManager=new PrefManager(BookingAppointmentActivity.this);
+        // language
+        Locale locale = new Locale(prefManager.getSELECTLANG());
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
 
 
         AppointmentViewModel appointmentViewModel = ViewModelProviders.of(this).get(AppointmentViewModel.class);
