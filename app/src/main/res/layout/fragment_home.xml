@@ -68,7 +68,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/img_openDrawer"
                     android:layout_marginRight="@dimen/padding_20"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="0dp"
                     app:imageUrl="@{DoctorDetails.doctorsResponceMutableLiveData.doctosImgPath+DoctorDetails.doctorinfo.img}"
             />
 

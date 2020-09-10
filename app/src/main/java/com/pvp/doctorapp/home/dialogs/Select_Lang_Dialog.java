@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
 
     ProgressDialog progressDialog;
     PrefManager prefManager;
+    ImageView img1;
     public Select_Lang_Dialog() {
         super(null);
     }
@@ -88,6 +90,10 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
                 dismiss();
 
                 break;
+              case R.id.img1:
+                dismiss();
+
+                break;
 
 
         }
@@ -97,6 +103,7 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
     private void btnlistener() {
         txt_submit.setOnClickListener(this);
         txt_cancel.setOnClickListener(this);
+        img1.setOnClickListener(this);
     }
     private void bindView() {
         txt_submit=findViewById(R.id.txt_submit);
@@ -104,6 +111,7 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
         progressDialog=new ProgressDialog(activity);
         prefManager=new PrefManager(activity);
         radiotype = findViewById(R.id.radiotype);
+        img1 = findViewById(R.id.img1);
 
     }
 

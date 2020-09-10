@@ -138,7 +138,7 @@ public class HomeFragment extends Fragment {
                     public void onClick(View v) {
                         final Select_Lang_Dialog dialog = new Select_Lang_Dialog(getActivity());
                         dialog.show();
-                        dialog.setCanceledOnTouchOutside(true);
+                        dialog.setCanceledOnTouchOutside(false);
 
                     }
                 });
