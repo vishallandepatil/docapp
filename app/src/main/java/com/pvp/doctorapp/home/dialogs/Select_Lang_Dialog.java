@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pvp.doctorapp.R;
@@ -22,7 +23,7 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
     public Activity activity;
 
 
-    static Button btn_start_exam;
+    TextView  txt_submit, txt_cancel;
 
     RadioGroup radiotype;
     RadioButton radioButton;
@@ -59,16 +60,16 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
 
         switch (v.getId()) {
 
-            case R.id.btn_start_exam:
+            case R.id.txt_submit:
 
 
                 int selectedID = radiotype.getCheckedRadioButtonId();
                 radioButton = findViewById(selectedID);
 
 
-                if(radioButton.getText().equals("Marathi"))
+                if(radioButton.getText().equals("मराठी"))
                 {
-                     Toast.makeText(activity, "Marathi",Toast.LENGTH_SHORT).show();
+                     Toast.makeText(activity, "मराठी",Toast.LENGTH_SHORT).show();
                     prefManager.setSELECTLANG("mr");
                     Intent i3 = new Intent(activity, NewHomepageActivity.class);
                     activity.startActivity(i3);
@@ -83,16 +84,23 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
 
                 break;
 
+            case R.id.txt_cancel:
+                dismiss();
+
+                break;
+
 
         }
     }
 
 
     private void btnlistener() {
-        btn_start_exam.setOnClickListener(this);
+        txt_submit.setOnClickListener(this);
+        txt_cancel.setOnClickListener(this);
     }
     private void bindView() {
-        btn_start_exam=findViewById(R.id.btn_start_exam);
+        txt_submit=findViewById(R.id.txt_submit);
+        txt_cancel=findViewById(R.id.txt_cancel);
         progressDialog=new ProgressDialog(activity);
         prefManager=new PrefManager(activity);
         radiotype = findViewById(R.id.radiotype);
