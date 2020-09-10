@@ -116,12 +116,17 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                             binding.calendarView.setDate(currentTime);
                         }
                     }
+                    if(appointmentViewModel.doctorsResponceMutableLiveData.getValue().availableDates.size()==0){
+                        binding.rvJobAlert.setVisibility(View.GONE);
+                        appointmentViewModel.errorMessage.setValue("No Apointments Available");
+                    }
                 } catch (Exception e){
                     appointmentViewModel.errorMessage.setValue("Please Check Internet Connection");
                 }
             }
         });
         binding.calendarView.setClickable(false);
+
 
         appointmentViewModel.timeResponceMutableLiveData.observeForever(new Observer<TimeResponce>() {
             @Override
@@ -135,6 +140,12 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                     binding.rvJobAlert.setAdapter(appointmentAdapter);
                     binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(BookingAppointmentActivity.this,
                             LinearLayoutManager.VERTICAL, false));
+
+                    if(timeResponce.availableTimes.size()==0){
+                        binding.rvJobAlert.setVisibility(View.GONE);
+                        appointmentViewModel.errorMessage.setValue("No Apointments Available");
+                    }
+
                 } else {
 
                 }

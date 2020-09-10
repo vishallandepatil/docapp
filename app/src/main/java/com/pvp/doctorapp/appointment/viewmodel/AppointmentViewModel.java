@@ -2,7 +2,9 @@ package com.pvp.doctorapp.appointment.viewmodel;
 
 
 import android.content.Context;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.pvp.doctorapp.appointment.api.ApointmentsApi;
@@ -97,7 +99,10 @@ if(Utilities.isNetworkAvailable(context)) {
                             TimeResponce notificationResult = response.body();
                             timeResponceMutableLiveData.setValue(notificationResult);
                             isloading.setValue(false);
-                            errorMessage.setValue(null);
+                            if(notificationResult.availableTimes.size()>0) {
+                                errorMessage.setValue(null);
+                            }
+
 
                         }
 
@@ -105,7 +110,7 @@ if(Utilities.isNetworkAvailable(context)) {
                         public void onFailure(Call<TimeResponce> call, Throwable t) {
 
                             isloading.setValue(false);
-                            errorMessage.setValue(null);
+                           // errorMessage.setValue(null);
 
                             Log.d("", "");
 
@@ -125,7 +130,9 @@ if(Utilities.isNetworkAvailable(context)) {
         isloading.setValue(true);
 
         ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-        apiInterface.setBooking(RetrofitClientInstance.API_KEY,new PrefManager(context).getDoctore(), date,time_slot,email.getValue(),mobile.getValue()).
+            String androidId = Settings.Secure.getString(context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+        apiInterface.setBooking(RetrofitClientInstance.API_KEY,new PrefManager(context).getDoctore(), date,time_slot,email.getValue(),androidId,mobile.getValue()).
                 enqueue(new Callback<AppointmentBookingResponce>() {
                     @Override
                     public void onResponse(Call<AppointmentBookingResponce> call, Response<AppointmentBookingResponce> response) {
