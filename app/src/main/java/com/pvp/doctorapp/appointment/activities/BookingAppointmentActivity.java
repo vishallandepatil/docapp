@@ -49,6 +49,21 @@ public class BookingAppointmentActivity extends AppCompatActivity {
     AppointmentAdapter appointmentAdapter;
 
     PrefManager prefManager;
+
+
+    AppointmentViewModel appointmentViewModel;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            if (appointmentViewModel != null && availableDates != null) {
+                appointmentViewModel.loadDTimes(BookingAppointmentActivity.this, availableDates.row_id);
+            }
+        }catch (Exception e){
+
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +82,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
 
 
-        AppointmentViewModel appointmentViewModel = ViewModelProviders.of(this).get(AppointmentViewModel.class);
+        appointmentViewModel = ViewModelProviders.of(this).get(AppointmentViewModel.class);
         binding.setLifecycleOwner(this);
         binding.setAppointmentViewModel(appointmentViewModel);
 
