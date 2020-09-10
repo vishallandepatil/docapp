@@ -154,8 +154,6 @@
            android:layout_marginRight="40dp"
            android:paddingStart="25dp"
            android:padding="15dp"
-           android:maxLength="10"
-
            />
 
         <EditText
