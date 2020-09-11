@@ -27,8 +27,8 @@
     <string name="checkappointment">Check Appointment Availabity!</string>
     <string name="appointmentbooking">Appointment Booking!</string>
     <string name="about_doctor_home">About Kulkarni Hospital</string>
-    <string name="appointment_date">Appointment Date: dd-mm-yyyy</string>
-    <string name="appointment_slot">Appointment Slot: 01:00AM to 02.00PM </string>
+    <string name="appointment_date">Appointment Date:</string>
+    <string name="appointment_slot">Appointment Slot:</string>
     <string name="available_appointment">Available Appointments</string>
     <string name="view">view</string>
     <string name="hometext">Your target for today is to keep positive\n mindset and smile to everyone you meet"</string>
@@ -36,4 +36,11 @@
     <string name="Contact_Number">Contact Number</string>
     <string name="Reserve_Appointment">Reserve Appointment</string>
     <string name="Home">Home</string>
+    <string name="PatientName">Patient Name:</string>
+    <string name="PatientContact">Patient Contact:</string>
+    <string name="available">Available</string>
+    <string name="view3">VIEW</string>
+    <string name="recent_notifications2">Recent Notifications</string>
+
+
 </resources>

@@ -4,6 +4,7 @@ package com.pvp.doctorapp.hospital.viewmodel;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.pvp.doctorapp.R;
@@ -12,6 +13,7 @@ import com.pvp.doctorapp.hospital.api.HospitalApi;
 import com.pvp.doctorapp.hospital.model.HospitalInfo;
 import com.pvp.doctorapp.hospital.model.HospitalResponce;
 import com.pvp.doctorapp.retrofit.RetrofitClientInstance;
+import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.databinding.BindingAdapter;
@@ -33,6 +35,7 @@ public class HospitalViewModel extends ViewModel {
     public static void loadImage(ImageView view, String url) {
         Glide.with(view.getContext()).load(url).placeholder(R.drawable.doc).into(view);
     }
+
     public void loadData(Context context){
 
 
@@ -76,6 +79,18 @@ public class HospitalViewModel extends ViewModel {
         } else {
             iserror.setValue(true);
             errorMessage.setValue("Please Check Internet Connection");
+        }
+    }
+
+    @BindingAdapter("textdr")
+    public static void textDr(TextView view, String title) {
+        String lang=new PrefManager(view.getContext()).getSELECTLANG();
+        if(lang!=null && lang.equalsIgnoreCase("mr")){
+            view.setText( title+" बद्दल");
+        } else {
+            view.setText( "About " +title);
+
+
         }
     }
 }

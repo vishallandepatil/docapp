@@ -5,8 +5,8 @@
     <string name="rate_us_link">https://play.google.com/store/apps/details?id=com.flipkart.android</string>
     <string name="feedback_email">sample@gmail.com</string>
 
-    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams!\nso we welcome you to be a part of our family and fulfill your dreams!
-    so we welcome you to be a part of our family and fulfill your dreams!\n so we welcome you to be a part of our family and fulfill your dreams!\</string>
+    <string name="contact_us_details">1. म्हणून आम्ही आपल्यास आमच्या कुटुंबाचा एक भाग होण्यासाठी आपले स्वप्न पूर्ण करतो आणि तुमची स्वप्ने पूर्ण करतो! So n आम्ही आमच्या परिवाराचा भाग होण्यासाठी आणि तुमची स्वप्ने पूर्ण केल्याचे आम्ही तुमचे स्वागत करतो!
+    म्हणून आम्ही आपले स्वागत करतो की आपण आमच्या कुटुंबाचा एक भाग व्हाल आणि आपली स्वप्ने पूर्ण करा! so n म्हणून आम्ही आमच्या कुटुंबातील एक सदस्य बनून आपले स्वप्न पूर्ण करतो म्हणून आम्ही आपले स्वागत करतो!\</string>
 
     <string name="home_page_details">1.so we welcome you to be a part of our family and fulfill your dreams!
        \nso we welcome you to be a part of our family and fulfill your dreams!
@@ -29,12 +29,12 @@
 
     <string name="recent_notification">अलीकडील अधिसूचना</string>
     <string name="congratulations">अभिनंदन! आपली भेट निश्चित केली आहे</string>
-    <string name="terms">Terms and conditions!</string>
+    <string name="terms">नियम आणि अटी!</string>
     <string name="checkappointment">नियुक्तीची उपलब्धता तपासा!</string>
     <string name="appointmentbooking">नियुक्ती बुकिंग!</string>
     <string name="about_doctor_home">कुलकर्णी रुग्णालयाबद्दल</string>
-    <string name="appointment_date">नियुक्तीची तारीख: dd-mm-yyyy</string>
-    <string name="appointment_slot">नियुक्ती स्लॉट: 01:00AM to 02.00PM </string>
+    <string name="appointment_date">नियुक्तीची तारीख:</string>
+    <string name="appointment_slot">नियुक्ती स्लॉट:</string>
     <string name="available_appointment">उपलब्ध नेमणुका</string>
     <string name="view">पहा</string>
     <string name="hometext">Your target for today is to keep positive\n mindset and smile to everyone you meet"</string>
@@ -42,5 +42,9 @@
     <string name="Contact_Number">संपर्क क्रमांक</string>
     <string name="Reserve_Appointment">राखीव नियुक्ती</string>
     <string name="Home">मुख्यपृष्ठ</string>
-
+    <string name="PatientName">रुग्णाचे नाव:</string>
+    <string name="PatientContact">रुग्णांचा संपर्क:</string>
+    <string name="available">उपलब्ध</string>
+    <string name="view3">पहा</string>
+    <string name="recent_notifications2">अलीकडील अधिसूचना</string>
 </resources>
