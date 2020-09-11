@@ -69,8 +69,6 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_booking_appointment);
             prefManager=new PrefManager(BookingAppointmentActivity.this);
         // language
@@ -80,12 +78,9 @@ public class BookingAppointmentActivity extends AppCompatActivity {
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
 
-
-
         appointmentViewModel = ViewModelProviders.of(this).get(AppointmentViewModel.class);
         binding.setLifecycleOwner(this);
         binding.setAppointmentViewModel(appointmentViewModel);
-
 
         appointmentViewModel.loadData(this);
 
@@ -105,8 +100,6 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 }
 
@@ -120,8 +113,6 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                 try {
                     boolean ispresent = false;
                     Calendar calendar = new GregorianCalendar(year, month, dayOfMonth);
-
-
                     for (AvailableDates availableDates : appointmentViewModel.doctorsResponceMutableLiveData.getValue().availableDates) {
                         try {
 

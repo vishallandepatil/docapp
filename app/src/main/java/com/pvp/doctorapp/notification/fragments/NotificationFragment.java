@@ -11,18 +11,27 @@ import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pvp.doctorapp.R;
+import com.pvp.doctorapp.appointment.activities.BookingAppointmentActivity;
+import com.pvp.doctorapp.appointment.adapter.AppointmentAdapter;
+import com.pvp.doctorapp.appointment.model.TimeResponce;
+import com.pvp.doctorapp.appointment.viewmodel.AppointmentViewModel;
 import com.pvp.doctorapp.databinding.FragmentAboutDoctorBinding;
 import com.pvp.doctorapp.databinding.FragmentsNotificationBinding;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.notification.adapter.NotificationAdapter;
 import com.pvp.doctorapp.notification.model.NotificationModel;
+import com.pvp.doctorapp.notification.model.NotificationsResponce;
+import com.pvp.doctorapp.notification.viewmodel.NotificationsViewModel;
 import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -47,6 +56,8 @@ public class NotificationFragment extends Fragment {
     }
     PrefManager prefManager;
 
+    NotificationsViewModel notificationsViewModel;
+    NotificationAdapter appointmentAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,33 +73,37 @@ public class NotificationFragment extends Fragment {
         getActivity().getBaseContext().getResources().updateConfiguration(config,
                 getActivity().getBaseContext().getResources().getDisplayMetrics());
 
+        notificationsViewModel = ViewModelProviders.of(this).get(NotificationsViewModel.class);
+      /*  binding.setLifecycleOwner(this);
+        binding.setNotificationsViewModel(notificationsViewModel);
+*/
+        notificationsViewModel.loadData(getActivity());
 
 
-
-        imageModelYouTubeArrayList = arrayJobAlerts();
-        notificationAdapter = new NotificationAdapter(getActivity(), imageModelYouTubeArrayList);
-        binding.rvJobAlert.setAdapter(notificationAdapter);
-        binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
-                LinearLayoutManager.VERTICAL, false));
-
-
-        binding.toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        notificationsViewModel.notificationResponceMutableLiveData.observeForever(new Observer<NotificationsResponce>() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onChanged(NotificationsResponce notificationsResponce) {
+                if(notificationsResponce.status) {
 
-                if(isChecked){
+                    appointmentAdapter = new NotificationAdapter(getActivity(),
+                            notificationsResponce.allNotifications);
+                    binding.rvJobAlert.setAdapter(appointmentAdapter);
+                    binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
+                            LinearLayoutManager.VERTICAL, false));
 
-                    Toast.makeText(getActivity(), "isChecked", Toast.LENGTH_SHORT).show();
-                    prefManager.setSELECTLANG("mr");
-                    Utilities.launchActivity(getActivity(), NewHomepageActivity.class,true);
-                }
-                else{
-                    Toast.makeText(getActivity(), "not", Toast.LENGTH_SHORT).show();
-                    prefManager.setSELECTLANG("en");
-                    Utilities.launchActivity(getActivity(), NewHomepageActivity.class,true);
+                    if(notificationsResponce.allNotifications.size()==0){
+                        binding.rvJobAlert.setVisibility(View.GONE);
+                        notificationsViewModel.errorMessage.setValue("No Notification Available");
+                    }
+
+                } else {
+
                 }
             }
         });
+
+
+
 
         binding.backAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,19 +118,7 @@ public class NotificationFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private ArrayList<NotificationModel> arrayJobAlerts(){
 
-        ArrayList<NotificationModel> list = new ArrayList<>();
-
-        for(int i = 0; i < 7; i++) {
-            NotificationModel notificationModel = new NotificationModel();
-            notificationModel.setName(myImageNameListForJobAlert[i]);
-            notificationModel.setImage_drawable(myImageListForJobAlert[i]);
-            list.add(notificationModel);
-        }
-
-        return list;
-    }
 
 
 }

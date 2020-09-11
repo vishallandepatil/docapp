@@ -62,7 +62,8 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
                 }
                 else {
                     if( binding.etMobileno.getText().toString().length()>=10) {
-                        appointmentViewModel.bookAppointment(FillAppointmentDetailsActivity.this, row_id, time_row_id);
+                        appointmentViewModel.bookAppointment(FillAppointmentDetailsActivity.this,
+                                row_id, time_row_id);
                     }
                     else {
                         Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper mobile number", Toast.LENGTH_SHORT).show();

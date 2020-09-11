@@ -132,7 +132,8 @@ if(Utilities.isNetworkAvailable(context)) {
         ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
             String androidId = Settings.Secure.getString(context.getContentResolver(),
                     Settings.Secure.ANDROID_ID);
-        apiInterface.setBooking(RetrofitClientInstance.API_KEY,new PrefManager(context).getDoctore(), date,time_slot,email.getValue(),androidId,mobile.getValue()).
+        apiInterface.setBooking(RetrofitClientInstance.API_KEY,new PrefManager(context).getDoctore(),
+                date,time_slot,email.getValue(),androidId,mobile.getValue()).
                 enqueue(new Callback<AppointmentBookingResponce>() {
                     @Override
                     public void onResponse(Call<AppointmentBookingResponce> call, Response<AppointmentBookingResponce> response) {
