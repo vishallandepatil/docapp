@@ -91,10 +91,7 @@ public class NotificationFragment extends Fragment {
                     binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
                             LinearLayoutManager.VERTICAL, false));
 
-                    if(notificationsResponce.allNotifications.size()==0){
-                        binding.rvJobAlert.setVisibility(View.GONE);
-                        notificationsViewModel.errorMessage.setValue("No Notification Available");
-                    }
+
 
                 } else {
 

@@ -45,7 +45,11 @@
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/iv"
             android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:text="Brain checkout"
+            android:layout_toLeftOf="@+id/tv_status"
+            android:layout_marginRight="5dp"
             android:textColor="@color/hometext"
             android:textSize="13dp"
             android:textStyle="bold" />
@@ -85,6 +89,7 @@
     </RelativeLayout>
 
     <View
+
         android:layout_height="1dp"
         android:layout_width="match_parent"
         android:background="@color/grey_5"

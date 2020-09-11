@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 public interface HospitalApi {
     @FormUrlEncoded
-    @POST("newpro/getHospitals")
+    @POST("/drbooking/getHospitals")
     Call<HospitalResponce> getHospitals(
             @Field("skey") String api_key,
             @Field("lang") String lang
