@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -25,6 +26,9 @@ import com.pvp.doctorapp.home.dialogs.Select_Lang_Dialog;
 import com.pvp.doctorapp.home.model.HomepageModel;
 import com.pvp.doctorapp.hospital.fragments.HospitalFragment;
 import com.pvp.doctorapp.hospital.viewmodel.HospitalViewModel;
+import com.pvp.doctorapp.notification.adapter.NotificationAdapter;
+import com.pvp.doctorapp.notification.model.NotificationsResponce;
+import com.pvp.doctorapp.notification.viewmodel.NotificationsViewModel;
 import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
@@ -49,6 +53,11 @@ public class HomeFragment extends Fragment {
 
     }
 
+
+    NotificationsViewModel notificationsViewModel;
+    NotificationAdapter appointmentAdapter;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,11 +77,6 @@ public class HomeFragment extends Fragment {
 
         binding.cvSlider.setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_background));
 
-        imageModelYouTubeArrayList = arrayJobAlerts();
-        homepageAdapter = new HomepageAdapter(getActivity(), imageModelYouTubeArrayList);
-        binding.rvJobAlert.setAdapter(homepageAdapter);
-        binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
-                LinearLayoutManager.VERTICAL, false));
 
         DoctorViewModel doctorViewModel = ViewModelProviders.of(this).get(DoctorViewModel.class);
         binding.setLifecycleOwner(this);
@@ -132,7 +136,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
-         binding.imgOpenDrawer.setOnClickListener(new View.OnClickListener() {
+        binding.imgOpenDrawer.setOnClickListener(new View.OnClickListener() {
                     @SuppressLint("RestrictedApi")
                     @Override
                     public void onClick(View v) {
@@ -144,23 +148,40 @@ public class HomeFragment extends Fragment {
                 });
 
 
+
+        // for notification
+
+        notificationsViewModel = ViewModelProviders.of(this).get(NotificationsViewModel.class);
+      /*  binding.setLifecycleOwner(this);
+        binding.setNotificationsViewModel(notificationsViewModel);
+      */
+        notificationsViewModel.loadData(getActivity());
+        notificationsViewModel.notificationResponceMutableLiveData.observeForever(new Observer<NotificationsResponce>() {
+            @Override
+            public void onChanged(NotificationsResponce notificationsResponce) {
+                if(notificationsResponce.status) {
+
+                    appointmentAdapter = new NotificationAdapter(getActivity(),
+                            notificationsResponce.allNotifications);
+                    binding.rvJobAlert.setAdapter(appointmentAdapter);
+                    binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
+                            LinearLayoutManager.VERTICAL, false));
+
+                    if(notificationsResponce.allNotifications.size()==0){
+                        binding.rvJobAlert.setVisibility(View.GONE);
+                        notificationsViewModel.errorMessage.setValue("No Notification Available");
+                    }
+
+                } else {
+
+                }
+            }
+        });
+
+
         return binding.getRoot();
     }
 
-
-    private ArrayList<HomepageModel> arrayJobAlerts() {
-
-        ArrayList<HomepageModel> list = new ArrayList<>();
-
-        for (int i = 0; i < 7; i++) {
-            HomepageModel homepageModel = new HomepageModel();
-            homepageModel.setName(myImageNameListForJobAlert[i]);
-            homepageModel.setImage_drawable(myImageListForJobAlert[i]);
-            list.add(homepageModel);
-        }
-
-        return list;
-    }
 
 
 }

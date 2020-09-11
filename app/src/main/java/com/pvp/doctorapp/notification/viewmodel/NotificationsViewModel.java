@@ -34,9 +34,11 @@ public class NotificationsViewModel extends ViewModel {
     public void loadData(Context context) {
         if (Utilities.isNetworkAvailable(context)) {
             isloading.setValue(true);
-
+            String androidId = Settings.Secure.getString(context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+            Log.e( "loadData: ", androidId);
             NotificationApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(NotificationApi.class);
-            apiInterface.getNotifications(RetrofitClientInstance.API_KEY, mobile.getValue()).
+            apiInterface.getNotifications(RetrofitClientInstance.API_KEY, androidId).
                     enqueue(new Callback<NotificationsResponce>() {
                         @Override
                         public void onResponse(Call<NotificationsResponce> call,
@@ -47,6 +49,11 @@ public class NotificationsViewModel extends ViewModel {
                             isloading.setValue(false);
                             if(notificationResult.allNotifications.size()>0) {
                                 errorMessage.setValue(null);
+                            }
+
+                            else {
+
+                                errorMessage.setValue("");
                             }
 
 

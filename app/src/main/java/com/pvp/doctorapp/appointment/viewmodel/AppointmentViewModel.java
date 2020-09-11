@@ -48,7 +48,8 @@ if(Utilities.isNetworkAvailable(context)) {
 
     iserror.setValue(false);
     ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-    apiInterface.getDates(RetrofitClientInstance.API_KEY, new PrefManager(context).getDoctore()).
+    apiInterface.getDates(RetrofitClientInstance.API_KEY,
+            new PrefManager(context).getDoctore(),RetrofitClientInstance.getLanguage(context)).
             enqueue(new Callback<DateResponce>() {
                 @Override
                 public void onResponse(Call<DateResponce> call, Response<DateResponce> response) {
@@ -91,7 +92,7 @@ if(Utilities.isNetworkAvailable(context)) {
             isloading.setValue(true);
 
             ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
-            apiInterface.getTiming(RetrofitClientInstance.API_KEY, row_id).
+            apiInterface.getTiming(RetrofitClientInstance.API_KEY, row_id, RetrofitClientInstance.getLanguage(context)).
                     enqueue(new Callback<TimeResponce>() {
                         @Override
                         public void onResponse(Call<TimeResponce> call, Response<TimeResponce> response) {
@@ -126,14 +127,12 @@ if(Utilities.isNetworkAvailable(context)) {
     public void bookAppointment(Context context, String date,String time_slot){
 
         if(Utilities.isNetworkAvailable(context)) {
-
         isloading.setValue(true);
-
         ApointmentsApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(ApointmentsApi.class);
             String androidId = Settings.Secure.getString(context.getContentResolver(),
                     Settings.Secure.ANDROID_ID);
         apiInterface.setBooking(RetrofitClientInstance.API_KEY,new PrefManager(context).getDoctore(),
-                date,time_slot,email.getValue(),androidId,mobile.getValue()).
+                date,time_slot,email.getValue(),androidId,mobile.getValue(),RetrofitClientInstance.getLanguage(context) ).
                 enqueue(new Callback<AppointmentBookingResponce>() {
                     @Override
                     public void onResponse(Call<AppointmentBookingResponce> call, Response<AppointmentBookingResponce> response) {
@@ -150,8 +149,6 @@ if(Utilities.isNetworkAvailable(context)) {
                         bookingUIVisible.postValue(true);
 
                         isloading.postValue(false);
-
-
                     }
 
                     @Override

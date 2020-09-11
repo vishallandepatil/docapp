@@ -19,14 +19,18 @@ public interface ApointmentsApi {
     @POST("/newpro/getDates")
     Call<DateResponce> getDates(
             @Field("skey") String api_key,
-            @Field("doctor_id") String doctor_id
+            @Field("doctor_id") String doctor_id,
+            @Field("lang") String lang
+
     );
 
     @FormUrlEncoded
     @POST("/newpro/getTiming")
     Call<TimeResponce> getTiming(
             @Field("skey") String api_key,
-            @Field("row_id") String row_id
+            @Field("row_id") String row_id,
+            @Field("lang") String lang
+
     );
 
     @FormUrlEncoded
@@ -38,6 +42,10 @@ public interface ApointmentsApi {
             @Field("time_slot") String time_slot,
             @Field("email_id") String email_id,
             @Field("android_id") String android_id,
-            @Field("phone_number") String phone_number
+            @Field("phone_number") String phone_number,
+            @Field("lang") String lang
+
+            // lang: eng/mar
+
     );
 }
