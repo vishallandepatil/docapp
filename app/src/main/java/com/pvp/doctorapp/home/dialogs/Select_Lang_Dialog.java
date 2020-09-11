@@ -32,6 +32,8 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
     ProgressDialog progressDialog;
     PrefManager prefManager;
     ImageView img1;
+    RadioButton radioMarathi;
+    RadioButton radioEnglish;
     public Select_Lang_Dialog() {
         super(null);
     }
@@ -50,10 +52,17 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
         bindView();
         btnlistener();
 
+        String lang=new PrefManager(activity).getSELECTLANG();
+        Log.e( "chkLang: ",  lang);
+        if(lang!=null && lang.equalsIgnoreCase("mr"))
+        {
+            radioMarathi.setChecked(true);
+        }
+        else {
+            radioEnglish.setChecked(true);
+        }
 
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -112,6 +121,8 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
         prefManager=new PrefManager(activity);
         radiotype = findViewById(R.id.radiotype);
         img1 = findViewById(R.id.img1);
+        radioMarathi = findViewById(R.id.radioMarathi);
+        radioEnglish = findViewById(R.id.radioEnglish);
 
     }
 
