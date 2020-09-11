@@ -62,11 +62,7 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
             radioEnglish.setChecked(true);
         }
 
-
-
     }
-
-
 
     @Override
     public void onClick(View v) {
