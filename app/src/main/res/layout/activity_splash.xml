@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_marginTop="200dp"
-            android:background="@drawable/dr"
+            android:background="@drawable/splash_img"
 
             android:layout_centerHorizontal="true"
             android:id="@+id/img"

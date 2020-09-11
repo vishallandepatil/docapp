@@ -143,7 +143,6 @@ if(Utilities.isNetworkAvailable(context)) {
                             Log.e("chk: ", appointmentBookingResponce.message);
                             errorMessage.postValue(appointmentBookingResponce.message);
                         } else {
-
                             errorMessage.postValue(appointmentBookingResponce.message);
                         }
                         bookingUIVisible.postValue(true);

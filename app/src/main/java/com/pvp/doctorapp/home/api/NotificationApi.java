@@ -11,6 +11,10 @@ import retrofit2.http.Query;
 
 public interface NotificationApi {
     @GET("/app/getWatchlist.php")
-    Call<NotificationResult> getNotifications(@Query("api_key") String api_key, @Query("user_id") String user_id);
+    Call<NotificationResult>
+    getNotifications(@Query("api_key")
+    String api_key,
+    @Query("user_id")
+    String user_id);
 }
 

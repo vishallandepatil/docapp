@@ -42,7 +42,8 @@ public class HospitalViewModel extends ViewModel {
            iserror.setValue(false);
 
         HospitalApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(HospitalApi.class);
-        apiInterface.getHospitals(RetrofitClientInstance.API_KEY).enqueue(new Callback<HospitalResponce>() {
+        apiInterface.getHospitals(RetrofitClientInstance.API_KEY, RetrofitClientInstance.getLanguage(context)).
+                enqueue(new Callback<HospitalResponce>() {
             @Override
             public void onResponse(Call<HospitalResponce> call, Response<HospitalResponce> response) {
 

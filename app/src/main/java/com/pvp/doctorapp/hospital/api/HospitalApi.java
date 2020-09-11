@@ -12,6 +12,8 @@ public interface HospitalApi {
     @FormUrlEncoded
     @POST("newpro/getHospitals")
     Call<HospitalResponce> getHospitals(
-            @Field("skey") String api_key
+            @Field("skey") String api_key,
+            @Field("lang") String lang
+
     );
 }

@@ -35,7 +35,7 @@ public class DoctorViewModel extends ViewModel {
             isloading.setValue(true);
             iserror.setValue(false);
             DoctorApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(DoctorApi.class);
-            apiInterface.getDoctors(RetrofitClientInstance.API_KEY).
+            apiInterface.getDoctors(RetrofitClientInstance.API_KEY,RetrofitClientInstance.getLanguage(context)).
                     enqueue(new Callback<DoctorsResponce>() {
                         @Override
                         public void onResponse(Call<DoctorsResponce> call, Response<DoctorsResponce> response) {

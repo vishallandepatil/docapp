@@ -38,7 +38,7 @@ public class NotificationsViewModel extends ViewModel {
                     Settings.Secure.ANDROID_ID);
             Log.e( "loadData: ", androidId);
             NotificationApi apiInterface = RetrofitClientInstance.getRetrofitInstanceServer().create(NotificationApi.class);
-            apiInterface.getNotifications(RetrofitClientInstance.API_KEY, androidId).
+            apiInterface.getNotifications(RetrofitClientInstance.API_KEY, androidId, RetrofitClientInstance.getLanguage(context)).
                     enqueue(new Callback<NotificationsResponce>() {
                         @Override
                         public void onResponse(Call<NotificationsResponce> call,

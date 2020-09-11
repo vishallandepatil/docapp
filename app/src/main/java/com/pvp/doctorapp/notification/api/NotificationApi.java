@@ -16,8 +16,10 @@ public interface NotificationApi {
     @POST("/newpro/getNotifications")
     Call<NotificationsResponce> getNotifications(
             @Field("skey") String api_key,
-            @Field("android_id") String android_id
-            );
+            @Field("android_id") String android_id,
+            @Field("lang") String lang
+
+    );
 
 
 }
