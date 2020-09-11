@@ -34,7 +34,6 @@ public class RetrofitClientInstance {
     {//
        // eng/mar;
         String lang=new PrefManager(context).getSELECTLANG();
-
         if(lang!=null && lang.equalsIgnoreCase("mr"))
         {
             return "mar";

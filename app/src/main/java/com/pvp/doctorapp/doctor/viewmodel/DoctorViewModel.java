@@ -46,6 +46,7 @@ public class DoctorViewModel extends ViewModel {
                                 doctorinfo.setValue(doctorsResponce.doctorsInfo.get(0));
 
                                         new PrefManager(context).setDoctore(doctorsResponce.doctorsInfo.get(0).id+"");
+                                Log.e( "chkResponce: ",  doctorsResponce.message);
 
                             } else {
                                 iserror.setValue(true);
