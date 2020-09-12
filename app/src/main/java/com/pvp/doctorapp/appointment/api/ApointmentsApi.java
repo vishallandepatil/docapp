@@ -16,7 +16,7 @@ import retrofit2.http.POST;
 
 public interface ApointmentsApi {
     @FormUrlEncoded
-    @POST("/newpro/getDates")
+    @POST("/drbooking/getDates")
     Call<DateResponce> getDates(
             @Field("skey") String api_key,
             @Field("doctor_id") String doctor_id,
@@ -25,7 +25,7 @@ public interface ApointmentsApi {
     );
 
     @FormUrlEncoded
-    @POST("/newpro/getTiming")
+    @POST("/drbooking/getTiming")
     Call<TimeResponce> getTiming(
             @Field("skey") String api_key,
             @Field("row_id") String row_id,
@@ -34,7 +34,7 @@ public interface ApointmentsApi {
     );
 
     @FormUrlEncoded
-    @POST("/newpro/setBooking")
+    @POST("/drbooking/setBooking")
     Call<AppointmentBookingResponce> setBooking (
             @Field("skey") String api_key,
             @Field("doctor_id") String doctor_id,

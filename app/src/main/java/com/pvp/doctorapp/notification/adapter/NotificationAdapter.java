@@ -55,13 +55,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
        // holder.iv.setImageResource(imageModelArrayList.get(position).getImage_drawable());
         holder.tv_title.setText(imageModelArrayList.get(position).notification_title);
         holder.tv_details.setText(imageModelArrayList.get(position).notification_message);
+        holder.tv_date.setText(imageModelArrayList.get(position).created_on);
 
-        if (position % 2 == 0) {  //  is even
-            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
 
-        } else {    //  is odd
-            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
-        }
+            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_skyblue));
+
+
     }
 
     @Override
@@ -71,7 +70,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_title, tv_status, tv_details;
+        TextView tv_title, tv_status, tv_details,tv_date;
         ImageView iv;
 
         public MyViewHolder(View itemView) {
@@ -80,6 +79,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             tv_status = (TextView) itemView.findViewById(R.id.tv_status);
             tv_details = (TextView) itemView.findViewById(R.id.tv_details);
+            tv_date = (TextView) itemView.findViewById(R.id.tv_date);
             iv = (ImageView) itemView.findViewById(R.id.iv);
         }
 

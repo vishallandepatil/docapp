@@ -16,6 +16,7 @@ import com.pvp.doctorapp.appointment.activities.FillAppointmentDetailsActivity;
 import com.pvp.doctorapp.appointment.model.AppointmentModel;
 import com.pvp.doctorapp.appointment.model.AvailableDates;
 import com.pvp.doctorapp.appointment.model.AvailableTimes;
+import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
 import java.util.ArrayList;
@@ -53,15 +54,26 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onBindViewHolder(AppointmentAdapter.MyViewHolder holder, int position) {
         holder.iv.setImageResource(R.drawable.ic_today_black_24dp);
-        holder.tv_title.setText(imageModelArrayList.get(position).start_time+" to "+imageModelArrayList.get(position).end_time);
-        holder.tv_date.setText(date);
-        if (position % 2 == 0) {  //  is even
-            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
 
-        } else {    //  is odd
-            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_orange));
+        String lang=new PrefManager(mContext).getSELECTLANG();
+        if(lang!=null && lang.equalsIgnoreCase("mr"))
+        {
+            lang= "mar";
+        }
+        else {
+            lang= "ते ";
         }
 
+        holder.tv_title.setText(imageModelArrayList.get(position).start_time+" "+lang+" "+imageModelArrayList.get(position).end_time);
+        holder.tv_date.setText(date);
+        if (position % 2 == 0) {  //  is even
+            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_skyblue));
+
+        } else {    //  is odd
+            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_skyblue));
+        }
+
+        String finalLang = lang;
         holder.tv_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +81,8 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                 bundle.putString("time_row_id",imageModelArrayList.get(position).time_row_id);
                 bundle.putString("row_id", availableDates.row_id);
                 bundle.putString("date", date);
-                bundle.putString("timeslot", imageModelArrayList.get(position).start_time+" to "+imageModelArrayList.get(position).end_time);
+
+                bundle.putString("timeslot", imageModelArrayList.get(position).start_time+" "+ finalLang +"  "+imageModelArrayList.get(position).end_time);
                 Utilities.launchActivity(mContext, FillAppointmentDetailsActivity.class,false, bundle);
             }
         });

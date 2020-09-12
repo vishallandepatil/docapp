@@ -34,6 +34,7 @@ public class NotificationsViewModel extends ViewModel {
     public void loadData(Context context) {
         if (Utilities.isNetworkAvailable(context)) {
             isloading.setValue(true);
+            isloading.setValue(false);
             String androidId = Settings.Secure.getString(context.getContentResolver(),
                     Settings.Secure.ANDROID_ID);
             Log.e( "loadData: ", androidId);
@@ -46,14 +47,15 @@ public class NotificationsViewModel extends ViewModel {
 
                             NotificationsResponce notificationResult = response.body();
                             notificationResponceMutableLiveData.setValue(notificationResult);
-                            isloading.setValue(false);
+
                             if(notificationResult.allNotifications.size()>0) {
-                                errorMessage.setValue(null);
+                                errorMessage.postValue(null);
+
                             }
 
                             else {
-
-                                errorMessage.setValue("");
+                                isloading.postValue(true);
+                                errorMessage.postValue(notificationResult.message);
                             }
 
 
@@ -62,8 +64,8 @@ public class NotificationsViewModel extends ViewModel {
                         @Override
                         public void onFailure(Call<NotificationsResponce> call, Throwable t) {
 
-                            isloading.setValue(false);
-                            errorMessage.setValue(t.getMessage());
+                            isloading.postValue(true);
+                            errorMessage.postValue(t.getMessage());
 
                             Log.d("", "");
 

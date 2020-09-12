@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 public interface SliderApi {
 
     @FormUrlEncoded
-    @POST("/newpro/getBanners")
+    @POST("/drbooking/getBanners")
     Call<SliderResponce> getSlider(
             @Field("skey") String api_key
            // @Field("doctor_id") String doctor_id

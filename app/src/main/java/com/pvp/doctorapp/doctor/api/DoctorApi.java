@@ -15,7 +15,7 @@ import retrofit2.http.Query;
 
 public interface DoctorApi {
     @FormUrlEncoded
-    @POST("/newpro/getDoctors")
+    @POST("/drbooking/getDoctors")
     Call<DoctorsResponce> getDoctors(
             @Field("skey") String api_key,
             @Field("lang") String lang

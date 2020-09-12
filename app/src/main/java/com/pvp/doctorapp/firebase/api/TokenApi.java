@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface TokenApi {
     @FormUrlEncoded
-    @POST("/newpro/setDevice")
+    @POST("/drbooking/setDevice")
     Call<DoctorsResponce> setDevice(
             @Field("skey") String api_key,
             @Field("android_id") String android_id,
