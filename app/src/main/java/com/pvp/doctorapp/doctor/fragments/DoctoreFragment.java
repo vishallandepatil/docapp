@@ -14,6 +14,7 @@ import com.pvp.doctorapp.appointment.activities.BookingAppointmentActivity;
 import com.pvp.doctorapp.databinding.FragmentAboutDoctorBinding;
 import com.pvp.doctorapp.doctor.viewmodel.DoctorViewModel;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
+import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
 
 import androidx.databinding.BindingAdapter;
@@ -38,6 +39,15 @@ public class DoctoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        PrefManager   prefManager =new PrefManager(getActivity());
+        // language
+        Locale locale = new Locale(prefManager.getSELECTLANG());
+        Configuration config = getActivity().getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+        getActivity().getBaseContext().getResources().updateConfiguration(config,
+                getActivity().getBaseContext().getResources().getDisplayMetrics());
+
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_about_doctor, container, false);
 
         DoctorViewModel doctorViewModel = ViewModelProviders.of(this).get(DoctorViewModel.class);

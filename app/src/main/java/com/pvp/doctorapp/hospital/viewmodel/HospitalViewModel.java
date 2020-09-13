@@ -78,7 +78,7 @@ public class HospitalViewModel extends ViewModel {
 
         } else {
             iserror.setValue(true);
-            errorMessage.setValue("Please Check Internet Connection");
+            errorMessage.setValue(context.getResources().getString(R.string.interneterror));
         }
     }
 

@@ -41,15 +41,7 @@ import java.util.Locale;
 public class NotificationFragment extends Fragment {
     FragmentsNotificationBinding binding;
 
-    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp,
-            R.drawable.ic_alarm_add_black_24dp,
-            R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp,   R.drawable.ic_alarm_add_black_24dp,R.drawable.ic_alarm_add_black_24dp};
-    private String[] myImageNameListForJobAlert = new String[]{"Brain checkout","Purchase Prescription","Brain checkout","Purchase Prescription",
-            "title","title","title"};
 
-    ArrayList<NotificationModel>   imageModelYouTubeArrayList ;
-
-    NotificationAdapter notificationAdapter;
 
 
     public NotificationFragment() {
@@ -63,20 +55,22 @@ public class NotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragments_notification, container, false);
         prefManager=new PrefManager(getActivity());
-
-        // language
         Locale locale = new Locale(prefManager.getSELECTLANG());
         Configuration config = getActivity().getBaseContext().getResources().getConfiguration();
         config.locale = locale;
         getActivity().getBaseContext().getResources().updateConfiguration(config,
                 getActivity().getBaseContext().getResources().getDisplayMetrics());
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragments_notification, container, false);
+
+
+        // language
+
 
         notificationsViewModel = ViewModelProviders.of(this).get(NotificationsViewModel.class);
-      /*  binding.setLifecycleOwner(this);
+        binding.setLifecycleOwner(this);
         binding.setNotificationsViewModel(notificationsViewModel);
-*/
+
         notificationsViewModel.loadData(getActivity());
 
 
@@ -90,11 +84,24 @@ public class NotificationFragment extends Fragment {
                     binding.rvJobAlert.setAdapter(appointmentAdapter);
                     binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
                             LinearLayoutManager.VERTICAL, false));
+                    if(notificationsResponce.allNotifications.size()==0){
+                        binding.rvJobAlert.setVisibility(View.GONE);
+                        binding.data.setVisibility(View.GONE);
+                        binding.error.setVisibility(View.VISIBLE);
+
+                        binding.errormessge.setText(getString(R.string.nonotification));
+                    }
+
+
 
 
 
                 } else {
+                    binding.rvJobAlert.setVisibility(View.GONE);
+                    binding.data.setVisibility(View.GONE);
+                    binding.error.setVisibility(View.VISIBLE);
 
+                    binding.errormessge.setText(notificationsResponce.message);
                 }
             }
         });

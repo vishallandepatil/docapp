@@ -1,5 +1,6 @@
 package com.pvp.doctorapp.splash.activities;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -10,6 +11,8 @@ import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.home.activities.NewHomepageActivity;
 import com.pvp.doctorapp.utils.PrefManager;
 import com.pvp.doctorapp.utils.Utilities;
+
+import java.util.Locale;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,6 +25,16 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        prefManager = new PrefManager(this);
+        try {
+            Locale locale = new Locale(prefManager.getSELECTLANG());
+            Configuration config = getBaseContext().getResources().getConfiguration();
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config,
+                    getBaseContext().getResources().getDisplayMetrics());
+        }catch (Exception e){
+
+        }
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash);

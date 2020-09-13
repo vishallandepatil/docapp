@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,7 +59,7 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
                 //if(!Utilities.emailValidate(binding.etEmail.getText().toString()) ) {
                 if(binding.etEmail.getText().toString().length()<4 ) {
                     status=false;
-                    Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FillAppointmentDetailsActivity.this, R.string.errorphone, Toast.LENGTH_SHORT).show();
                 }
                 else {
                     if( binding.etMobileno.getText().toString().length()>=10) {
@@ -66,7 +67,7 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
                                 row_id, time_row_id);
                     }
                     else {
-                        Toast.makeText(FillAppointmentDetailsActivity.this, "Enter proper mobile number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FillAppointmentDetailsActivity.this, R.string.enterphone, Toast.LENGTH_SHORT).show();
                         status=false;
 
                     }
@@ -96,7 +97,16 @@ public class FillAppointmentDetailsActivity extends AppCompatActivity {
         binding.btnSubmit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utilities.launchActivity(FillAppointmentDetailsActivity.this, NewHomepageActivity.class,true);
+
+                Intent intent = new Intent(FillAppointmentDetailsActivity.this,  NewHomepageActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+              startActivity(intent);
+
+              finish();
+
+
+
             }
         });
 

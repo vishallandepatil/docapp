@@ -4,6 +4,7 @@ package com.pvp.doctorapp.doctor.viewmodel;
 import android.content.Context;
 import android.util.Log;
 
+import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.doctor.api.DoctorApi;
 import com.pvp.doctorapp.doctor.model.DoctorsInfo;
 import com.pvp.doctorapp.doctor.model.DoctorsResponce;
@@ -60,7 +61,7 @@ public class DoctorViewModel extends ViewModel {
 
                             isloading.setValue(false);
                             iserror.setValue(true);
-                            errorMessage.setValue("Please Check Internet Connection");
+                            errorMessage.setValue(context.getString(R.string.interneterror));
                             Log.d("", "");
 
                         }
@@ -69,7 +70,7 @@ public class DoctorViewModel extends ViewModel {
 
         } else {
             iserror.setValue(true);
-            errorMessage.setValue("Please Check Internet Connection");
+            errorMessage.setValue(context.getString(R.string.interneterror));
         }
     }
 }

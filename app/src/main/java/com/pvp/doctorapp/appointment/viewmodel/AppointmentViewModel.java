@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.pvp.doctorapp.R;
 import com.pvp.doctorapp.appointment.api.ApointmentsApi;
 import com.pvp.doctorapp.appointment.model.AppointmentBookingResponce;
 import com.pvp.doctorapp.appointment.model.AvailableDates;
@@ -75,14 +76,14 @@ if(Utilities.isNetworkAvailable(context)) {
                 @Override
                 public void onFailure(Call<DateResponce> call, Throwable t) {
                     iserror.setValue(true);
-                    errorMessage.setValue("Please Check Internet Connection");
+                    errorMessage.setValue(context.getString(R.string.interneterror));
                     Log.d("", "");
 
                 }
             });
         }else {
     iserror.setValue(true);
-    errorMessage.setValue("Please Check Internet Connection");
+    errorMessage.setValue(context.getString(R.string.interneterror));
         }
     }
 

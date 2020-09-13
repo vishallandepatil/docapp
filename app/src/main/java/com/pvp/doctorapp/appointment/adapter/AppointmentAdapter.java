@@ -56,12 +56,13 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         holder.iv.setImageResource(R.drawable.ic_today_black_24dp);
 
         String lang=new PrefManager(mContext).getSELECTLANG();
+        String to ="To";
         if(lang!=null && lang.equalsIgnoreCase("mr"))
         {
-            lang= "mar";
+            lang= " ते ";
         }
         else {
-            lang= "ते ";
+            lang= " To ";
         }
 
         holder.tv_title.setText(imageModelArrayList.get(position).start_time+" "+lang+" "+imageModelArrayList.get(position).end_time);
