@@ -41,6 +41,17 @@
     <string name="available">Available</string>
     <string name="view3">VIEW</string>
     <string name="recent_notifications2">Recent Notifications</string>
+    <string name="errorphone">Enter proper name</string>
+    <string name="enterphone">Enter proper mobile number</string>
+    <string name="interneterror">Please Check Internet Connection</string>
+    <string name="noapointment">No Apointments Available</string>
+    <string name="select_language">Select language</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="nonotification">No Notification Available</string>
+    <string name="by_dr_chapalgaonkar">By Dr. Chapalgaonkar</string>
+    <string name="cpc_appointment">CPC Appointment</string>
+    <string name="book_an_appointment">Book an Appointment</string>
 
 
 </resources>

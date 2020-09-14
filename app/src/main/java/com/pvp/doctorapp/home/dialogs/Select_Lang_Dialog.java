@@ -34,9 +34,6 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
     ImageView img1;
     RadioButton radioMarathi;
     RadioButton radioEnglish;
-    public Select_Lang_Dialog() {
-        super(null);
-    }
     public Select_Lang_Dialog(Activity activity)  {
         super(activity);
         this.activity = activity;
@@ -84,12 +81,14 @@ public class Select_Lang_Dialog extends Dialog implements View.OnClickListener {
                     prefManager.setSELECTLANG("mr");
                     Intent i3 = new Intent(activity, NewHomepageActivity.class);
                     activity.startActivity(i3);
+                    activity.finish();
                 }
                 else  if(radioButton.getText().equals("English")){
                      Toast.makeText(activity, "English",Toast.LENGTH_SHORT).show();
                     prefManager.setSELECTLANG("en");
                     Intent i = new Intent(activity, NewHomepageActivity.class);
                     activity.startActivity(i);
+                    activity.finish();
 
                 }
 

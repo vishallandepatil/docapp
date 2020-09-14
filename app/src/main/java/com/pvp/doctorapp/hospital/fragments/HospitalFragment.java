@@ -39,7 +39,6 @@ public class HospitalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragments_about_hospital, container, false);
         prefManager =new PrefManager(getActivity());
         // language
         Locale locale = new Locale(prefManager.getSELECTLANG());
@@ -48,6 +47,8 @@ public class HospitalFragment extends Fragment {
         getActivity().getBaseContext().getResources().updateConfiguration(config,
                 getActivity().getBaseContext().getResources().getDisplayMetrics());
 
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragments_about_hospital, container, false);
 
 
         HospitalViewModel hospitalViewModel = ViewModelProviders.of(this).get(HospitalViewModel.class);

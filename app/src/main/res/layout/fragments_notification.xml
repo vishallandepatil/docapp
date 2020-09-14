@@ -15,14 +15,6 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:visibility="@{NotificationsViewModel.iserror?View.GONE : View.VISIBLE}" >
-
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -88,10 +80,23 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:id="@+id/data"
+        android:layout_below="@id/toolbar"
+        android:visibility="@{NotificationsViewModel.iserror?View.GONE : View.VISIBLE}" >
+
+
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
+        android:visibility="@{NotificationsViewModel.iserror?View.GONE : View.VISIBLE}"
+        android:id="@+id/card"
+
         android:layout_gravity="center">
 
 
@@ -113,14 +118,16 @@
 
 
     <RelativeLayout
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:id="@+id/error"
         android:visibility="@{NotificationsViewModel.iserror?View.VISIBLE : View.GONE}" >
 
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:layout_height="170dp"
             android:layout_width="190dp"
             android:src="@drawable/doc"
@@ -133,6 +140,7 @@
             android:layout_centerVertical="true"
             />
         <TextView
+            android:id="@+id/errormessge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{NotificationsViewModel.errorMessage}"

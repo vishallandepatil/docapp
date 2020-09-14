@@ -3,9 +3,11 @@ package com.pvp.doctorapp.home.fragments;
 import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -40,14 +42,9 @@ import java.util.Locale;
  */
 public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
-    ArrayList<HomepageModel> imageModelYouTubeArrayList;
-    HomepageAdapter homepageAdapter;
+
     PrefManager prefManager;
-    private int[] myImageListForJobAlert = new int[]{R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp,
-            R.drawable.ic_alarm_add_black_24dp,
-            R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp, R.drawable.ic_alarm_add_black_24dp};
-    private String[] myImageNameListForJobAlert = new String[]{"Brain checkout", "Purchase Prescription", "Brain checkout", "Purchase Prescription",
-            "title", "title", "title"};
+
 
     public HomeFragment() {
 
@@ -62,16 +59,18 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         prefManager = new PrefManager(getActivity());
-
-
-        // language
         Locale locale = new Locale(prefManager.getSELECTLANG());
         Configuration config = getActivity().getBaseContext().getResources().getConfiguration();
         config.locale = locale;
         getActivity().getBaseContext().getResources().updateConfiguration(config,
                 getActivity().getBaseContext().getResources().getDisplayMetrics());
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+
+
+
+        // language
+
 
 
 
@@ -140,8 +139,12 @@ public class HomeFragment extends Fragment {
                     @SuppressLint("RestrictedApi")
                     @Override
                     public void onClick(View v) {
+                        DisplayMetrics metrics = getResources().getDisplayMetrics();
+                        int width = metrics.widthPixels;
+                        int height = metrics.heightPixels;
                         final Select_Lang_Dialog dialog = new Select_Lang_Dialog(getActivity());
                         dialog.show();
+                        dialog.getWindow().setLayout((6 * width)/7, RelativeLayout.LayoutParams.WRAP_CONTENT);
                         dialog.setCanceledOnTouchOutside(false);
 
                     }
@@ -160,7 +163,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(NotificationsResponce notificationsResponce) {
                 if(notificationsResponce.status) {
-
+                    binding.erornotification.setVisibility(View.GONE);
                     appointmentAdapter = new NotificationAdapter(getActivity(),
                             notificationsResponce.allNotifications);
                     binding.rvJobAlert.setAdapter(appointmentAdapter);
@@ -169,7 +172,9 @@ public class HomeFragment extends Fragment {
 
                     if(notificationsResponce.allNotifications.size()==0){
                         binding.rvJobAlert.setVisibility(View.GONE);
-                        notificationsViewModel.errorMessage.setValue("No Notification Available");
+                        binding.erornotification.setVisibility(View.VISIBLE);
+
+                        binding.erornotification.setText(getString(R.string.nonotification));
                     }
 
                 } else {

@@ -208,6 +208,16 @@
                     android:layout_above="@+id/title2">
 
                 </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/erornotification"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/hometext"
+
+                    android:layout_below="@+id/title1"
+                    android:layout_above="@+id/title2"
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -282,7 +292,9 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             android:gravity="center"
-            android:visibility="@{DoctorDetails.iserror?View.VISIBLE : View.GONE}" >
+
+            android:visibility="@{DoctorDetails.iserror?View.VISIBLE : View.GONE}"
+            >
 
 
 

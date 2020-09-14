@@ -125,7 +125,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                     if (!ispresent) {
                         if (lastSelectedDate != null) {
                             binding.rvJobAlert.setVisibility(View.GONE);
-                            appointmentViewModel.errorMessage.setValue("No Apointments Available");
+                            appointmentViewModel.errorMessage.setValue(getString(R.string.noapointment));
                             //binding.calendarView.setDate(lastSelectedDate.getTime());
                         } else {
                             long currentTime = System.currentTimeMillis();
@@ -134,10 +134,10 @@ public class BookingAppointmentActivity extends AppCompatActivity {
                     }
                     if(appointmentViewModel.doctorsResponceMutableLiveData.getValue().availableDates.size()==0){
                         binding.rvJobAlert.setVisibility(View.GONE);
-                        appointmentViewModel.errorMessage.setValue("No Apointments Available");
+                        appointmentViewModel.errorMessage.setValue(getString(R.string.noapointment));
                     }
                 } catch (Exception e){
-                    appointmentViewModel.errorMessage.setValue("Please Check Internet Connection");
+                    appointmentViewModel.errorMessage.setValue(getString(R.string.interneterror));
                 }
             }
         });
@@ -159,7 +159,7 @@ public class BookingAppointmentActivity extends AppCompatActivity {
 
                     if(timeResponce.availableTimes.size()==0){
                         binding.rvJobAlert.setVisibility(View.GONE);
-                        appointmentViewModel.errorMessage.setValue("No Apointments Available");
+                        appointmentViewModel.errorMessage.setValue(getString(R.string.noapointment));
                     }
 
                 } else {

@@ -80,7 +80,10 @@ public class Utilities {
 
     public static void launchActivity(Activity activity, Class<?> mClass, boolean shouldFinishParent) {
         Intent intent = new Intent(activity, mClass);
+       // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
         activity.startActivity(intent);
+
         if (shouldFinishParent) {
             activity.finish();
         }
