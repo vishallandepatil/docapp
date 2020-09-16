@@ -99,16 +99,23 @@ public class NewHomepageActivity extends AppCompatActivity
 
 
 
-            @SuppressLint("RestrictedApi")
             @Override
             public void onBackPressed() {
-                super.onBackPressed();
+                try {
+                    super.onBackPressed();
+                    if (binding.customBottomBar.getVisibility() == View.VISIBLE) {
+                        finish();
+                    }
+
                     if (getCurrentFragment() instanceof HomeFragment) {
 
                         binding.customBottomBar.setVisibility(View.VISIBLE);
                         binding.fab.setVisibility(View.VISIBLE);
                         binding.customBottomBar.setSelectedItemId(R.id.navigation_home);
                     }
+                } catch (Exception e){
+                    finish();
+                }
 
             }
 

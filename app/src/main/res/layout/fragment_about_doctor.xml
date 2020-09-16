@@ -118,9 +118,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@{DoctorDetails.doctorinfo.description}"
-                        android:textColor="@color/about_text_color"
+                        android:textColor="@color/colorBlack"
                         android:background="@color/colorWhite"
-                        android:textSize="15dp"
+                        android:textSize="16dp"
                         android:id="@+id/tv_details"
                         android:layout_marginTop="@dimen/padding_20"
                         android:singleLine="false" />
