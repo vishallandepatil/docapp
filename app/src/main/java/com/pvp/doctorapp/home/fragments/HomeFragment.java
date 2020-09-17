@@ -67,13 +67,6 @@ public class HomeFragment extends Fragment {
                 getActivity().getBaseContext().getResources().getDisplayMetrics());
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
-
-
-        // language
-
-
-
-
         binding.cvSlider.setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_background));
 
 
@@ -166,7 +159,7 @@ public class HomeFragment extends Fragment {
                     if (notificationsResponce.status) {
                         binding.erornotification.setVisibility(View.GONE);
                         appointmentAdapter = new NotificationAdapter(getActivity(),
-                                notificationsResponce.allNotifications);
+                                notificationsResponce.allNotifications,10);
                         binding.rvJobAlert.setAdapter(appointmentAdapter);
                         binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
                                 LinearLayoutManager.VERTICAL, false));

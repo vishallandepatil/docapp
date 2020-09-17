@@ -81,7 +81,7 @@ public class NotificationFragment extends Fragment {
                 if(notificationsResponce.status) {
 
                         appointmentAdapter = new NotificationAdapter(getActivity(),
-                                notificationsResponce.allNotifications);
+                                notificationsResponce.allNotifications,0);
                         binding.rvJobAlert.setAdapter(appointmentAdapter);
                         binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
                                 LinearLayoutManager.VERTICAL, false));

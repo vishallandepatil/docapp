@@ -24,19 +24,25 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private LayoutInflater inflater;
     private ArrayList<AllNotifications> imageModelArrayList;
     Context mContext;
+    int max;
 
 
-    public NotificationAdapter(Context ctx, ArrayList<AllNotifications> imageModelArrayList){
+    public NotificationAdapter(Context ctx, ArrayList<AllNotifications> imageModelArrayList,int max){
         mContext=ctx;
         inflater = LayoutInflater.from(ctx);
         this.imageModelArrayList = imageModelArrayList;
+        this.max=max;
     }
 
-    public NotificationAdapter(Activity ctx, ArrayList<AllNotifications> imageModelArrayList){
+    public NotificationAdapter(Activity ctx, ArrayList<AllNotifications> imageModelArrayList,int max){
         mContext=ctx;
 
         inflater = LayoutInflater.from(ctx);
         this.imageModelArrayList = imageModelArrayList;
+        this.max=max;
+
+
+
 
     }
 
@@ -59,13 +65,27 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
 
             holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_skyblue));
-
+        holder.tv_status.setVisibility(View.GONE);
 
     }
 
     @Override
     public int getItemCount() {
-        return imageModelArrayList.size();
+
+        if(max==0 ){
+            return imageModelArrayList.size();
+        } else {
+
+        if(imageModelArrayList.size()<max) {
+            return imageModelArrayList.size();
+        } else {
+
+            return max;
+
+
+        }
+        }
+
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
