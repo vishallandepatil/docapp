@@ -10,5 +10,7 @@ public  class AppointmentBookingResponce {
     public boolean status;
     @SerializedName("message")
     public String message;
+    @SerializedName("terms_conditions")
+    public String terms_conditions;
 
 }

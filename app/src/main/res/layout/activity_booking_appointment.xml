@@ -75,75 +75,7 @@
 
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_below="@+id/toolbar"
-        android:id="@+id/rl1"
-        android:paddingLeft="@dimen/padding_20"
-        android:paddingRight="@dimen/padding_20"
-        >
 
-
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_centerHorizontal="true"
-            style="@style/CustomDatePickerStyle"
-            android:selectedDateVerticalBar="@color/colorPrimaryDark"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/available_appointment"
-            android:textColor="@color/hometext"
-            android:textSize="16dp"
-            android:layout_below="@+id/calendarView"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:id="@+id/title2"
-            android:layout_marginTop="5dp"
-            />
-
-        <ProgressBar
-            android:id="@+id/ProgressBar"
-            style="?android:attr/spinnerMode"
-            android:layout_width="34dp"
-            android:layout_height="29dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/title2"
-            android:visibility="@{AppointmentViewModel.isloading?View.VISIBLE : View.GONE}" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_job_alert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/title2"
-            android:layout_marginTop="1dp"
-            android:visibility="@{AppointmentViewModel.isloading  ?View.GONE: View.VISIBLE }"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{AppointmentViewModel.errorMessage}"
-            android:textColor="@color/hometext"
-            android:textSize="12dp"
-            android:layout_marginTop="@dimen/padding_20"
-            android:layout_below="@+id/title2"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:id="@+id/error"
-            android:visibility="@{AppointmentViewModel.errorMessage==null?View.GONE: View.VISIBLE }"/>
-
-        android:layout_marginTop="5dp"
-            />
-
-
-    </RelativeLayout>
 
 
         <RelativeLayout
@@ -180,6 +112,74 @@
                 android:layout_below="@+id/img2"
                 android:layout_centerVertical="true"
                 />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/rl1"
+            android:paddingLeft="@dimen/padding_20"
+            android:paddingRight="@dimen/padding_20"
+            >
+
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_centerHorizontal="true"
+                style="@style/CustomDatePickerStyle"
+                android:selectedDateVerticalBar="@color/colorPrimaryDark"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/available_appointment"
+                android:textColor="@color/hometext"
+                android:textSize="16dp"
+                android:layout_below="@+id/calendarView"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:id="@+id/title2"
+                android:layout_marginTop="5dp"
+                />
+
+            <ProgressBar
+                android:id="@+id/ProgressBar"
+                style="?android:attr/spinnerMode"
+                android:layout_width="34dp"
+                android:layout_height="29dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/title2"
+                android:visibility="@{AppointmentViewModel.isloading?View.VISIBLE : View.GONE}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_job_alert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/title2"
+                android:layout_marginTop="1dp"
+                android:visibility="@{AppointmentViewModel.isloading  ?View.GONE: View.VISIBLE }"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{AppointmentViewModel.errorMessage}"
+                android:textColor="@color/hometext"
+                android:textSize="12dp"
+                android:layout_marginTop="@dimen/padding_20"
+                android:layout_below="@+id/title2"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:id="@+id/error"
+                android:visibility="@{AppointmentViewModel.errorMessage==null?View.GONE: View.VISIBLE }"/>
+
+
+
 
         </RelativeLayout>
 

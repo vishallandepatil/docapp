@@ -77,32 +77,35 @@ public class NotificationFragment extends Fragment {
         notificationsViewModel.notificationResponceMutableLiveData.observeForever(new Observer<NotificationsResponce>() {
             @Override
             public void onChanged(NotificationsResponce notificationsResponce) {
+                try {
                 if(notificationsResponce.status) {
 
-                    appointmentAdapter = new NotificationAdapter(getActivity(),
-                            notificationsResponce.allNotifications);
-                    binding.rvJobAlert.setAdapter(appointmentAdapter);
-                    binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
-                            LinearLayoutManager.VERTICAL, false));
-                    if(notificationsResponce.allNotifications.size()==0){
+                        appointmentAdapter = new NotificationAdapter(getActivity(),
+                                notificationsResponce.allNotifications,0);
+                        binding.rvJobAlert.setAdapter(appointmentAdapter);
+                        binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
+                                LinearLayoutManager.VERTICAL, false));
+                        if (notificationsResponce.allNotifications.size() == 0) {
+                            binding.rvJobAlert.setVisibility(View.GONE);
+                            binding.data.setVisibility(View.GONE);
+                            binding.error.setVisibility(View.VISIBLE);
+
+                            binding.errormessge.setText(getString(R.string.nonotification));
+                        }
+
+
+                    } else{
                         binding.rvJobAlert.setVisibility(View.GONE);
                         binding.data.setVisibility(View.GONE);
                         binding.error.setVisibility(View.VISIBLE);
 
-                        binding.errormessge.setText(getString(R.string.nonotification));
+                        binding.errormessge.setText(notificationsResponce.message);
                     }
 
+                } catch (Exception e){
 
-
-
-
-                } else {
-                    binding.rvJobAlert.setVisibility(View.GONE);
-                    binding.data.setVisibility(View.GONE);
-                    binding.error.setVisibility(View.VISIBLE);
-
-                    binding.errormessge.setText(notificationsResponce.message);
                 }
+
             }
         });
 

@@ -19,14 +19,13 @@
         android:background="@color/white"
         >
 
-    <RelativeLayout
+        <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:id="@+id/layout1"
         android:visibility="@{AppointmentViewModel.bookingUIVisible==false?View.VISIBLE:View.GONE}"
-
-        >
+>
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -362,7 +361,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text= "@string/PatientName"
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/colorBlack"
                                 android:textSize="15dp"
 
 
@@ -372,7 +371,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text=  '@{AppointmentViewModel.email}'
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/colorBlack"
                                 android:textSize="15dp"
 
                                 />
@@ -393,7 +392,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text= "@string/PatientContact"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorBlack"
                             android:textSize="15dp"
                             android:layout_weight="1"
 
@@ -406,7 +405,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text= '@{AppointmentViewModel.mobile}'
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/colorBlack"
                                 android:textSize="15dp"
 
 
@@ -430,7 +429,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text= "@string/appointment_date"
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/colorBlack"
                                 android:background="@color/colorWhite"
                                 android:textSize="15dp"
 
@@ -444,7 +443,7 @@
                                 android:layout_height="wrap_content"
                                 android:text= '@{AppointmentViewModel.date}'
 
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/colorBlack"
                                 android:background="@color/colorWhite"
                                 android:textSize="15dp"
 
@@ -473,7 +472,7 @@
 
                             android:background="@color/colorWhite"
                             android:text= "@string/appointment_slot"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorBlack"
                             android:textSize="15dp" />
                             <TextView
 
@@ -483,7 +482,7 @@
                                 android:layout_below="@+id/tv_date"
                                 android:background="@color/colorWhite"
                                 android:text='@{AppointmentViewModel.timeSlot}'
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/colorBlack"
                                 android:textSize="15dp" />
                         </LinearLayout>
 
@@ -520,7 +519,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/terms"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorBlack"
                 android:textSize="12dp"
                 android:textAlignment="center"
                 android:layout_centerHorizontal="true"
@@ -533,8 +532,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/contact_us_details"
-                android:textColor="@color/colorPrimary"
+                android:text='@{AppointmentViewModel.appointmentBookingResponceMutableLiveData.terms_conditions}'
+                android:textColor="@color/colorBlack"
                 android:textSize="12dp"
                 android:textAlignment="center"
                 android:layout_centerHorizontal="true"

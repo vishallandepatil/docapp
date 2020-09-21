@@ -67,13 +67,6 @@ public class HomeFragment extends Fragment {
                 getActivity().getBaseContext().getResources().getDisplayMetrics());
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
-
-
-        // language
-
-
-
-
         binding.cvSlider.setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_background));
 
 
@@ -159,30 +152,33 @@ public class HomeFragment extends Fragment {
         binding.setNotificationsViewModel(notificationsViewModel);
       */
         notificationsViewModel.loadData(getActivity());
-        notificationsViewModel.notificationResponceMutableLiveData.observeForever(new Observer<NotificationsResponce>() {
-            @Override
-            public void onChanged(NotificationsResponce notificationsResponce) {
-                if(notificationsResponce.status) {
-                    binding.erornotification.setVisibility(View.GONE);
-                    appointmentAdapter = new NotificationAdapter(getActivity(),
-                            notificationsResponce.allNotifications);
-                    binding.rvJobAlert.setAdapter(appointmentAdapter);
-                    binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
-                            LinearLayoutManager.VERTICAL, false));
+        try {
+            notificationsViewModel.notificationResponceMutableLiveData.observeForever(new Observer<NotificationsResponce>() {
+                @Override
+                public void onChanged(NotificationsResponce notificationsResponce) {
+                    if (notificationsResponce.status) {
+                        binding.erornotification.setVisibility(View.GONE);
+                        appointmentAdapter = new NotificationAdapter(getActivity(),
+                                notificationsResponce.allNotifications,10);
+                        binding.rvJobAlert.setAdapter(appointmentAdapter);
+                        binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
+                                LinearLayoutManager.VERTICAL, false));
 
-                    if(notificationsResponce.allNotifications.size()==0){
-                        binding.rvJobAlert.setVisibility(View.GONE);
-                        binding.erornotification.setVisibility(View.VISIBLE);
+                        if (notificationsResponce.allNotifications.size() == 0) {
+                            binding.rvJobAlert.setVisibility(View.GONE);
+                            binding.erornotification.setVisibility(View.VISIBLE);
 
-                        binding.erornotification.setText(getString(R.string.nonotification));
+                            binding.erornotification.setText(getString(R.string.nonotification));
+                        }
+
+                    } else {
+
                     }
-
-                } else {
-
                 }
-            }
-        });
+            });
+        } catch (Exception e){
 
+        }
 
         return binding.getRoot();
     }
