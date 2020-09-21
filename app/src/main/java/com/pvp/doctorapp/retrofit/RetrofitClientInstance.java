@@ -16,7 +16,7 @@ public class RetrofitClientInstance {
 
 
 
-    private static final String BASE_URL = "http://bcsvirtual.com";
+    private static final String BASE_URL = "";
 
 
     public static Retrofit getRetrofitInstanceServer() {
