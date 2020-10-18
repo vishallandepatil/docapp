@@ -51,8 +51,6 @@ public class HomeFragment extends Fragment {
     }
 
 
-    NotificationsViewModel notificationsViewModel;
-    NotificationAdapter appointmentAdapter;
 
 
     @Override
@@ -103,7 +101,7 @@ public class HomeFragment extends Fragment {
                 Utilities.launchActivity(getActivity(), BookingAppointmentActivity.class, false);
             }
         });
-        binding.title3.setOnClickListener(new View.OnClickListener() {
+        binding.tvAboutHospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -115,7 +113,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
-        binding.title2.setOnClickListener(new View.OnClickListener() {
+        binding.tvAboutHospital.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View v) {
@@ -147,37 +145,37 @@ public class HomeFragment extends Fragment {
 
         // for notification
 
-        notificationsViewModel = ViewModelProviders.of(this).get(NotificationsViewModel.class);
-      /*  binding.setLifecycleOwner(this);
-        binding.setNotificationsViewModel(notificationsViewModel);
-      */
-        notificationsViewModel.loadData(getActivity());
-        try {
-            notificationsViewModel.notificationResponceMutableLiveData.observeForever(new Observer<NotificationsResponce>() {
-                @Override
-                public void onChanged(NotificationsResponce notificationsResponce) {
-                    if (notificationsResponce.status) {
-                        binding.erornotification.setVisibility(View.GONE);
-                        appointmentAdapter = new NotificationAdapter(getActivity(),
-                                notificationsResponce.allNotifications,3);
-                        binding.rvJobAlert.setAdapter(appointmentAdapter);
-                        binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
-                                LinearLayoutManager.VERTICAL, false));
-
-                        if (notificationsResponce.allNotifications.size() == 0) {
-                            binding.rvJobAlert.setVisibility(View.GONE);
-                            binding.erornotification.setVisibility(View.VISIBLE);
-                            binding.erornotification.setText(getString(R.string.nonotification));
-                        }
-
-                    } else {
-
-                    }
-                }
-            });
-        } catch (Exception e){
-
-        }
+//        notificationsViewModel = ViewModelProviders.of(this).get(NotificationsViewModel.class);
+//      /*  binding.setLifecycleOwner(this);
+//        binding.setNotificationsViewModel(notificationsViewModel);
+//      */
+//        notificationsViewModel.loadData(getActivity());
+//        try {
+//            notificationsViewModel.notificationResponceMutableLiveData.observeForever(new Observer<NotificationsResponce>() {
+//                @Override
+//                public void onChanged(NotificationsResponce notificationsResponce) {
+//                    if (notificationsResponce.status) {
+//                        binding.erornotification.setVisibility(View.GONE);
+//                        appointmentAdapter = new NotificationAdapter(getActivity(),
+//                                notificationsResponce.allNotifications,3);
+//                        binding.rvJobAlert.setAdapter(appointmentAdapter);
+//                        binding.rvJobAlert.setLayoutManager(new LinearLayoutManager(getActivity(),
+//                                LinearLayoutManager.VERTICAL, false));
+//
+//                        if (notificationsResponce.allNotifications.size() == 0) {
+//                            binding.rvJobAlert.setVisibility(View.GONE);
+//                            binding.erornotification.setVisibility(View.VISIBLE);
+//                            binding.erornotification.setText(getString(R.string.nonotification));
+//                        }
+//
+//                    } else {
+//
+//                    }
+//                }
+//            });
+//        } catch (Exception e){
+//
+//        }
 
         return binding.getRoot();
     }

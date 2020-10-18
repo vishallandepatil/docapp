@@ -62,9 +62,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.tv_title.setText(imageModelArrayList.get(position).notification_title);
         holder.tv_details.setText(imageModelArrayList.get(position).notification_message);
         holder.tv_date.setText(imageModelArrayList.get(position).created_on);
-
-
-            holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_skyblue));
+        holder.tv_status.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.notification_skyblue));
         holder.tv_status.setVisibility(View.GONE);
 
     }

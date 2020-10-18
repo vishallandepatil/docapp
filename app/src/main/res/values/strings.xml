@@ -3,7 +3,13 @@
     <string name="rate_us_link">https://play.google.com/store/apps/details?id=com.flipkart.android</string>
     <string name="feedback_email">sample@gmail.com</string>
 
-    <string name="contact_us_details">1.so we welcome you to be a part of our family and fulfill your dreams! so we welcome you to be a part of our family and fulfill your dreams! so we welcome you to be a part of our family and fulfill your dreams! so we welcome you to be a part of our family and fulfill your dreams!</string>
+    <string name="contact_us_details">
+        Appointment timings are not absolute, different patients with different and severe diseases may require lot of time for examining.\n
+        Please make a note of it and cooperate\n
+        Thank you.
+
+
+    </string>
     <string name="home_page_details">1.so we welcome you to be a part of our family and fulfill your dreams!
        \nso we welcome you to be a part of our family and fulfill your dreams!
     </string>
@@ -14,7 +20,7 @@
 
 
     <string name="about_doctor">Doctor</string>
-    <string name="about_doctor_homepage">ABOUT DR</string>
+    <string name="about_doctor_homepage">Doctor</string>
     <string name="about_hospital">Hospital</string>
     <string name="book_appointment">Appointment</string>
     <string name="contact">Contact</string>
@@ -52,6 +58,7 @@
     <string name="by_dr_chapalgaonkar">By Dr. Chapalgaonkar</string>
     <string name="cpc_appointment">CPC Appointment</string>
     <string name="book_an_appointment">Book an Appointment</string>
+    <string name="about_hospital_detais">   Clinic  </string>
 
 
 </resources>
